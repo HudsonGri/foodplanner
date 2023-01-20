@@ -9,9 +9,9 @@ A user selects multiple of their favorite cuisine types as well as specific dish
 - Provide shopping lists for specific stores, with total cost
 
 **Backend:**
-Hudson
-Michael
+- Hudson
+- Michael
 
 **Frontend:**
-Derek
-Erik
+- Derek
+- Erik
