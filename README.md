@@ -7,6 +7,9 @@ A user selects multiple of their favorite cuisine types as well as specific dish
 ### Preemptive Feature List:
 - Allow for user preferences such as: allergies, dietary needs, nutrition, cost, variety.
 - Provide shopping lists for specific stores, with total cost
+    - Ingredients list will also provide multiple different options ranging from most to least expensive
+- May edit a recipe to include alternatives to account for allergies and dietary restrictions
+    - ex. Oil instead of butter
 
 **Backend:**
 - Hudson
