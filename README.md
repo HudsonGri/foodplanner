@@ -1,8 +1,8 @@
 ## Food Planner
 
-A web application to provide recipes and plan weekly meals based on cuisine type and preferred dishes.
+A web application to provide an efficient weekly grocery list——paired with recipes——based on the user's preferred dishes and cuisine type.
 
-A user selects several of their favorite cuisine types, as well as specific dishes. The website will then prepare a weekly plan for meals and suggest common ingredients to purchase. The ingredients are provided in such a way as to maximize overlap and mitigate spending. The user can also select how often they want to cook, the variety of dishes, maximum weekly spending, and specific ingredients to avoid.
+A user selects several of their favorite cuisine types, as well as specific dishes. The website will then prepare a weekly plan for meals and suggest common ingredients to purchase. The ingredients are provided in such a way as to maximize overlap between meals and mitigate spending. The user can also select how often they want to cook, the variety of dishes, maximum weekly spending, and specific ingredients to avoid.
 
 ### Preemptive Feature List:
 - Allow for user preferences such as: allergies, dietary needs, nutrition, cost, variety.
