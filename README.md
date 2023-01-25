@@ -10,6 +10,7 @@ A user selects several of their favorite cuisine types, as well as specific dish
     - Ingredients list will also provide multiple different options ranging from most to least expensive
 - Ability to edit a recipe to include alternatives to account for allergies and dietary restrictions
     - ex. Oil instead of butter
+- Keep history of previously suggested ingredients and shopping lists
 
 **Backend:**
 - Hudson
