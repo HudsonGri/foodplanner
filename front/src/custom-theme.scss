@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$foodplanner-primary: mat.define-palette(mat.$green-palette, 900);
+$foodplanner-accent: mat.define-palette(mat.$light-green-palette, 200);
+$foodplanner-warn: mat.define-palette(mat.$red-palette);
+$foodplanner-theme: mat.define-light-theme((
+    color: (
+        primary: $foodplanner-primary,
+        accent: $foodplanner-accent,
+        warn: $foodplanner-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+));
+
+@include mat.core-theme($foodplanner-theme);
+@include mat.all-component-themes($foodplanner-theme);
