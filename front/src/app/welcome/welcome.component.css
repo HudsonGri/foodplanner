@@ -1,0 +1,11 @@
+div {
+    text-align: center;
+    font-size: large;
+    font-weight: bolder;
+    color: rgb(36, 79, 145);
+}
+
+.login {
+    height: 20px;
+    width: 50px;
+}
