@@ -16,12 +16,15 @@
 13. As someone with a busy schedule I don't have time to go grocery shopping myself.
 
 ### What issues your team planned to address.
-- User login screen. We planned to create a way to authenticate users and return them to the site.
+- User Login Screen: Our team planned to implement a secure authentication system for users to log in and access the site.
 - Dashboard screen. We wanted to create a landing page for the users after they log in where they will see user preferences, recipies, etc.
 
 ### Which ones were successfully completed
-- User login screen.
-- Dashboard scren.
+- ser Login Screen: This feature has been successfully implemented with Auth0 and users are able to log in to the site.
+- Dashboard Screen: A user-friendly dashboard has been created and is accessible to users after they log in.
 
 ### Which ones didn't and why?
-We completed all the issues we planned this sprint.
+No issues were left uncompleted during this sprint.
+
+### Team Videos
+- [Backend](https://youtu.be/xLdhHPrz4eM)
