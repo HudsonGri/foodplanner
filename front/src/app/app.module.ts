@@ -12,16 +12,28 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 
-import { MaterialModule } from './material.module';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './auth0login.component';
 import { UserProfileComponent } from './profileinfo.component';
+import { NavComponent } from './nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { HomeComponent } from './home/home.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthButtonComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    NavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +46,6 @@ import { UserProfileComponent } from './profileinfo.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MaterialModule,
 
     AuthModule.forRoot({
       domain: 'dev-csui7aqqh8ypaqxq.us.auth0.com',
@@ -43,6 +54,15 @@ import { UserProfileComponent } from './profileinfo.component';
         redirect_uri: window.location.origin
       }
     }),
+     LayoutModule,
+     MatToolbarModule,
+     MatButtonModule,
+     MatSidenavModule,
+     MatIconModule,
+     MatListModule,
+     MatGridListModule,
+     MatCardModule,
+     MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent, AuthButtonComponent, UserProfileComponent]
