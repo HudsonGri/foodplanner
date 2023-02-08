@@ -1,3 +1,8 @@
+div {
+    text-align: center;
+    font-size: large;
+}
+
 .welcomeMessage {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
