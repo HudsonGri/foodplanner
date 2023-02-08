@@ -28,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CardComponent } from './home/card/card.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CardComponent } from './home/card/card.component';
     NavComponent,
     HomeComponent,
     WelcomeComponent,
-    CardComponent
+    CardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
