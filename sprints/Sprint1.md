@@ -21,7 +21,7 @@
 
 ### Which ones were successfully completed
 - User login screen.
-- Dashboard scren.
+- Dashboard screen.
 
 ### Which ones didn't and why?
 We completed all the issues we planned this sprint.
