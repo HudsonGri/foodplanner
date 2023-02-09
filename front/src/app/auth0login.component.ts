@@ -13,7 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
     </ng-container>
 
     <ng-template #loggedOut>
-      <button color="primary" mat-raised-button (click)="auth.loginWithRedirect()">Log in / Sign Up</button>
+      <button color="primary" mat-raised-button (click)="auth.loginWithRedirect()" style="position: absolute; top: 320px;">Log in / Sign Up</button>
     </ng-template>
   `,
   styles: [],
