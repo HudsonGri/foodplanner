@@ -28,3 +28,4 @@
 
  ### Team Videos
  - [Backend](https://youtu.be/xLdhHPrz4eM)
+ - [Frontend](https://youtu.be/uynkZH0byXM)
