@@ -3,6 +3,7 @@
 ### Work that we have completed in Sprint 2
 
 ### List unit tests and Cypress test for frontend
+
 ### List unit tests for backend
 For the backend we created tests for both Go and Flask.
 
@@ -12,7 +13,7 @@ For the backend we created tests for both Go and Flask.
 - TestDeleteUser
   - This creates and deletes a user to confirm the DeleteUser callback is working.
 
-### Flask Tests
+####  Flask Tests
 - test_italian
   - This test confirms that the email 'hudsongriffith@gmail.com' returns a Italian dish.
 - test_mexican
