@@ -8,13 +8,17 @@ CORS(app)
 
 @app.route('/recipe', methods=['GET','POST'])
 def index():
-    print(request.data)
-    data = json.loads(request.data)
-    
-    usr_email = data['usr_email']
+    try:
+        print(request.data)
 
-    recipes = fpcalc.get_recipes(usr_email)
-    return recipes
+        args = request.args
+        
+        usr_email = args['usr_email']
+
+        recipes = fpcalc.get_recipes(usr_email)
+        return recipes
+    except:
+        return {'status' : 'error'}
     
 if __name__ == "__main__":
     from waitress import serve
