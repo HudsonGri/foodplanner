@@ -9,9 +9,15 @@ For the backend we created tests for both Go and Flask.
 
 #### Go Tests
 - TestFindUsers
-  - This confirms that the GetUsers callback is working and successfully returns 'Hudson G' the user with Id 2.
+  - This confirms that the GetUsers callback is working and successfully returns both users 'Michael T' and 'Hudson G', the users with Id 1 and 2 respectively.
+- TestFindUser
+  - This confirms that the GetUser callback is working and successfully returns 'Michael T' and all associated data with Id 1.
 - TestDeleteUser
   - This creates and deletes a user to confirm the DeleteUser callback is working.
+- TestCreateUser
+  - This creates a new user to confirm the CreateUser callback is working.
+- TestUpdateUser
+  - This confirms that the UpdateUser callback is working and updates the email of existing user, 'Michael T' with Id 1.
 
 ####  Flask Tests
 - test_italian
