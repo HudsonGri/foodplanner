@@ -28,7 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CardComponent } from './home/card/card.component';
-import { LoginComponent } from './login/login.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     WelcomeComponent,
     CardComponent,
-    LoginComponent
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
