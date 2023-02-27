@@ -15,8 +15,12 @@
         </div>
     </mat-card-header>
     <mat-card-content class="dashboard-card-content">
-        Get started using foodplanner today! <br/> <br/>
+        Get started using foodplanner today! <br />
+        <div *ngIf="auth.user$ | async as user">
+            Your ip: {{ userIP }} (to test calling APIs)
+        </div>
+        <br /> <br />
         <app-auth-button></app-auth-button>
         <ng-content></ng-content>
     </mat-card-content>
- </mat-card>
+</mat-card>
