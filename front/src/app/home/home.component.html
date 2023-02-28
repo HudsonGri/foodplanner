@@ -1,5 +1,7 @@
 <div class="grid-container">
-  <h1 class="mat-h1" style="text-align: left">Dashboard</h1>
+  <div style="text-align: justify;">
+    <h1 style="display: inline-block; text-align: left;"> Dashboard </h1>
+  </div>
   <h4 *ngIf="auth.user$ | async as user">
     <h4> <span style="color: rgb(67, 105, 24)"> Welcome back {{ user.name }}! </span> </h4>
   </h4>
