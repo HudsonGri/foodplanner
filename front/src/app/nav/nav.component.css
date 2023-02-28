@@ -18,8 +18,9 @@
 
 .app-auth-button  {
   position: absolute;
-  width: 60%;
-  text-align: center;
+  width: 80%;
+  text-align: left;
   bottom: 0;
+  margin-left: 1rem;
   margin-bottom: 1rem;
 }
