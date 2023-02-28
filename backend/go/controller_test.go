@@ -4,7 +4,6 @@ import (
 	"01-Login/controllers"
 	"01-Login/models"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strconv"
@@ -58,7 +57,7 @@ func TestFindUser(t *testing.T) {
 func TestDeleteUser(t *testing.T) {
 	// Set up a test router and request/response recorder
 	router := gin.Default()
-	router.DELETE("/users/:id", controllers.DeleteUser)
+	models.ConnectDatabase()
 	w := httptest.NewRecorder()
 
 	// Insert a user into the database
@@ -67,7 +66,7 @@ func TestDeleteUser(t *testing.T) {
 
 	// Send a DELETE request to the router to delete the user
 	req, _ := http.NewRequest("DELETE", "/users/"+strconv.FormatUint(uint64(user.ID), 10), nil)
-	fmt.Println(req)
+	router.DELETE("/users/:id", controllers.DeleteUser)
 	router.ServeHTTP(w, req)
 
 	// Check that the response status is OK
