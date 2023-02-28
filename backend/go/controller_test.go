@@ -74,7 +74,7 @@ func TestDeleteUser(t *testing.T) {
 
 	// Check that the response body is as expected
 	var response map[string]bool
-	json.Unmarshal([]byte(w.Body.String()), &response)
+	json.Unmarshal(w.Body.Bytes(), &response)
 	assert.Equal(t, true, response["data"])
 
 	// Check that the user has been deleted from the database
@@ -123,7 +123,7 @@ func TestCreateUser(t *testing.T) {
 
 	// Parse the response body into a map
 	var response map[string]models.User
-	json.Unmarshal([]byte(w.Body.String()), &response)
+	json.Unmarshal(w.Body.Bytes(), &response)
 	assert.Equal(t, expectedResponse["email"], response["data"].Email)
 }
 
@@ -167,6 +167,6 @@ func TestUpdateUser(t *testing.T) {
 
 	// Parse the response body into a map
 	var response map[string]models.User
-	json.Unmarshal([]byte(w.Body.String()), &response)
+	json.Unmarshal(w.Body.Bytes(), &response)
 	assert.Equal(t, expectedResponse["email"], response["data"].Email)
 }
