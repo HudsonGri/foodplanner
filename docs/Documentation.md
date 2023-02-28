@@ -11,7 +11,31 @@ This is the documentation for the backend of foodplanner detailing the endpoints
 - Food allergies to track ingredients that should be avoided
 
 ## Database Integration (Go)
-INFO HERE
+# Endpoints
+- POST /users
+  - Create a new user
+  - Parameters:
+    - 
+  - Response:
+- GET /users
+  - Get a list of all users
+  - Parameters:
+    - 
+- GET /users/:id
+  - Get a specific user by ID
+  - Parameters:
+    - 
+  - Response:
+- DELETE /users/:id
+  - Delete a specific user by ID
+  - Parameters:
+      - 
+  - Response:
+- PATCH /users/:id
+  - Update an existing user by ID
+  - Parameters:
+    - 
+  - Response:
 
 ## Recipe Calculation (Flask)
 INFO HERE
