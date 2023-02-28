@@ -1,4 +1,4 @@
-package controllers_test
+package main
 
 import (
 	"01-Login/controllers"
@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strconv"
+	"strings"
 	"testing"
 
 	"github.com/gin-gonic/gin"
@@ -30,6 +31,28 @@ func TestFindUsers(t *testing.T) {
 	var response map[string][]models.User
 	json.Unmarshal(w.Body.Bytes(), &response)
 	assert.Equal(t, "Hudson G", response["data"][1].Name)
+	assert.Equal(t, "Michael T", response["data"][0].Name)
+}
+
+func TestFindUser(t *testing.T) {
+	// Set up test database and router
+	gin.SetMode(gin.TestMode)
+	r := gin.Default()
+	models.ConnectDatabase()
+
+	// Perform request and check response
+	req, _ := http.NewRequest("GET", "/users/1", nil)
+	w := httptest.NewRecorder()
+	r.GET("/users/:id", controllers.FindUser)
+	r.ServeHTTP(w, req)
+
+	assert.Equal(t, http.StatusOK, w.Code)
+	var response map[string]models.User
+	json.Unmarshal(w.Body.Bytes(), &response)
+	assert.Equal(t, "Michael T", response["data"].Name)
+	assert.Equal(t, "michael.t@gmail.com", response["data"].Email)
+	assert.Equal(t, 2, response["data"].Skill_Level)
+	assert.Equal(t, "['mexican']", response["data"].Cuisine_choices)
 }
 
 func TestDeleteUser(t *testing.T) {
@@ -59,4 +82,92 @@ func TestDeleteUser(t *testing.T) {
 	var deletedUser models.User
 	models.DB.Where("id = ?", user.ID).First(&deletedUser)
 	assert.Equal(t, false, models.DB.RecordNotFound())
+}
+
+func TestCreateUser(t *testing.T) {
+	// Initialize the Gin router and the database connection
+	r := gin.Default()
+	models.ConnectDatabase()
+
+	// Define the expected response
+	expectedResponse := gin.H{
+		"name":  "Test User",
+		"email": "testuser@example.com",
+	}
+
+	user := models.User{Name: "Test User", Email: "testuser@example.com"}
+	// Define the request payload
+	payload := gin.H{
+		"name":  user.Name,
+		"email": user.Email,
+	}
+
+	// Create a new recorder to record the HTTP response
+	w := httptest.NewRecorder()
+
+	payloadJSON, err := json.Marshal(gin.H(payload))
+	if err != nil {
+		t.Fatalf("Error converting payload to JSON string")
+	}
+	reqBody := strings.NewReader(string(payloadJSON))
+
+	// Create a new request
+	req, _ := http.NewRequest("POST", "/users", reqBody)
+	req.Header.Set("Content-Type", "application/json")
+
+	// Call the handler function
+	r.POST("/users", controllers.CreateUser)
+	r.ServeHTTP(w, req)
+
+	// Check the response status code
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	// Parse the response body into a map
+	var response map[string]models.User
+	json.Unmarshal([]byte(w.Body.String()), &response)
+	assert.Equal(t, expectedResponse["email"], response["data"].Email)
+}
+
+func TestUpdateUser(t *testing.T) {
+	// Initialize the Gin router and the database connection
+	r := gin.Default()
+	models.ConnectDatabase()
+
+	// Define the expected response
+	expectedResponse := gin.H{
+		"name":  "Test Update User",
+		"email": "updated@example.com",
+	}
+
+	user := models.User{Name: "Test Update User", Email: "test@example.com"}
+	models.DB.Create(&user)
+
+	// Define the request payload
+	payload := gin.H{
+		"email": "updated@example.com",
+	}
+
+	// Create a new recorder to record the HTTP response
+	w := httptest.NewRecorder()
+
+	payloadJSON, err := json.Marshal(gin.H(payload))
+	if err != nil {
+		t.Fatalf("Error converting payload to JSON string")
+	}
+	reqBody := strings.NewReader(string(payloadJSON))
+
+	// Create a new request
+	req, _ := http.NewRequest("PATCH", "/users/"+strconv.FormatUint(uint64(user.ID), 10), reqBody)
+
+	// Call the handler function
+	r.PATCH("/users/:id", controllers.UpdateUser)
+	r.ServeHTTP(w, req)
+
+	// Check the response status code
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	// Parse the response body into a map
+	var response map[string]models.User
+	json.Unmarshal([]byte(w.Body.String()), &response)
+	assert.Equal(t, expectedResponse["email"], response["data"].Email)
 }
