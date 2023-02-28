@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, User } from '@auth0/auth0-angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,5 +11,11 @@ import { AuthService } from '@auth0/auth0-angular';
     </ul>`
 })
 export class UserProfileComponent {
-  constructor(public auth: AuthService) {}
+  email: any;
+  constructor(private http: HttpClient, public auth: AuthService) {
+    this.email = auth.user$.subscribe(console.log)
+  }
+  ngOnInit() {
+    console.log(this.email.email); // Output: ''
+  }
 }
