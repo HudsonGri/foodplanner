@@ -1,5 +1,8 @@
 <div class="grid-container">
   <h1 class="mat-h1" style="text-align: left">Dashboard</h1>
+  <h4 *ngIf="auth.user$ | async as user">
+    <h4> <span style="color: rgb(67, 105, 24)"> Welcome back {{ user.name }}! </span> </h4>
+  </h4>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile [colspan]="2" [rowspan]="1">
       <app-card></app-card>

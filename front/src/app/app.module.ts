@@ -54,8 +54,8 @@ import { LoginComponent } from './login/login.component';
     MatSelectModule,
 
     AuthModule.forRoot({
-      domain: 'dev-csui7aqqh8ypaqxq.us.auth0.com',
-      clientId: '4leVKJQQEHt2v5VvoGFUtEOiR4MXsKKE',
+      domain: 'dev-f3612agfl2judti1.us.auth0.com',
+      clientId: 'w92cz5xnF7lqxOjblbduKFIWuiDpwgBq',
       authorizationParams: {
         redirect_uri: window.location.origin
       }

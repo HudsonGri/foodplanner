@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { AuthService, User } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-home',
@@ -29,5 +30,5 @@ export class HomeComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, public auth: AuthService) {}
 }

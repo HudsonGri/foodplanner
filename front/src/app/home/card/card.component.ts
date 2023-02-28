@@ -12,9 +12,9 @@ export class CardComponent {
 
   userIP: any;
   a_user: any;
+  responseUserData: any;
 
   constructor(public auth: AuthService, private http: HttpClient) { }
-
 
   ngOnInit() {
     // Simple POST request with a JSON body and response type <any>
@@ -29,7 +29,7 @@ export class CardComponent {
           "name": this.a_user.email,
           "job": "leader"
       }),).subscribe(data => {
-          console.log(data)
+          this.responseUserData = data
 
         })
       });
