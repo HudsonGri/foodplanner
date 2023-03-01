@@ -3,12 +3,18 @@ This is the documentation for the backend of foodplanner detailing the endpoints
 
 ## User Preferences
 - Cuisine type
+  - African, American, British, Cajun, Caribbean, Chinese, Eastern European, European, French, German, Greek, Idian, Irish, Italian, Japanese, Jewish, Korean, Latin American, Mediterranean, Mexican, Middle Eastern, Nordic, Southern, Spanish, Thai, Vietnamese.
 - Amount of time needed to complete a recipe
+  -  Quick and easy (less than 30 minutes), Moderate (between 30 minutes and 1 hour), Time-consuming (more than 1 hour)
 - Overall healthiness of meals (quantified by number of calories, grams of fat/sugar/etc.)
+  - Healthy, moderately healthy, indulgent
 - Price range of ingredients in a recipe
+  - Budget-friendly, Mid-range, High-end
 - Portion size (scale the quantity of needed ingredients by N people)
 - Experience and skill level required to complete a recipe
+  - Beginner-friendly, Intermediate, Advanced
 - Food allergies to track ingredients that should be avoided
+  - Dairy, Wheat, Peanuts, Tree Nuts, Shellfish, etc.
 
 ## Database Integration (Go)
 
