@@ -15,7 +15,15 @@ This is the documentation for the backend of foodplanner detailing the endpoints
 POST /users
 - Create a new user
   - Response
-  - 
+    - {
+    "data": {
+        "id": 3,
+        "name": "Test User",
+        "email": "testuser@example.com",
+        "skill_level": 0,
+        "cuisine_choices": ""
+    }
+}
   - Parameters
 
 | Name | Type | Description |
@@ -26,10 +34,36 @@ POST /users
 GET /users
 - Get a list of all users
   - Response
-  - 
+    - {
+  "data": [
+    {
+      "id": 1,
+      "name": "Michael T",
+      "email": "michael.t@gmail.com",
+      "skill_level": "2",
+      "cuisine_choices": "['mexican']"
+    },
+    {
+      "id": 2,
+      "name": "Hudson G",
+      "email": "hudsongriffith@gmail.com",
+      "skill_level": 2,
+      "cuisine_choices": "['mexican']"
+    }
+  ]
+}
 GET /users/:id
 - Get a specific user by ID
   - Response
+    - {
+    "data": {
+        "id": 1,
+        "name": "Michael T",
+        "email": "michael.t@gmail.com",
+        "skill_level": 2,
+        "cuisine_choices": "['mexican']"
+    }
+}
   - Parameters
 
 | Name | Type | Description |
@@ -39,6 +73,9 @@ GET /users/:id
 DELETE /users/:id
 - Delete a specific user by ID
   - Response
+    - {
+    "data": true
+}
   - Parameters
 
 | Name | Type | Description |
@@ -48,6 +85,15 @@ DELETE /users/:id
 PATCH /users/:id
 - Update an existing user by ID
   - Response
+    - {
+    "data": {
+        "id": 3,
+        "name": "Test User",
+        "email": "updated@example.com",
+        "skill_level": 0,
+        "cuisine_choices": ""
+    }
+}
   - Parameters
 
 | Name | Type | Description |
