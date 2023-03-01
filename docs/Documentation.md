@@ -1,5 +1,5 @@
-### Foodplanner Backend Documentation
-This is the documentation for the backend of foodplanner detailing the endpoints for our Go and Flask implementation
+# Foodplanner Backend Documentation
+This is the documentation for the backend of foodplanner detailing the endpoints for our Go and Flask implementation.
 
 ## User Preferences
 - Cuisine type
