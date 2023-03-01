@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  addData(dataArray: any[]) {
-    const url = 'https://reqres.in/api/users';
+  savePreferences(dataArray: any[]) {
+    const url = 'https://reqres.in/api/preferences';
     return this.http.post(url, dataArray);
   }
 }

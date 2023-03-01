@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { tap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 //import { DataService } from '../data.service';
 
 // @Component({
@@ -55,11 +57,16 @@ export class PreferencesComponent {
       { name: 'vegetarian', value: this.vegetarian },
       { name: 'vegan', value: this.vegan }
     ];
-    const url = 'https://reqres.in/api/preferences';
-    this.http.post(url, preferences).subscribe(response => {
-      console.log('Boolean values saved successfully');
-    }, error => {
-      console.error('Error saving boolean values:', error);
-    });
+    const url = 'https://reqres.in/api/users';
+    this.http.post(url, preferences).pipe(
+      tap(response => {
+        console.log('Boolean values saved successfully');
+        console.log(this.allergies);
+      }),
+      catchError(error => {
+        console.error('Error saving boolean values:', error);
+        return of(null); // Return observable with value `null`
+      })
+    ).subscribe();
   }
 }
