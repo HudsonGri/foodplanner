@@ -11,7 +11,7 @@ This is the documentation for the backend of foodplanner detailing the endpoints
 - Food allergies to track ingredients that should be avoided
 
 ## Database Integration (Go)
-# Endpoints
+
 POST /users
 - Create a new user
   - Response
@@ -105,4 +105,32 @@ PATCH /users/:id
 
 
 ## Recipe Calculation (Flask)
-INFO HERE
+
+/recipe
+
+This API endpoint takes a user email and returns a json object containing a recipe from a user's preffered cuisine.
+
+**Request**
+
+usr_email - The email of the user for whom the recipe is being fetched.
+
+**Response**
+
+Returns a JSON object containing:
+
+recipe_result - The name of a recipe from the user's preferred cuisine.
+
+status - A string indicating the status of the request. Possible values are "success" and "error".
+
+**Example**
+``` sql
+GET /recipe?usr_email=john@example.com
+```
+
+``` json
+{
+    "recipe_result": "One-Skillet Mexican Quinoa",
+    "status": "success"
+}
+```
+*Note: This result is preliminary and likely to change as more functionality is added to the flask backend.*
