@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Preferences</title>
+</head>
+<body>
+  <div class="container">
+    <h1>User Preferences</h1>
+    <form (submit)="savePreferences()">
+      <h2>Allergies</h2>
+      <label>
+        <input type="checkbox" name="allergy" value="peanuts"> Peanuts
+      </label>
+      <label>
+        <input type="checkbox" name="allergy" value="seafood"> Seafood
+      </label>
+      <label>
+        <input type="checkbox" name="allergy" value="soy"> Soy
+      </label>
+
+      <h2>Diet Restrictions</h2>
+      <label>
+        <input type="checkbox" name="diet" value="vegetarian"> Vegetarian
+      </label>
+      <label>
+        <input type="checkbox" name="diet" value="vegan"> Vegan
+      </label>
+      <label>
+        <input type="checkbox" name="diet" value="gluten-free"> Gluten-Free
+      </label>
+
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</body>
+</html>
+

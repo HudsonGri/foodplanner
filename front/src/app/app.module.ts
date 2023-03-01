@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CardComponent } from './home/card/card.component';
 import { LoginComponent } from './login/login.component';
+import { PreferencesComponent } from './preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     WelcomeComponent,
     CardComponent,
-    LoginComponent
+    LoginComponent,
+    PreferencesComponent,
   ],
   imports: [
     BrowserModule,
