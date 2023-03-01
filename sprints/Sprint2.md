@@ -2,6 +2,9 @@
 
 ### Work that we have completed in Sprint 2
 
+Backend
+- The backend team made further progress on recipe calculation by collaborating with the Spoonacular API to retrieve recipes. Additionally, we incorporated testing in both Go and Flask.
+
 ### List unit tests and Cypress test for frontend
 
 ### List unit tests for backend
