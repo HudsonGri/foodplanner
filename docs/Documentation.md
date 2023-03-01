@@ -52,6 +52,7 @@ GET /users
     }
   ]
 }
+
 GET /users/:id
 - Get a specific user by ID
   - Response
