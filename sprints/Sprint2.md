@@ -11,6 +11,9 @@ Backend
 ### List unit tests and Cypress test for frontend
 For the frontend we created tests for our Typescript functions
 
+- NavigationTest (Cypress)
+  - This test test the basic functionality of Cypress within the project. Ensures that the user can navigate between pages via the sidebar button, and is routed to the correct url.
+
 - TestSavePreferences
   - This test checks to see if the function is able to successfully send data to the backend as well as check for an error in sending data to the backend
 
