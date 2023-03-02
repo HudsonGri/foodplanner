@@ -15,9 +15,9 @@
         </div>
     </mat-card-header>
     <mat-card-content class="dashboard-card-content">
-        Get started using foodplanner today! <br />
+        Get started using foodplanner today! <br /> <br />
         <div *ngIf="auth.user$ | async as user">
-            {{responseUserData}}
+            User Cusine Choices: {{responseUserData.cuisine_choices}}
         </div>
         <br /> <br />
         <app-auth-button></app-auth-button>

@@ -29,7 +29,7 @@ func FindUser(c *gin.Context) {
 
 	// Get model if exist
 	var user models.User
-	if err := models.DB.Where("id = ?", c.Param("id")).First(&user).Error; err != nil {
+	if err := models.DB.Where("email = ?", c.Param("email")).First(&user).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
