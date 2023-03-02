@@ -17,6 +17,9 @@ For the frontend we created tests for our Typescript functions
 - TestSavePreferences
   - This test checks to see if the function is able to successfully send data to the backend as well as check for an error in sending data to the backend
 
+- TestSearchComponentCard
+  - This test makes sure that the program registers when a card on the search page has been clicked on by the user.
+
 
 ### List unit tests for backend
 For the backend we created tests for both Go and Flask.
