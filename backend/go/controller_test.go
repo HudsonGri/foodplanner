@@ -40,9 +40,9 @@ func TestFindUser(t *testing.T) {
 	models.ConnectDatabase()
 
 	// Perform request and check response
-	req, _ := http.NewRequest("GET", "/users/1", nil)
+	req, _ := http.NewRequest("GET", "/users/michael.t@gmail.com", nil)
 	w := httptest.NewRecorder()
-	r.GET("/users/:id", controllers.FindUser)
+	r.GET("/users/:email", controllers.FindUser)
 	r.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusOK, w.Code)
