@@ -25,4 +25,9 @@ export class SearchComponent {
       description: 'This is the third card.'
     }
   ];
+
+  cardClicked() {
+    // Do something when the card is clicked
+    console.log('Card clicked!');
+  }
 }
