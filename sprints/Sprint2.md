@@ -3,7 +3,7 @@
 ### Work that we have completed in Sprint 2
 
 Frontend
-- The frontend team made further progress regarding pages for users to interact with and the UI as a whole. We also began to work on sending and receiving data from the backend as well as unit testing our Typescript code.
+- The frontend team made further progress regarding pages for users to interact with, and the UI as a whole. We also began to work on sending and receiving data from the backend as well as unit testing our Typescript code.
 
 Backend
 - The backend team made further progress on recipe calculation by collaborating with the Spoonacular API to retrieve recipes. Additionally, we incorporated testing in both Go and Flask.
