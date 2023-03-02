@@ -20,7 +20,7 @@ export class CardComponent {
     // Simple POST request with a JSON body and response type <any>
 
 
-      this.auth.user$.subscribe(user => {
+      this.auth.user$.subscribe((user:any) => {
         this.a_user = user;
         console.log(this.a_user)
         this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
