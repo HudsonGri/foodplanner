@@ -14,6 +14,9 @@ For the frontend we created tests for our Typescript functions
 - NavigationTest (Cypress)
   - This test test the basic functionality of Cypress within the project. Ensures that the user can navigate between pages via the sidebar button, and is routed to the correct url.
 
+-LoginSecurityTest (Cypress)
+  - Ensures the proper implementation of Auth0 and the login system by checking to make sure the user cannot access the website in the logged in state without going through Auth0.
+
 - TestSavePreferences
   - This test checks to see if the function is able to successfully send data to the backend as well as check for an error in sending data to the backend
 
