@@ -46,3 +46,6 @@ For the backend we created tests for both Go and Flask.
 
 ### Add documentation for your backend API 
 This documentation can be found in the [docs](https://github.com/HudsonGri/foodplanner/tree/main/docs) folder of our GitHub.
+
+### Video URL
+[Sprint 2](https://youtu.be/ak0La5kH5tw)
