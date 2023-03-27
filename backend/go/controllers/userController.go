@@ -14,8 +14,10 @@ type CreateUserInput struct {
 }
 
 type UpdateUserInput struct {
-	Name  string `json:"name"`
-	Email string `json:"email"`
+	Name            string `json:"name"`
+	Email           string `json:"email"`
+	Skill_Level     int    `json:"skill_level"`
+	Cuisine_choices string `json:"cuisine_choices"`
 }
 
 func FindUsers(c *gin.Context) {
