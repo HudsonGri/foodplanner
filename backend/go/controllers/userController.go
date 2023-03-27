@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"01-Login/models"
+	"encoding/json"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -29,12 +30,28 @@ func FindUser(c *gin.Context) {
 
 	// Get model if exist
 	var user models.User
+
 	if err := models.DB.Where("email = ?", c.Param("email")).First(&user).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": user})
+	var user_recipe models.UserRecipes
+
+	user_recipe.ID = user.ID
+	user_recipe.Name = user.Name
+	user_recipe.Email = user.Email
+	user_recipe.Skill_Level = user.Skill_Level
+	user_recipe.Cuisine_choices = user.Cuisine_choices
+
+	var recipe_converted map[string]interface{}
+	if err := json.Unmarshal([]byte(user.Recipes), &recipe_converted); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Conversion screwed up"})
+		return
+	}
+	user_recipe.Recipes = recipe_converted
+
+	c.JSON(http.StatusOK, gin.H{"data": user_recipe})
 }
 
 func CreateUser(c *gin.Context) {
