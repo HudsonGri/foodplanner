@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { HttpClient } from '@angular/common/http';
 
 interface Card {
   title: string;
-  description: string;
+  image: string;
 }
+
 
 @Component({
   selector: 'app-search',
@@ -11,24 +14,42 @@ interface Card {
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-  cards: Card[] = [
-    {
-      title: 'Card 1',
-      description: 'This is the first card.'
-    },
-    {
-      title: 'Card 2',
-      description: 'This is the second card.'
-    },
-    {
-      title: 'Card 3',
-      description: 'This is the third card.'
-    },
-    {
-      title: 'Burrito',
-      description: 'I am Mexican...sort of'
-    }
-  ];
+
+  cards: Card[] = [];
+  
+
+  userIP: any;
+  a_user: any;
+  responseUserData: any;
+
+  constructor(public auth: AuthService, private http: HttpClient) { }
+
+  ngOnInit() {
+    // Simple POST request with a JSON body and response type <any>
+
+
+      this.auth.user$.subscribe((user:any) => {
+        this.a_user = user;
+        console.log(this.a_user)
+        this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+          this.responseUserData = data.data
+          console.log(data)
+          for (const [key, value] of Object.entries(data.data.recipes)) {
+            this.cards.push({
+              title: key,
+              image: value['image']
+            })
+          }
+
+
+
+
+        })
+      });
+
+  
+  }
+  
 
   cardClicked(event: MouseEvent, card: Card) {
     // Do something when the card is clicked
