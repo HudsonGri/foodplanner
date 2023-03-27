@@ -6,38 +6,38 @@
   </head>
   <body>
     <div class="container">
-      <div class="card" (click)="cardClicked()"> 
+      <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)"> 
         <img src="https://via.placeholder.com/300x200" alt="Product Image">
         <div class="content">
-          <h2>Product 1</h2>
-          <p>Placeholder Recipe Description</p>
+          <h2>{{ card.title }}</h2>
+          <p>{{ card.description }}</p>
           <button>+</button>
         </div>
       </div>
-      <div class="card">
+      <!-- <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
         <img src="https://via.placeholder.com/300x200" alt="Product Image">
         <div class="content">
-          <h2>Product 2</h2>
-          <p>Placeholder Recipe Description</p>
+          <h2>{{ card.title }}</h2>
+          <p>{{ card.description }}</p>
           <button>+</button>
         </div>
       </div>
-      <div class="card">
+      <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
         <img src="https://via.placeholder.com/300x200" alt="Product Image">
         <div class="content">
-          <h2>Product 3</h2>
-          <p>Placeholder Recipe Description</p>
+          <h2>{{ card.title }}</h2>
+          <p>{{ card.description }}</p>
           <button>+</button>
         </div>
       </div>
-      <div class="card">
+      <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
         <img src="https://via.placeholder.com/300x200" alt="Product Image">
         <div class="content">
-          <h2>Product 4</h2>
-          <p>Placeholder Recipe Description</p>
+          <h2>{{ card.title }}</h2>
+          <p>{{ card.description }}</p>
           <button>+</button>
         </div>
-      </div>
+      </div> -->
         <!-- <div class="card" *ngFor="let card of cards">
           <img src="https://via.placeholder.com/300x200" alt="Product Image">
           <div class="content">

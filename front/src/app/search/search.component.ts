@@ -23,11 +23,15 @@ export class SearchComponent {
     {
       title: 'Card 3',
       description: 'This is the third card.'
+    },
+    {
+      title: 'Burrito',
+      description: 'I am Mexican...sort of'
     }
   ];
 
-  cardClicked() {
+  cardClicked(event: MouseEvent, card: Card) {
     // Do something when the card is clicked
-    console.log('Card clicked!');
+    console.log('Card clicked!', card.title);
   }
 }
