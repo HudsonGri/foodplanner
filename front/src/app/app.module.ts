@@ -28,7 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CardComponent } from './home/card/card.component';
-import { LoginComponent } from './login/login.component';
+import { SearchComponent } from './search/search.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 
 @NgModule({
@@ -40,8 +40,8 @@ import { PreferencesComponent } from './preferences/preferences.component';
     HomeComponent,
     WelcomeComponent,
     CardComponent,
-    LoginComponent,
-    PreferencesComponent,
+    SearchComponent,
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,

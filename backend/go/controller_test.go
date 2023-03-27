@@ -51,7 +51,7 @@ func TestFindUser(t *testing.T) {
 	assert.Equal(t, "Michael T", response["data"].Name)
 	assert.Equal(t, "michael.t@gmail.com", response["data"].Email)
 	assert.Equal(t, 2, response["data"].Skill_Level)
-	assert.Equal(t, "['mexican']", response["data"].Cuisine_choices)
+	assert.Equal(t, "mexican", response["data"].Cuisine_choices)
 }
 
 func TestDeleteUser(t *testing.T) {

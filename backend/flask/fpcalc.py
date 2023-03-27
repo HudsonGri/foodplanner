@@ -99,7 +99,7 @@ def return_recipes(usr_email):
     print(data)
     
     # Get recipes
-    recipes = get_recipes(data, 2)
+    recipes = json.dumps(get_recipes(data, 8))
 
 
     cur.execute(

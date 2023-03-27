@@ -5,8 +5,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Home</a>
-      <a mat-list-item href="#">Search</a>
+      <a mat-list-item routerLink="/home">Home</a>
+      <a mat-list-item routerLink="/search">Search</a>
       <a mat-list-item routerLink="/welcome">Welcome Page</a>
       <a mat-list-item routerLink = "/preferences">User Preferences</a>
       <app-auth-button class="app-auth-button"> </app-auth-button>

@@ -1,0 +1,25 @@
+<!-- <p>search works!</p> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Search Page</title>
+</head>
+
+<body>
+  <div class="container">
+    <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
+      <a href="{{ card.link }}">
+        <img src="{{ card.image }}" alt="Product Image">
+      </a>
+        <div class="content">
+          <h2>{{ card.title }}</h2>
+          <!-- <button>+</button> -->
+        </div>
+
+    </div>
+    
+  </div>
+</body>
+
+</html>
