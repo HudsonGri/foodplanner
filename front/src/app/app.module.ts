@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { CardComponent } from './home/card/card.component';
 import { SearchComponent } from './search/search.component';
+import { PreferencesComponent } from './preferences/preferences.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SearchComponent } from './search/search.component';
     WelcomeComponent,
     CardComponent,
     SearchComponent,
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,
