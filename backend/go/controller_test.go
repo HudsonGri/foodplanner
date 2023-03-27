@@ -134,16 +134,20 @@ func TestUpdateUser(t *testing.T) {
 
 	// Define the expected response
 	expectedResponse := gin.H{
-		"name":  "Test Update User",
-		"email": "updated@example.com",
+		"name":            "Test Update User",
+		"email":           "updated@example.com",
+		"skill_level":     2,
+		"cuisine_choices": "mexican",
 	}
 
-	user := models.User{Name: "Test Update User", Email: "test@example.com"}
+	user := models.User{Name: "Test Update User", Email: "test@example.com", Skill_Level: 1, Cuisine_choices: "italian"}
 	models.DB.Create(&user)
 
 	// Define the request payload
 	payload := gin.H{
-		"email": "updated@example.com",
+		"email":           "updated@example.com",
+		"skill_level":     2,
+		"cuisine_choices": "mexican",
 	}
 
 	// Create a new recorder to record the HTTP response
@@ -169,4 +173,6 @@ func TestUpdateUser(t *testing.T) {
 	var response map[string]models.User
 	json.Unmarshal(w.Body.Bytes(), &response)
 	assert.Equal(t, expectedResponse["email"], response["data"].Email)
+	assert.Equal(t, expectedResponse["skill_level"], response["data"].Skill_Level)
+	assert.Equal(t, expectedResponse["cuisine_choices"], response["data"].Cuisine_choices)
 }
