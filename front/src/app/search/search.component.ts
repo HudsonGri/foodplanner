@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 interface Card {
   title: string;
   image: string;
+  link: string
 }
 
 
@@ -33,11 +34,11 @@ export class SearchComponent {
         console.log(this.a_user)
         this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
           this.responseUserData = data.data
-          console.log(data)
           for (const [key, value] of Object.entries(data.data.recipes)) {
             this.cards.push({
               title: key,
-              image: value['image']
+              image: value['image'],
+              link: value['sourceUrl']
             })
           }
 
