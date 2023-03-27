@@ -15,7 +15,7 @@ def index():
         
         usr_email = args['usr_email']
 
-        recipes = fpcalc.get_recipes(usr_email)
+        recipes = fpcalc.return_recipes(usr_email)
         return recipes
     except:
         return {'status' : 'error'}
