@@ -6,4 +6,5 @@ type User struct {
 	Email           string `json:"email"`
 	Skill_Level     int    `json:"skill_level"`
 	Cuisine_choices string `json:"cuisine_choices"`
+	Recipes         string `json:"recipes"`
 }
