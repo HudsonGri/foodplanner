@@ -176,3 +176,49 @@ func TestUpdateUser(t *testing.T) {
 	assert.Equal(t, expectedResponse["skill_level"], response["data"].Skill_Level)
 	assert.Equal(t, expectedResponse["cuisine_choices"], response["data"].Cuisine_choices)
 }
+
+func TestUpdateUserName(t *testing.T) {
+	// Initialize the Gin router and the database connection
+	r := gin.Default()
+	models.ConnectDatabase()
+
+	// Define the expected response
+	expectedResponse := gin.H{
+		"name":            "Updated Name",
+		"email":           "test@example.com",
+		"skill_level":     2,
+		"cuisine_choices": "mexican",
+	}
+
+	user := models.User{Name: "Test Update User", Email: "test@example.com", Skill_Level: 2, Cuisine_choices: "mexican"}
+	models.DB.Create(&user)
+
+	// Define the request payload
+	payload := gin.H{
+		"name": "Updated Name",
+	}
+
+	// Create a new recorder to record the HTTP response
+	w := httptest.NewRecorder()
+
+	payloadJSON, err := json.Marshal(gin.H(payload))
+	if err != nil {
+		t.Fatalf("Error converting payload to JSON string")
+	}
+	reqBody := strings.NewReader(string(payloadJSON))
+
+	// Create a new request
+	req, _ := http.NewRequest("PATCH", "/users/"+strconv.FormatUint(uint64(user.ID), 10), reqBody)
+
+	// Call the handler function
+	r.PATCH("/users/:id", controllers.UpdateUser)
+	r.ServeHTTP(w, req)
+
+	// Check the response status code
+	assert.Equal(t, http.StatusOK, w.Code)
+
+	// Parse the response body into a map
+	var response map[string]models.User
+	json.Unmarshal(w.Body.Bytes(), &response)
+	assert.Equal(t, expectedResponse["name"], response["data"].Name)
+}
