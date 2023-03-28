@@ -61,16 +61,16 @@ GET /users
 
 GET /users/:id
 - Get a specific user by ID
-  - Response
-    - {
-    "data": {
-        "id": 1,
-        "name": "Michael T",
-        "email": "michael.t@gmail.com",
-        "skill_level": 2,
-        "cuisine_choices": "['mexican']"
-    }
-}
+  - Response (does not include the recipes due to their length):
+    ``` json
+    "data":{
+      "id":2,
+      "name":"Hudson G",
+      "email":"hudsongriffith@gmail.com",
+      "skill_level":2,
+      "cuisine_choices":"italian",
+      "recipes": "..." }
+
   - Parameters
 
 | Name | Type | Description |
