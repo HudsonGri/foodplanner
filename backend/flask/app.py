@@ -19,6 +19,23 @@ def index():
         return recipes
     except:
         return {'status' : 'error'}
+
+@app.route('/add', methods=['GET','POST'])
+def add():
+    try:
+
+        args = request.args
+
+        data = request.data
+        
+        usr_email = args['usr_email']
+
+        recipes = fpcalc.add_recipe(usr_email, data)
+        recipes = {}
+        return recipes
+    except Exception as e:
+        print(e)
+        return {'status' : 'error'}
     
 if __name__ == "__main__":
     from waitress import serve

@@ -35,10 +35,11 @@ export class WeeklyRecipesComponent {
   generateRecipes(){
     this.auth.user$.subscribe((user:any) => {
       this.a_user = user;
-      console.log(this.a_user)
-      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
-        this.responseUserData = data.data
-        for (const [key, value] of Object.entries(data.data.recipes)) {
+
+      // Send request to flask
+      this.http.get<any>('http://localhost:5001/recipe?usr_email=' + this.a_user.email).subscribe(data => {
+        console.log(data)
+        for (const [key, value] of Object.entries(data.recipe_result)) {
           if (value['image'] == undefined) {
             value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
             if (Math.floor(Math.random() * 100) == 2) {
@@ -53,7 +54,8 @@ export class WeeklyRecipesComponent {
             instructions: value['instructions']
           })
         }
-      })
+        })
+
     });
   }
 
@@ -64,13 +66,13 @@ export class WeeklyRecipesComponent {
 
   addRecipe(event: MouseEvent, card: Card) {
     this.auth.user$.subscribe(user => {
-      const email = this.a_user.email; 
+      const usr_email = this.a_user.email; 
       const data = card;
       const options = {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
-        params: { email } // sending the email as a query parameter
+        params: { usr_email } // sending the email as a query parameter
       };
-      this.http.post('http://localhost:8080/users/', data, options)
+      this.http.post('http://localhost:5001/add', data, options)
         .subscribe(response => {
           console.log(response);
         });

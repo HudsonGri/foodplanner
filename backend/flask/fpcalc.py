@@ -93,7 +93,7 @@ def return_recipes(usr_email):
 
     print(user_cuisine_choices)
     # Number of cuisines
-    m = 5
+    m = 3
     if len(user_cuisine_choices) >= m:
         selected_cuisines = random.sample(user_cuisine_choices, m)
     else:
@@ -161,5 +161,32 @@ def get_cusine_prefs(usr_email):
     return res, user_cuisine_choices
 
  
+def add_recipe(usr_email, data):
+    title = json.loads(data)['title']
+
+    con = sqlite3.connect("../database.sqlite3")
+    cur = con.cursor()
+
+    res = cur.execute(
+        """SELECT * FROM users where email == ? """, (usr_email,))
+
+    search_res = res.fetchall()
+
+    week_suggestions = json.loads(search_res[0][5])
+
+    res = cur.execute(
+        """SELECT * FROM users where email == ? """, (usr_email,))
+    search_res = res.fetchall()
+    current_week = json.loads(search_res[0][6])
+
+    current_week[title] = week_suggestions[title]
+
+    cur.execute(
+    """UPDATE users SET week_recipes = ? WHERE email = ? """, (str(json.dumps(current_week)), usr_email))
+    con.commit()
+
+    return {'status': 'success'}
+    
+    #print(title)
 
 #return_recipes("hudsongriffith@gmail.com")
