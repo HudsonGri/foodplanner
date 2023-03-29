@@ -1,4 +1,4 @@
-## Sprint 2
+## Sprint 3
 
 ### Work that we have completed in Sprint 3
 
