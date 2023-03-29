@@ -3,33 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 //import { DataService } from '../data.service';
-
-// @Component({
-  // selector: 'app-preferences',
-  // templateUrl: './preferences.component.html',
-  // styleUrls: ['./preferences.component.css']
   
 @Component({
   selector: 'app-preferences',
-  template: `
-    <form (submit)="savePreferences()">
-      <label>
-        <input type="checkbox" name="allergies" [(ngModel)]="allergies">
-        Allergies
-      </label>
-      <label>
-        <input type="checkbox" name="vegetarian" [(ngModel)]="vegetarian">
-        Vegetarian
-      </label>
-      <label>
-        <input type="checkbox" name="vegan" [(ngModel)]="vegan">
-        Vegan
-      </label>
-      <button type="submit">Save</button>
-    </form>
-  `
+  templateUrl: './preferences.component.html',
+  styleUrls: ['./preferences.component.css']
 })
-// })
+
 export class PreferencesComponent {
   allergies = false;
   vegetarian = false;
