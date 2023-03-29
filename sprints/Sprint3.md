@@ -7,6 +7,7 @@ Frontend
 
 Backend
 - ...
+- made progress on allowing the user to update their preferences, such as skill level and cuisine choices, after creating a profile
 
 ### List unit tests and Cypress test for frontend
 
