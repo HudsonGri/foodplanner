@@ -8,6 +8,7 @@ import { WeeklyRecipesComponent } from './weekly-recipes/weekly-recipes.componen
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'welcome', component: WelcomeComponent},
   { path: 'search', component: SearchComponent},
