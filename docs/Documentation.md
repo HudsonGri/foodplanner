@@ -67,7 +67,8 @@ GET /users/:email
       "email":"hudsongriffith@gmail.com",
       "skill_level":2,
       "cuisine_choices":"italian",
-      "recipes": "..." }
+      "recipes": "...",
+      "week_recipes": "..."}
 
   - Parameters
 
