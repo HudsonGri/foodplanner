@@ -53,6 +53,13 @@ func FindUser(c *gin.Context) {
 	}
 	user_recipe.Recipes = recipe_converted
 
+	var week_recipes_converted map[string]interface{}
+	if err := json.Unmarshal([]byte(user.Week_Recipes), &week_recipes_converted); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Conversion screwed up"})
+		return
+	}
+	user_recipe.Week_Recipes = week_recipes_converted
+
 	c.JSON(http.StatusOK, gin.H{"data": user_recipe})
 }
 

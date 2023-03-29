@@ -111,19 +111,16 @@ PATCH /users/:id
 
 ## Recipe Calculation (Flask)
 
-/recipe
+### /recipe
 
-This API endpoint takes a user email and returns a json object containing a recipe from a user's preffered cuisine.
+This API endpoint takes a user email and returns a json object containing recipes from a user's preffered cuisine.
 
-**Request**
-
-usr_email - The email of the user for whom the recipe is being fetched.
 
 **Response**
 
 Returns a JSON object containing:
 
-recipe_result - The name of a recipe from the user's preferred cuisine.
+recipe_result - The object containing the recipes generated for the week.
 
 status - A string indicating the status of the request. Possible values are "success" and "error".
 
@@ -134,8 +131,36 @@ GET /recipe?usr_email=john@example.com
 
 ``` json
 {
-    "recipe_result": "One-Skillet Mexican Quinoa",
+    "recipe_result": {...},
     "status": "success"
 }
 ```
+
+### /add
+
+This API endpoint takes a user email as well as a title of a recipe and adds it to the users' weekly recipes.
+
+**Response**
+
+Returns a JSON object containing:
+
+status - A string indicating the status of the request. Possible values are "success" and "error".
+
+**Example**
+``` sql
+POST /add?usr_email=john@example.com
+Content-Type: application/json
+
+{
+    "usr_email": "john@example.com",
+    "recipe_title": "Spaghetti Bolognese"
+}
+```
+
+``` json
+{
+    "status": "success"
+}
+```
+
 *Note: This result is preliminary and likely to change as more functionality is added to the flask backend.*
