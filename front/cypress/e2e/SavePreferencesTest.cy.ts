@@ -1,7 +1,7 @@
 describe('Saving Preferences', () => {
     beforeEach(() => {
-      cy.server();
-      cy.route('PATCH', '/users/preferences').as('patchUserPreferences');
+      // cy.server();
+      // cy.route('PATCH', '/users/preferences').as('patchUserPreferences');
       cy.visit('http://localhost:4200/preferences');
     });
   

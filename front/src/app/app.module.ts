@@ -32,6 +32,7 @@ import { SearchComponent } from './search/search.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { WeeklyRecipesComponent } from './weekly-recipes/weekly-recipes.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatProgressSpinnerModule, ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
      MatCardModule,
      MatMenuModule,
      MatExpansionModule,
+     MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent, AuthButtonComponent, UserProfileComponent]

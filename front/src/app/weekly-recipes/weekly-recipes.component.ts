@@ -23,6 +23,8 @@ interface Card {
 })
 
 export class WeeklyRecipesComponent {
+
+  pending: any;
   
   cards: Card[] = [];
 
