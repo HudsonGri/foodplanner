@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,6 +18,12 @@
       <label>
         <input type="checkbox" name="allergy" value="soy"> Soy
       </label>
+      <label>
+        <input type="checkbox" name="allergy" value="milk"> Milk
+      </label>
+      <label>
+        <input type="checkbox" name="allergy" value="eggs"> Eggs
+      </label>
 
       <h2>Diet Restrictions</h2>
       <label>
@@ -34,5 +40,81 @@
     </form>
   </div>
 </body>
-</html>
+</html> -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Food Preferences</title>
+    <link rel="stylesheet" href="preferences.component.css">
+</head>
+<body>
+    <h1>User Food Preferences</h1>
+    
+    <form (submit)="savePreferences">
+        <fieldset>
+            <legend>Diets</legend>
+            <input type="checkbox" id="vegan" name="vegan">
+            <label for="vegan">Vegan</label><br>
+            
+            <input type="checkbox" id="vegetarian" name="vegetarian">
+            <label for="vegetarian">Vegetarian</label><br>
+            
+            <input type="checkbox" id="pescatarian" name="pescatarian">
+            <label for="pescatarian">Pescatarian</label><br>
+            
+            <input type="checkbox" id="ketogenic" name="ketogenic">
+            <label for="ketogenic">Ketogenic</label><br>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Allergies</legend>
+            <input type="checkbox" id="gluten-free" name="gluten-free">
+            <label for="gluten-free">Gluten</label><br>
+            
+            <input type="checkbox" id="dairy-free" name="dairy-free">
+            <label for="dairy-free">Dairy</label><br>
+            
+            <input type="checkbox" id="nut-free" name="nut-free">
+            <label for="nut-free">Nut</label><br>
+            
+            <input type="checkbox" id="shellfish-free" name="shellfish-free">
+            <label for="shellfish-free">Shellfish</label><br>
+        </fieldset>
+        
+        <div class="health-level">
+          <fieldset>
+              <legend>Healthiness</legend>
+              <input type="range" id="healthiness" name="healthiness" min="1" max="3" step="0.01">
+              <label for="healthiness" class="healthy-diet">Healthy</label>
+              <label for="healthiness" class="balanced-diet">Balanced</label>
+              <label for="healthiness">Indulgent</label>
+          </fieldset>
+        </div>
+        
+        <div class="cooking-skill">
+          <fieldset>
+              <legend>Cooking Skill Level</legend>
+              <input type="range" id="skill-level" name="skill-level" min="1" max="3" step="0.01">
+              <label for="skill-level">Beginner</label>
+              <label for="skill-level" class="intermediate-level">Intermediate</label>
+              <label for="skill-level" class="advanced-level">Advanced</label>
+          </fieldset>
+        </div>
+
+        <div class="cost">
+          <fieldset>
+              <legend>Overall Meal Cost</legend>
+              <input type="range" id="skill-level" name="skill-level" min="1" max="2" step="0.01">
+              <label for="skill-level">Cheap</label>
+              <label for="advances-skill-level" class="advanced-level">Expensive</label>
+          </fieldset>
+        </div>
+        
+        <input type="submit" value="Save Preferences">
+    </form>
+    
+</body>
+</html>

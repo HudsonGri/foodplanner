@@ -1,4 +1,4 @@
-* {
+  /* * {
     box-sizing: border-box;
   }
   
@@ -35,5 +35,70 @@
   
   input[type="checkbox"] {
     margin-right: 10px;
-  }
-  
+  } */
+
+  h1 {
+    text-align: center;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+fieldset {
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+    margin-right: 5px;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+input[type="submit"] {
+    display: block;
+    margin: 20px auto;
+}
+
+.health-level {
+  position: relative;
+}
+
+.healthy-diet {
+  position: absolute;
+  left: 45%;
+}
+
+.balanced-diet {
+  position: absolute;
+  left: 84.5%;
+}
+
+.cooking-skill {
+  position: relative;
+}
+
+.intermediate-level {
+  position: absolute;
+  left: 41.5%;
+
+}
+
+.advanced-level {
+  position: absolute;
+  left: 83.5%;
+}
