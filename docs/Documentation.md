@@ -21,7 +21,7 @@ This is the documentation for the backend of foodplanner detailing the endpoints
 POST /users
 - Create a new user
   - Response
-    - {
+    ``` json
     "data": {
         "id": 3,
         "name": "Test User",
@@ -29,7 +29,6 @@ POST /users
         "skill_level": 0,
         "cuisine_choices": ""
     }
-}
   - Parameters
 
 | Name | Type | Description |
@@ -40,7 +39,7 @@ POST /users
 GET /users
 - Get a list of all users
   - Response
-    - {
+  ``` json
   "data": [
     {
       "id": 1,
@@ -57,10 +56,9 @@ GET /users
       "cuisine_choices": "['mexican']"
     }
   ]
-}
 
-GET /users/:id
-- Get a specific user by ID
+GET /users/:email
+- Get a specific user by email
   - Response (does not include the recipes due to their length):
     ``` json
     "data":{
@@ -75,14 +73,13 @@ GET /users/:id
 
 | Name | Type | Description |
 |---|---|---|
-| ID | "uint" | The ID of the user to retrieve |
+| Email | "string" | The email of the user to retrieve |
 
 DELETE /users/:id
 - Delete a specific user by ID
   - Response
-    - {
+    ``` json
     "data": true
-}
   - Parameters
 
 | Name | Type | Description |
@@ -92,22 +89,24 @@ DELETE /users/:id
 PATCH /users/:id
 - Update an existing user by ID
   - Response
-    - {
+    ``` json
     "data": {
         "id": 3,
         "name": "Test User",
         "email": "updated@example.com",
-        "skill_level": 0,
-        "cuisine_choices": ""
+        "skill_level": 2,
+        "cuisine_choices": "mexican",
+        "recipes": "..."
     }
-}
   - Parameters
 
 | Name | Type | Description |
 |---|---|---|
 | ID | "uint" | The ID of the user to update |
-| Name | "string" | The name of the new user |
-| Email | "string" | The email of the new user |
+| Name | "string" | The updated name of the user (optional) |
+| Email | "string" | The updated email of the user (optional) |
+| Skill_Level | "int" | The updated skill level of the user (optional) |
+| Cuisine_choices | "string" | The updated cuisine choices of the user (optional) |
 
 
 ## Recipe Calculation (Flask)
