@@ -83,6 +83,24 @@
             <input type="checkbox" id="shellfish-free" name="shellfish-free" [(ngModel)]="shellfish">
             <label for="shellfish-free">Shellfish</label><br>
         </fieldset>
+
+        <fieldset>
+          <legend>Cuisines</legend>
+          <input type="checkbox" id="american" name="american" [(ngModel)]="americanCuisine">
+          <label for="american">American</label><br>
+          
+          <input type="checkbox" id="mexican" name="mexican" [(ngModel)]="mexicanCuisine">
+          <label for="mexican">Mexican</label><br>
+          
+          <input type="checkbox" id="chinese" name="chinese" [(ngModel)]="chineseCuisine">
+          <label for="chinese">Chinese</label><br>
+          
+          <input type="checkbox" id="mediterranean" name="mediterranean" [(ngModel)]="mediterraneanCuisine">
+          <label for="mediterranean">Mediterranean</label><br>
+
+          <input type="checkbox" id="italian" name="italian" [(ngModel)]="italianCuisine">
+          <label for="italian">Italian</label><br>
+        </fieldset>
         
         <div class="health-level">
           <fieldset>
@@ -107,13 +125,13 @@
         <div class="cost">
           <fieldset>
               <legend>Overall Meal Cost</legend>
-              <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="2" step="0.01" [(ngModel)]="mealCost">
+              <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="2" step="0.1" [(ngModel)]="mealCost">
               <label for="recipe-cost">Cheap</label>
               <label for="expensive-recipe-cost" class="advanced-level">Expensive</label>
           </fieldset>
         </div>
         
-        <button type="submit">Save Preferences</button>
+        <input type="submit" value="Save Preferences">
     </form>
     
 </body>
