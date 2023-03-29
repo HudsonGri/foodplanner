@@ -39,6 +39,12 @@ export class WeeklyRecipesComponent {
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
         this.responseUserData = data.data
         for (const [key, value] of Object.entries(data.data.recipes)) {
+          if (value['image'] == undefined) {
+            value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
+            if (Math.floor(Math.random() * 100) == 2) {
+              value['image'] = value['image'] + ' :('
+            }
+          }
           this.cards.push({
             title: key,
             image: value['image'],
