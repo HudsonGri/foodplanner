@@ -21,7 +21,7 @@ This is the documentation for the backend of foodplanner detailing the endpoints
 POST /users
 - Create a new user
   - Response
-    - {
+    ``` json
     "data": {
         "id": 3,
         "name": "Test User",
@@ -29,7 +29,6 @@ POST /users
         "skill_level": 0,
         "cuisine_choices": ""
     }
-}
   - Parameters
 
 | Name | Type | Description |
@@ -40,7 +39,7 @@ POST /users
 GET /users
 - Get a list of all users
   - Response
-    - {
+  ``` json
   "data": [
     {
       "id": 1,
@@ -57,7 +56,6 @@ GET /users
       "cuisine_choices": "['mexican']"
     }
   ]
-}
 
 GET /users/:id
 - Get a specific user by ID
@@ -80,9 +78,8 @@ GET /users/:id
 DELETE /users/:id
 - Delete a specific user by ID
   - Response
-    - {
+    ``` json
     "data": true
-}
   - Parameters
 
 | Name | Type | Description |
@@ -92,7 +89,7 @@ DELETE /users/:id
 PATCH /users/:id
 - Update an existing user by ID
   - Response
-    - {
+    ``` json
     "data": {
         "id": 3,
         "name": "Test User",
@@ -100,7 +97,6 @@ PATCH /users/:id
         "skill_level": 0,
         "cuisine_choices": ""
     }
-}
   - Parameters
 
 | Name | Type | Description |
