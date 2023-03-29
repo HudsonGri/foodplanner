@@ -28,8 +28,8 @@ POST /users
         "email": "testuser@example.com",
         "skill_level": 0,
         "cuisine_choices": "",
-        "recipes": "...",
-        "week_recipes": "..."
+        "recipes": "",
+        "week_recipes": ""
     }
   - Parameters
 
