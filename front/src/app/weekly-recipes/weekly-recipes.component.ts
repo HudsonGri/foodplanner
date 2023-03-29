@@ -25,12 +25,47 @@ interface Card {
 export class WeeklyRecipesComponent {
   
   cards: Card[] = [];
+
+  week_cards: Card[] = [];
   
   userIP: any;
   a_user: any;
   responseUserData: any;
 
   constructor(public auth: AuthService, private http: HttpClient) { }
+
+  ngOnInit() {
+    // Simple POST request with a JSON body and response type <any>
+
+
+    this.auth.user$.subscribe((user: any) => {
+      this.a_user = user;
+      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+        for (const [key, value] of Object.entries(data.data.week_recipes)) {
+          if (value['image'] == undefined) {
+            value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
+            if (Math.floor(Math.random() * 100) == 2) {
+              value['image'] = value['image'] + ' :('
+            }
+          }
+          this.week_cards.push({
+            title: key,
+            image: value['image'],
+            link: value['sourceUrl'],
+            description: value['summary'],
+            instructions: value['instructions']
+          })
+        }
+
+
+
+
+      })
+    });
+
+
+  }
+  
 
   generateRecipes(){
     this.auth.user$.subscribe((user:any) => {
@@ -64,6 +99,35 @@ export class WeeklyRecipesComponent {
     console.log('Card clicked!', card.title);
   }
 
+  viewWeekRecipes() {
+    this.auth.user$.subscribe((user: any) => {
+      this.a_user = user;
+      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+        this.week_cards = [];
+        for (const [key, value] of Object.entries(data.data.week_recipes)) {
+          if (value['image'] == undefined) {
+            value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
+            if (Math.floor(Math.random() * 100) == 2) {
+              value['image'] = value['image'] + ' :('
+            }
+          }
+          this.week_cards.push({
+            title: key,
+            image: value['image'],
+            link: value['sourceUrl'],
+            description: value['summary'],
+            instructions: value['instructions']
+          })
+        }
+
+
+
+
+      })
+    });
+  }
+  
+
   addRecipe(event: MouseEvent, card: Card) {
     this.auth.user$.subscribe(user => {
       const usr_email = this.a_user.email; 
@@ -76,6 +140,8 @@ export class WeeklyRecipesComponent {
         .subscribe(response => {
           console.log(response);
         });
+
+        this.viewWeekRecipes();
     });
   }
 
