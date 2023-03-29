@@ -53,8 +53,6 @@ def get_recipes(data, n):
         f"https://api.spoonacular.com/recipes/random?apiKey={rand_key}", params=data)
 
     data = response.json()
-    print("DATA:")
-    print(data)
 
     recipes = {}
 
@@ -66,8 +64,14 @@ def get_recipes(data, n):
 
     overlap = find_most_overlap_lists(recipes, n)
 
+    print(len(recipes))
+    print(n)
+
     if len(overlap) == 0:
-        overlap = random.choices(recipes, k=n)
+        if n > len(recipes):
+            overlap = recipes
+        else:
+            overlap = random.choices(recipes, k=n)
 
     final_recipes = {}
 
@@ -81,35 +85,81 @@ def get_recipes(data, n):
 def return_recipes(usr_email):
     con = sqlite3.connect("../database.sqlite3")
     cur = con.cursor()
+    cusine_pref, user_cuisine_choices = get_cusine_prefs(usr_email)
+
+
+    recipe_res = {}
+
+
+    print(user_cuisine_choices)
+    # Number of cuisines
+    m = 5
+    if len(user_cuisine_choices) >= m:
+        selected_cuisines = random.sample(user_cuisine_choices, m)
+    else:
+        selected_cuisines = user_cuisine_choices.copy()
+        while len(selected_cuisines) < m:
+            cuisine = random.choice(user_cuisine_choices)
+            selected_cuisines.append(cuisine)
+        
+    print(selected_cuisines)
+    for index, random_cuisine in enumerate(selected_cuisines):
+        
+        data = {
+            'tags': f"main,{cusine_pref},{random_cuisine}",
+            'number': 12
+        }
+        print(f"Searching: {str(data)}")
+        # Get recipes
+        recipes = get_recipes(data, 8)
+        recipe_res.update(recipes)
+
+
+    #print(recipe_res)
+    cur.execute(
+        """UPDATE users SET recipes = ? WHERE email = ? """, (str(json.dumps(recipe_res)), usr_email))
+    con.commit()
+    print("Added recipes to database")
+
+
+
+
+    return {'recipe_result': recipe_res, 'status': 'success'}
+
+
+def get_cusine_prefs(usr_email):
+    con = sqlite3.connect("../database.sqlite3")
+    cur = con.cursor()
 
     res = cur.execute(
         """SELECT * FROM users where email == ? """, (usr_email,))
 
     search_res = res.fetchall()
 
-    cusine_pref = search_res[0][4]
-    print(cusine_pref)
+    cusine_pref_unparsed = search_res[0][4]
+
+    cusine_pref_list = cusine_pref_unparsed.split(',')
+
+    cuisines = ['african', 'american', 'british', 'cajun', 'caribbean', 'chinese', 'eastern european', 'european', 'french', 'german', 'greek', 'indian', 'irish', 'italian', 'japanese', 'jewish', 'korean', 'latin american', 'mediterranean', 'mexican', 'middle eastern', 'nordic', 'southern', 'spanish', 'thai', 'vietnamese']
+
+    user_cuisine_choices = []
+    for item in cusine_pref_list:
+        if item in cuisines:
+            user_cuisine_choices.append(item)
 
     
-    data = {
-        'tags': cusine_pref,
-        'number': 20
-    }
-
-    print(data)
-    
-    # Get recipes
-    recipes = json.dumps(get_recipes(data, 8))
 
 
-    cur.execute(
-        """UPDATE users SET recipes = ? WHERE email = ? """, (str(recipes), usr_email))
-    con.commit()
-    print("Added recipes to database")
-
-    print(f"Returning recipe results for {search_res[0][2]}")
+    # Preferences with no cuisines
+    just_pref_list = [i for i in cusine_pref_list if i not in user_cuisine_choices]
 
 
-    return {'recipe_result': recipes, 'status': 'success'}
 
-print(return_recipes("hudsongriffith@gmail.com"))
+
+    res = ','.join(just_pref_list)
+
+    return res, user_cuisine_choices
+
+ 
+
+#return_recipes("hudsongriffith@gmail.com")

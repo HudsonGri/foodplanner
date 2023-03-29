@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!-- <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -53,41 +53,41 @@
 <body>
     <h1>User Food Preferences</h1>
     
-    <form (submit)="savePreferences">
+    <form (ngSubmit)="savePreferences()">
         <fieldset>
             <legend>Diets</legend>
-            <input type="checkbox" id="vegan" name="vegan">
+            <input type="checkbox" id="vegan" name="vegan" [(ngModel)]="vegan">
             <label for="vegan">Vegan</label><br>
             
-            <input type="checkbox" id="vegetarian" name="vegetarian">
+            <input type="checkbox" id="vegetarian" name="vegetarian" [(ngModel)]="vegetarian">
             <label for="vegetarian">Vegetarian</label><br>
             
-            <input type="checkbox" id="pescatarian" name="pescatarian">
+            <input type="checkbox" id="pescatarian" name="pescatarian" [(ngModel)]="pescatarian">
             <label for="pescatarian">Pescatarian</label><br>
             
-            <input type="checkbox" id="ketogenic" name="ketogenic">
+            <input type="checkbox" id="ketogenic" name="ketogenic" [(ngModel)]="ketogenic">
             <label for="ketogenic">Ketogenic</label><br>
         </fieldset>
         
         <fieldset>
             <legend>Allergies</legend>
-            <input type="checkbox" id="gluten-free" name="gluten-free">
+            <input type="checkbox" id="gluten-free" name="gluten-free" [(ngModel)]="gluten">
             <label for="gluten-free">Gluten</label><br>
             
-            <input type="checkbox" id="dairy-free" name="dairy-free">
+            <input type="checkbox" id="dairy-free" name="dairy-free" [(ngModel)]="dairy">
             <label for="dairy-free">Dairy</label><br>
             
-            <input type="checkbox" id="nut-free" name="nut-free">
+            <input type="checkbox" id="nut-free" name="nut-free" [(ngModel)]="nut">
             <label for="nut-free">Nut</label><br>
             
-            <input type="checkbox" id="shellfish-free" name="shellfish-free">
+            <input type="checkbox" id="shellfish-free" name="shellfish-free" [(ngModel)]="shellfish">
             <label for="shellfish-free">Shellfish</label><br>
         </fieldset>
         
         <div class="health-level">
           <fieldset>
               <legend>Healthiness</legend>
-              <input type="range" id="healthiness" name="healthiness" min="1" max="3" step="0.01">
+              <input type="range" id="healthiness" name="healthiness" min="1" max="3" step="0.1" [(ngModel)]="healthiness">
               <label for="healthiness" class="healthy-diet">Healthy</label>
               <label for="healthiness" class="balanced-diet">Balanced</label>
               <label for="healthiness">Indulgent</label>
@@ -97,7 +97,7 @@
         <div class="cooking-skill">
           <fieldset>
               <legend>Cooking Skill Level</legend>
-              <input type="range" id="skill-level" name="skill-level" min="1" max="3" step="0.01">
+              <input type="range" id="skill-level" name="skill-level" min="1" max="3" step="0.1" [(ngModel)]="cookingSkillLevel">
               <label for="skill-level">Beginner</label>
               <label for="skill-level" class="intermediate-level">Intermediate</label>
               <label for="skill-level" class="advanced-level">Advanced</label>
@@ -107,13 +107,13 @@
         <div class="cost">
           <fieldset>
               <legend>Overall Meal Cost</legend>
-              <input type="range" id="skill-level" name="skill-level" min="1" max="2" step="0.01">
-              <label for="skill-level">Cheap</label>
-              <label for="advances-skill-level" class="advanced-level">Expensive</label>
+              <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="2" step="0.01" [(ngModel)]="mealCost">
+              <label for="recipe-cost">Cheap</label>
+              <label for="expensive-recipe-cost" class="advanced-level">Expensive</label>
           </fieldset>
         </div>
         
-        <input type="submit" value="Save Preferences">
+        <button type="submit">Save Preferences</button>
     </form>
     
 </body>

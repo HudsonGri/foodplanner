@@ -13,6 +13,7 @@ export class CardComponent {
   userIP: any;
   a_user: any;
   responseUserData: any;
+  recipeList: any;
 
   constructor(public auth: AuthService, private http: HttpClient) { }
 
@@ -26,10 +27,18 @@ export class CardComponent {
         this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
           this.responseUserData = data.data
           console.log(data)
-
+          console.log(this.responseUserData)
+          this.storeCuisine()
         })
       });
 
-  
+    
   }
+
+  storeCuisine = (): any => {
+    for (let key in this.responseUserData.recipes) {
+      this.recipeList[key] = this.responseUserData.recipes[key];
+    }
+  };
+
 }

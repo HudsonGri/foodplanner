@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Search Page</title>
+</head>
+
+<body fxLayout = "column">
+    <div class="first">
+        <mat-card class="cardmajor">
+            <div class="first">
+                <h1>Customize Your Cooking Experience</h1>
+            </div>
+            <div class ="first">
+                <button color="warn" mat-raised-button mat-button (click)="generateRecipes()">Get Your Recipes For This Week</button>
+            </div>
+        </mat-card>
+    </div>
+    <div class="first">
+        <h1>Your Recipes </h1> <br>
+    </div>
+    <div class="first">
+        <h1>This Week's Suggestions</h1> <br>
+    </div>
+    <div class="first" fxFlexAlgin = "stretch">
+    <div class="container">
+    <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
+        <img src="{{ card.image }}" alt="Product Image">
+        <div class="content">
+          <h2>{{ card.title }}</h2>
+          <mat-card-content>
+            <mat-expansion-panel class="mat-elevation-z0"> 
+                t
+            </mat-expansion-panel>
+         </mat-card-content>
+          <div class="bottomcontainer">
+            <button color="accent" mat-raised-button> Instructions </button>
+            <button color="accent" mat-raised-button> Description </button>
+          </div>
+          <div class="container">
+            <button mat-mini-fab matTooltip="warn" color="warn" aria-label="" (click)="addRecipe($event, card)"> 
+                <mat-icon>add</mat-icon> 
+            </button>
+          </div>
+          <!-- <button>+</button> -->
+        </div>
+
+    </div>
+    
+  </div>
+</div>
+</body>
+
+</html>

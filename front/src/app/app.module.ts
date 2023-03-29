@@ -30,6 +30,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { CardComponent } from './home/card/card.component';
 import { SearchComponent } from './search/search.component';
 import { PreferencesComponent } from './preferences/preferences.component';
+import { WeeklyRecipesComponent } from './weekly-recipes/weekly-recipes.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { PreferencesComponent } from './preferences/preferences.component';
     WelcomeComponent,
     CardComponent,
     SearchComponent,
-    PreferencesComponent
+    PreferencesComponent,
+    WeeklyRecipesComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { PreferencesComponent } from './preferences/preferences.component';
      MatGridListModule,
      MatCardModule,
      MatMenuModule,
+     MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent, AuthButtonComponent, UserProfileComponent]
