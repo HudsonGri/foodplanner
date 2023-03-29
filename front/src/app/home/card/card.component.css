@@ -12,7 +12,16 @@
     right: 15px;
     bottom: 15px;
  }
- 
+
+ .cardmajor {
+   width: calc(100%);
+   background-color: #fff;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+   border-radius: 5px;
+   margin-bottom: 20px;
+   overflow: hidden;
+   justify-self: center;
+ }
  
  .dashboard-card-content {
     text-align: center;
@@ -23,6 +32,35 @@
     max-height: 100%;
     justify-content: center;
     align-items: stretch;
+ }
+
+ .card-image {
+   background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/08/Download-Images-Food-HD.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 500px; /* set height as per your requirements */
+ }
+
+ .button{
+   padding: 5px;
+ }
+
+ .card {
+   width: calc(33.33% - 20px);
+   background-color: #fff;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+   border-radius: 5px;
+   margin-bottom: 20px;
+   overflow: hidden;
+ }
+
+ .container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 20px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
  }
  
  mat-card {

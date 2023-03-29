@@ -1,9 +1,14 @@
 <!--card.component.html-->
-<mat-card class="dashboard-card" style="text-align: center;" color="accent">
-    <mat-card-header style="text-align: center;">
-        <div style="text-align: center;">
-            <mat-card-title>
-                Welcome
+<mat-card class="dashboard-card" color="accent">
+    <div class="card-image">
+    <mat-card-header class="dashboard-card-content">
+            <mat-card-title color="primary">
+                <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+                    <h2 class="dashboard-card-content"> Continue Your Culinary Journey <br></h2>
+                </ng-container>
+                <ng-template #loggedOut>
+                    Start With Foodplanner Today!
+                </ng-template>
                 <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
                     <mat-icon>more_vert</mat-icon>
                 </button>
@@ -12,15 +17,32 @@
                     <button mat-menu-item>Remove</button>
                 </mat-menu>
             </mat-card-title>
-        </div>
     </mat-card-header>
-    <mat-card-content class="dashboard-card-content">
-        Get started using foodplanner today! <br /> <br />
+    <mat-card-content class="dashboard-card-content" style="color: rgb(67, 105, 24);">
+        <h4> 3 Simple Steps: <br> <br>
+        Select your food preferences >>  
+        Generate a list of weekly recipes >> <br>
+        Select your favorite ones and download your grocery list! <br> </h4>
+        <div class="container">
+            <mat-card class="card">
+                <button mat-raised-button color = "accent" class="button" routerLink="/preferences">Select Preferences</button>
+            </mat-card>
+            >>
+            <mat-card class="card">
+                <button mat-raised-button color = "accent" class="button" routerLink="/weekly-recipes">Generate and Select Recipes</button>
+            </mat-card>
+            >>
+            <mat-card class="card">
+                <button mat-raised-button color = "accent" class="button" >Download Grocery List</button>
+            </mat-card>
+        </div>
+<!--    Get started using foodplanner today! <br /> <br />
         <div *ngIf="auth.user$ | async as user">
             User Cusine Choices: {{responseUserData.cuisine_choices}}
         </div>
         <br /> <br />
         <app-auth-button></app-auth-button>
-        <ng-content></ng-content>
+        <ng-content></ng-content> -->
     </mat-card-content>
+    </div>
 </mat-card>
