@@ -27,7 +27,6 @@ Backend
   - In the mean time, the post request was confirmed to work through checking the network tab of Developer Tools and its respective return code and return value.
 
 ### List unit tests for backend
-For the backend we created tests for Go
 
 #### Go Tests
 - TestFindUser (modified from Sprint 2)
