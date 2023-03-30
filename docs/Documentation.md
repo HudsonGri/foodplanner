@@ -27,7 +27,9 @@ POST /users
         "name": "Test User",
         "email": "testuser@example.com",
         "skill_level": 0,
-        "cuisine_choices": ""
+        "cuisine_choices": "",
+        "recipes": "",
+        "week_recipes": ""
     }
   - Parameters
 
@@ -46,14 +48,18 @@ GET /users
       "name": "Michael T",
       "email": "michael.t@gmail.com",
       "skill_level": "2",
-      "cuisine_choices": "['mexican']"
+      "cuisine_choices": "['mexican']",
+      "recipes": "...",
+      "week_recipes": "..."
     },
     {
       "id": 2,
       "name": "Hudson G",
       "email": "hudsongriffith@gmail.com",
       "skill_level": 2,
-      "cuisine_choices": "['mexican']"
+      "cuisine_choices": "['mexican']",
+      "recipes": "...",
+      "week_recipes": "..."
     }
   ]
 
@@ -97,7 +103,8 @@ PATCH /users/:id
         "email": "updated@example.com",
         "skill_level": 2,
         "cuisine_choices": "mexican",
-        "recipes": "..."
+        "recipes": "...",
+        "week_recipes": "..."
     }
   - Parameters
 
