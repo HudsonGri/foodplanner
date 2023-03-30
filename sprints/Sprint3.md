@@ -3,7 +3,6 @@
 ### Work that we have completed in Sprint 3
 
 Frontend
-- ...
 - Created the weekly recipes tab, which enables the user to generate and view their weekly suggested recipes, as well as to view and add their saved recipes. 
   - Created a button to generate weekly suggested recipes, which displays suggested recipes to the screen when pressed. The generate recipes button makes a get request from the backend, and the user's relevant retrieved info is stored in a data structure and populated to the screen via an ngFor loop, which puts the recommended dish's name and image within a card. 
   - Buttons on each suggested recipe card were added for description, instructions, and adding the recipe to the user's selected recipes for the week.
@@ -12,8 +11,8 @@ Frontend
 - Focused on functionality for Search and User Preferences Page so that users may be able to discover new recipes based on their own personal preferences
   - The search page works by having a get request to the backend when the page loads initially for an array of recipes that is then parsed through and displayed to the user in the form of cards/tiles.
   - The user preferences page works to allow the user to add attributes to their information in the users table within the sqlite database.
-    - The preferences include diets such as vegetarian and pescatarian, common allergies, different cuisine styles, overall healthiness, overall cooking skill, and overall cost per recipe.
-    - The user will click a button that will save their preferences with a patch request to the backend. In the future there will also be a get request when the page loads to display their saved preferences.
+   - The preferences include diets such as vegetarian and pescatarian, common allergies, different cuisine styles, overall healthiness, overall cooking skill, and overall cost per recipe.
+   - The user will click a button that will save their preferences with a patch request to the backend. In the future there will also be a get request when the page loads to display their saved preferences.
 
 Backend
 - This sprint, the backend team worked on several tasks. First, we updated Go and our database to accommodate two new columns for storing JSON data related to a user's recipe choices and our calculated recipes. We also expanded our testing efforts in Go to include changing specific user preferences as well as worked to allow a user to update their preferences, such as skill level and cuisine choices, after creating a profile. In addition, we focused on improving the Flask API, which calculates recipes based on a user's preferences and ingredient overlaps. We also helped integrate these additions into the frontend for users to easily view.
