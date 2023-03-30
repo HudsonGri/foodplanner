@@ -1,4 +1,4 @@
-describe('Add recipe', () => {
+describe('Add Recipe Test', () => {
 
     it('should send recipe to backend', () => {
       cy.visit('http://localhost:4200/home');

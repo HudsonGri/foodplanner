@@ -1,4 +1,4 @@
-describe('Login Security Test', () => {
+describe('Home Screen Redirection Test', () => {
     it('passes', () => {
       cy.visit('http://localhost:4200/home')
       cy.contains("Select Preferences").click();
