@@ -52,7 +52,6 @@
 </head>
 <body>
     <h1>User Food Preferences</h1>
-    
     <form (ngSubmit)="savePreferences()">
         <fieldset>
             <legend>Diets</legend>
@@ -125,13 +124,16 @@
         <div class="cost">
           <fieldset>
               <legend>Overall Meal Cost</legend>
-              <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="2" step="0.1" [(ngModel)]="mealCost">
+              <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="3" step="0.1" [(ngModel)]="mealCost">
               <label for="recipe-cost">Cheap</label>
               <label for="expensive-recipe-cost" class="advanced-level">Expensive</label>
           </fieldset>
         </div>
         
-        <input type="submit" value="Save Preferences" id="save-preferences-button" name="save-preferences-button">
+        <div class="bottom-button">
+          <button mat-raised-button color="primary" (click)="savePreferences()"> Save Preferences </button>
+        </div>
+        <!-- <input type="submit" value="Save Preferences" id="save-preferences-button" name="save-preferences-button"> -->
     </form>
     
 </body>

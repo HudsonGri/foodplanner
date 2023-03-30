@@ -111,3 +111,8 @@ input[type="submit"] {
   position: absolute;
   left: 85%;
 }
+
+.bottom-button {
+  display: flex;
+  justify-content: center;
+}

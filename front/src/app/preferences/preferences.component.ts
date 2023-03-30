@@ -15,28 +15,28 @@ export class PreferencesComponent {
   responseUserData: any;
 
   //diets
-  vegan: boolean;
-  vegetarian: boolean;
-  pescatarian: boolean;
-  ketogenic: boolean;
+  vegan: boolean = false;
+  vegetarian: boolean = false;
+  pescatarian: boolean = false;
+  ketogenic: boolean = false;
 
   //allergies more can be added later
-  gluten: boolean;
-  dairy: boolean;
-  nut: boolean;
-  shellfish: boolean;
+  gluten: boolean = false;
+  dairy: boolean = false;
+  nut: boolean = false;
+  shellfish: boolean = false;
 
   //cuisines more added later
-  americanCuisine: boolean;
-  mexicanCuisine: boolean;
-  chineseCuisine: boolean;
-  mediterraneanCuisine: boolean;
-  italianCuisine: boolean;
+  americanCuisine: boolean = false;
+  mexicanCuisine: boolean = false;
+  chineseCuisine: boolean = false;
+  mediterraneanCuisine: boolean = false;
+  italianCuisine: boolean = false;
 
   //overall meal filters
-  healthiness: any;
-  cookingSkillLevel: any;
-  mealCost: any;
+  healthiness: any = 2;
+  cookingSkillLevel: any = 2;
+  mealCost: any = 2;
 
   constructor(public auth: AuthService, private http: HttpClient) {}
 
@@ -117,6 +117,7 @@ export class PreferencesComponent {
     this.auth.user$.subscribe((user:any) => {
        this.a_user = user;
       console.log(this.a_user)
+      console.log(preferences)
       this.http.patch<any>('http://localhost:8080/users/' + this.userID, preferences).subscribe(data => {  
         console.log("Preferences Saved Successfully");
       })
