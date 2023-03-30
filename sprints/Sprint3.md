@@ -14,15 +14,16 @@ Backend
 - ...
 - made progress on allowing the user to update their preferences, such as skill level and cuisine choices, after creating a profile
 
-### List unit tests and Cypress test for frontend
+### List unit tests for frontend
 
-- Home Screen Redirection Test (Cypress)
+#### Cypress Tests
+- Home Screen Redirection Test 
   - Tests the newly added user navigation buttons, confirming their ability to correctly route between the home pages and other tabs. (Ammended since the recording of the video, but before the deadline, passes on all actions).
-- Login Security Test (modified from Sprint 2) (Cypress)
+- Login Security Test (modified from Sprint 2) 
   - Test confirms login security by ensuring that the user must authenticate through auth0 before using the functionality of the website, and cannot merely press the log in button then navigate home.
-- Navigation Test (modified from Sprint 2) (Cypress)
+- Navigation Test (modified from Sprint 2) 
   - Test the functionality of the side navigation bar, and ensures that users are able to navigate to any page regardless of their current location on the website. 
-- Add Recipe Test (incomplete) (Cypress)
+- Add Recipe Test (incomplete) 
   - Tests validity of the post request made when the user presses the add button on a recommended recipe within the 'Your Weekly Recipes' page. Currently running into issues regarding the cypress test authenticating through auth0 on its. 
   - In the mean time, the post request was confirmed to work through checking the network tab of Developer Tools and its respective return code and return value.
 
