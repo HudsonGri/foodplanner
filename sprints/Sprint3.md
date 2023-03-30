@@ -11,8 +11,7 @@ Frontend
 - Made progress on the home screen, improving appearance and user navigation between pages.
 
 Backend
-- ...
-- made progress on allowing the user to update their preferences, such as skill level and cuisine choices, after creating a profile
+- This sprint, the backend team worked on several tasks. First, we updated Go and our database to accommodate two new columns for storing JSON data related to a user's recipe choices and our calculated recipes. We also expanded our testing efforts in Go to include changing specific user preferences as well as worked to allow a user to update their preferences, such as skill level and cuisine choices, after creating a profile. In addition, we focused on improving the Flask API, which calculates recipes based on a user's preferences and ingredient overlaps. We also helped integrate these additions into the frontend for users to easily view.
 
 ### List unit tests for frontend
 
@@ -28,7 +27,7 @@ Backend
   - In the mean time, the post request was confirmed to work through checking the network tab of Developer Tools and its respective return code and return value.
 
 ### List unit tests for backend
-For the backend we created tests for both Go and Flask.
+For the backend we created tests for Go
 
 #### Go Tests
 - TestFindUser (modified from Sprint 2)
@@ -49,4 +48,4 @@ For the backend we created tests for both Go and Flask.
 This documentation can be found in the [docs](https://github.com/HudsonGri/foodplanner/tree/main/docs) folder of our GitHub.
 
 ### Video URL
-[Sprint 3]()
+[Sprint 3](https://youtu.be/fJRmfwFcs_Q)
