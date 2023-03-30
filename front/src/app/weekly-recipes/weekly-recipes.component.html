@@ -12,7 +12,7 @@
         <h1>Customize Your Cooking Experience</h1>
       </div>
       <div class="first">
-        <button color="warn" mat-raised-button mat-button (click)="generateRecipes()">Get Your Recipes For This
+        <button color="warn" mat-stroked-button class="custom-button" (click)="generateRecipes()">Get Your Recipes For This
           Week</button>
       </div>
       <br>  <br>
@@ -54,7 +54,7 @@
       <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
         <div class="card-image-wrapper">
             <img src="{{ card.image }}" alt="Product Image">
-            <button mat-mini-fab class="addbutton" matTooltip="warn" color="warn" aria-label="" (click)="addRecipe($event, card)">
+            <button mat-mini-fab class="addbutton" matTooltip="primary" color="warn" aria-label="" (click)="addRecipe($event, card)">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
@@ -66,8 +66,8 @@
             </mat-expansion-panel>
           </mat-card-content>
           <div class="endcontainer">
-                <button color="accent" mat-raised-button> Instructions </button>
-                <button color="accent" mat-raised-button> Description </button>
+                <button color="warn" mat-stroked-button class="custom-button"> Instructions </button>
+                <button color="warn" mat-stroked-button class="custom-button"> Description </button>
           </div>
           <!-- <button>+</button> -->
         </div>

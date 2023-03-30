@@ -19,22 +19,16 @@
             </mat-card-title>
     </mat-card-header>
     <mat-card-content class="dashboard-card-content" style="color: rgb(67, 105, 24);">
-        <h4> 3 Simple Steps: <br> <br>
+        <h3 class="newfont"> In Three Simple Steps! <br> <br>
         Select your food preferences >>  
         Generate a list of weekly recipes >> <br>
-        Select your favorite ones and download your grocery list! <br> </h4>
+        Select your favorite ones and download your grocery list! <br> </h3>
         <div class="container">
-            <mat-card class="card">
-                <button mat-raised-button color = "accent" class="button" routerLink="/preferences">Select Preferences</button>
-            </mat-card>
+                <button mat-stroked-button color = "warn" class="custom-button" routerLink="/preferences">Select Preferences</button>
             >>
-            <mat-card class="card">
-                <button mat-raised-button color = "accent" class="button" routerLink="/weekly-recipes">Generate and Select Recipes</button>
-            </mat-card>
+                <button mat-stroked-button color = "warn" class="custom-button" routerLink="/weekly-recipes">Generate and Select Recipes</button>
             >>
-            <mat-card class="card">
-                <button mat-raised-button color = "accent" class="button" >Download Grocery List</button>
-            </mat-card>
+                <button mat-stroked-button color = "warn" class="custom-button" >Download Grocery List</button>
         </div>
 <!--    Get started using foodplanner today! <br /> <br />
         <div *ngIf="auth.user$ | async as user">

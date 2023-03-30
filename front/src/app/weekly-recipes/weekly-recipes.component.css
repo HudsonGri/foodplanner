@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Barlow', sans-serif;
   }
 .card-deck-container {
     width: 100%;
@@ -107,6 +107,10 @@
     margin: 0;
     font-size: 16px;
     line-height: 1.5;
+  }
+
+  .custom-button {
+    background-color: #ffffff36; /* replace with the background color you want */
   }
 
   .endcontainer {
