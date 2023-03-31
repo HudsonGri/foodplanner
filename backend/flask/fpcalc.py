@@ -185,6 +185,8 @@ def add_recipe(usr_email, data):
     """UPDATE users SET week_recipes = ? WHERE email = ? """, (str(json.dumps(current_week)), usr_email))
     con.commit()
 
+    print("added to choices")
+
     return {'status': 'success'}
     
     #print(title)

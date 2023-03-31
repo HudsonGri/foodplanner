@@ -41,6 +41,7 @@ export class WeeklyRecipesComponent {
 
 
     this.auth.user$.subscribe((user: any) => {
+      console.log("loading this week")
       this.a_user = user;
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
         for (const [key, value] of Object.entries(data.data.week_recipes)) {
@@ -70,12 +71,15 @@ export class WeeklyRecipesComponent {
   
 
   generateRecipes(){
+    this.pending = true;
+    console.log("pending");
     this.auth.user$.subscribe((user:any) => {
       this.a_user = user;
 
       // Send request to flask
       this.http.get<any>('http://localhost:5001/recipe?usr_email=' + this.a_user.email).subscribe(data => {
         console.log(data)
+        this.pending = false;
         for (const [key, value] of Object.entries(data.recipe_result)) {
           if (value['image'] == undefined) {
             value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
@@ -102,6 +106,7 @@ export class WeeklyRecipesComponent {
   }
 
   viewWeekRecipes() {
+    console.log("loading this week")
     this.auth.user$.subscribe((user: any) => {
       this.a_user = user;
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
