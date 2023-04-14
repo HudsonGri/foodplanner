@@ -87,9 +87,73 @@ export class PreferencesComponent {
     this.auth.user$.subscribe((user: any) => {
       this.a_user = user;
       console.log(this.a_user)
-      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe( data => {
         this.responseUserData = data.data;
         this.userID = data.data.id;
+        // this.african = data.data.cuisine_choices.cuisines.african;
+        // this.american = data.data.cuisine_choices.cuisines.american;
+
+        // console.log("African Boolean Value: " + this.african);
+        // console.log("American Boolean Value: " + this.american)
+        
+        const diets = data.data.cuisine_choices.diets;
+        this.gluten_free = diets.gluten_free;
+        this.ketogenic = diets.ketogenic;
+        this.vegetarian = diets.vegetarian;
+        this.lacto_vegetarian = diets.lacto_vegetarian;
+        this.ovo_vegetarian = diets.ovo_vegetarian;
+        this.vegan = diets.vegan;
+        this.pescetarian = diets.pescetarian;
+        this.paleo = diets.paleo;
+        this.primal = diets.primal;
+        this.low_fodmap = diets.low_fodmap;
+        this.whole30 = diets.whole30;
+
+        const allergies = data.data.cuisine_choices.allergies;
+        this.dairy = allergies.dairy;
+        this.egg = allergies.egg;
+        this.gluten = allergies.gluten;
+        this.grain = allergies.grain;
+        this.peanut = allergies.peanut;
+        this.seafood = allergies.seafood;
+        this.sesame = allergies.sesame;
+        this.shellfish = allergies.shellfish;
+        this.soy = allergies.soy;
+        this.sulfite = allergies.sulfite;
+        this.tree_nut = allergies.tree_nut;
+        this.wheat = allergies.wheat;
+
+        const cuisines = data.data.cuisine_choices.cuisines;
+        this.african = cuisines.african;
+        this.american = cuisines.american;
+        this.british = cuisines.british;
+        this.cajun = cuisines.cajun;
+        this.caribbean = cuisines.caribbean;
+        this.chinese = cuisines.chinese;
+        this.eastern_european = cuisines.eastern_european;
+        this.european = cuisines.european;
+        this.french = cuisines.french;
+        this.german = cuisines.german;
+        this.greek = cuisines.greek;
+        this.indian = cuisines.indian;
+        this.irish = cuisines.irish;
+        this.italian = cuisines.italian;
+        this.japanese = cuisines.japanese;
+        this.jewish = cuisines.jewish;
+        this.korean = cuisines.korean;
+        this.latin_american = cuisines.latin_american;
+        this.mediterranean = cuisines.mediterranean;
+        this.mexican = cuisines.mexican;
+        this.middle_eastern = cuisines.middle_eastern;
+        this.nordic = cuisines.nordic;
+        this.southern = cuisines.southern;
+        this.spanish = cuisines.spanish;
+        this.thai = cuisines.thai;
+        this.vietnamese = cuisines.vietnamese;
+
+        this.healthiness = data.data.cuisine_choices.healthiness;
+        this.cookingSkillLevel = data.data.cuisine_choices.cookingSkillLevel;
+        this.mealCost = data.data.cuisine_choices.mealCost;
       })
     });
 
