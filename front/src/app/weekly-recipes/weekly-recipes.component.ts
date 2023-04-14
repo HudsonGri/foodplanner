@@ -108,9 +108,10 @@ export class WeeklyRecipesComponent {
   viewWeekRecipes() {
     console.log("loading this week")
     this.auth.user$.subscribe((user: any) => {
+      console.log("loading this week")
       this.a_user = user;
+      this.week_cards = []
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
-        this.week_cards = [];
         for (const [key, value] of Object.entries(data.data.week_recipes)) {
           if (value['image'] == undefined) {
             value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
@@ -118,6 +119,7 @@ export class WeeklyRecipesComponent {
               value['image'] = value['image'] + ' :('
             }
           }
+          
           this.week_cards.push({
             title: key,
             image: value['image'],
@@ -132,6 +134,7 @@ export class WeeklyRecipesComponent {
 
       })
     });
+
   }
   
 
@@ -146,9 +149,10 @@ export class WeeklyRecipesComponent {
       this.http.post('http://localhost:5001/add', data, options)
         .subscribe(response => {
           console.log(response);
+          this.viewWeekRecipes();
         });
 
-        this.viewWeekRecipes();
+        
     });
   }
 
