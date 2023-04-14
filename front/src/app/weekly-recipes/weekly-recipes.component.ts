@@ -84,10 +84,11 @@ export class WeeklyRecipesComponent {
 
   viewWeekRecipes() {
     this.pending_your_recipes = true;
+    
     this.auth.user$.subscribe((user: any) => {
       console.log("loading this week")
       this.a_user = user;
-      
+      this.week_cards = [];
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
         this.pending_your_recipes = false;
         

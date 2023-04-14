@@ -96,6 +96,8 @@ def return_recipes(usr_email):
     m = 3
     if len(cuisines) >= m:
         selected_cuisines = random.sample(cuisines, m)
+    elif len(cuisines) == 0:
+        selected_cuisines = random.sample(['african', 'american', 'british', 'cajun', 'caribbean', 'chinese', 'eastern european', 'european', 'french', 'german', 'greek', 'indian', 'irish', 'italian', 'japanese', 'jewish', 'korean', 'latin american', 'mediterranean', 'mexican', 'middle eastern', 'nordic', 'southern', 'spanish', 'thai', 'vietnamese'],3)
     else:
         selected_cuisines = cuisines.copy()
         while len(selected_cuisines) < m:
@@ -137,6 +139,8 @@ def get_cusine_prefs(usr_email):
     search_res = res.fetchall()
 
     pref_obj = json.loads(search_res[0][4])
+
+    
 
     cuisines = []
 
