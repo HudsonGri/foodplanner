@@ -20,6 +20,7 @@
   </div>
   <div class="first">
     <h1>Your Recipes </h1> <br>
+    <mat-spinner *ngIf="pending_your_recipes" ></mat-spinner>
     <div class="first" fxFlexAlign="stretch">
       <div class="container">
         <div *ngFor="let card of week_cards" class="card" (click)="cardClicked($event, card)">

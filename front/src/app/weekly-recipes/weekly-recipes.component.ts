@@ -24,7 +24,9 @@ interface Card {
 
 export class WeeklyRecipesComponent {
 
-  pending: any;
+  pending: boolean;
+
+  pending_your_recipes : boolean = false;
   
   cards: Card[] = [];
 
@@ -39,32 +41,7 @@ export class WeeklyRecipesComponent {
   ngOnInit() {
     // Simple POST request with a JSON body and response type <any>
 
-
-    this.auth.user$.subscribe((user: any) => {
-      console.log("loading this week")
-      this.a_user = user;
-      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
-        for (const [key, value] of Object.entries(data.data.week_recipes)) {
-          if (value['image'] == undefined) {
-            value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
-            if (Math.floor(Math.random() * 100) == 2) {
-              value['image'] = value['image'] + ' :('
-            }
-          }
-          this.week_cards.push({
-            title: key,
-            image: value['image'],
-            link: value['sourceUrl'],
-            description: value['summary'],
-            instructions: value['instructions']
-          })
-        }
-
-
-
-
-      })
-    });
+    this.viewWeekRecipes();
 
 
   }
@@ -106,12 +83,14 @@ export class WeeklyRecipesComponent {
   }
 
   viewWeekRecipes() {
-    console.log("loading this week")
+    this.pending_your_recipes = true;
     this.auth.user$.subscribe((user: any) => {
       console.log("loading this week")
       this.a_user = user;
-      this.week_cards = []
+      
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+        this.pending_your_recipes = false;
+        
         for (const [key, value] of Object.entries(data.data.week_recipes)) {
           if (value['image'] == undefined) {
             value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
@@ -119,7 +98,6 @@ export class WeeklyRecipesComponent {
               value['image'] = value['image'] + ' :('
             }
           }
-          
           this.week_cards.push({
             title: key,
             image: value['image'],
@@ -127,6 +105,8 @@ export class WeeklyRecipesComponent {
             description: value['summary'],
             instructions: value['instructions']
           })
+
+     
         }
 
 
