@@ -44,97 +44,165 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Food Preferences</title>
-    <link rel="stylesheet" href="preferences.component.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Food Preferences</title>
+  <link rel="stylesheet" href="preferences.component.css">
 </head>
+
 <body>
-    <h1>User Food Preferences</h1>
-    <form (ngSubmit)="savePreferences()">
-        <fieldset>
-            <legend>Diets</legend>
-            <input type="checkbox" id="vegan" name="vegan" [(ngModel)]="vegan">
-            <label for="vegan">Vegan</label><br>
-            
-            <input type="checkbox" id="vegetarian" name="vegetarian" [(ngModel)]="vegetarian">
-            <label for="vegetarian">Vegetarian</label><br>
-            
-            <input type="checkbox" id="pescatarian" name="pescatarian" [(ngModel)]="pescatarian">
-            <label for="pescatarian">Pescatarian</label><br>
-            
-            <input type="checkbox" id="ketogenic" name="ketogenic" [(ngModel)]="ketogenic">
-            <label for="ketogenic">Ketogenic</label><br>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Allergies</legend>
-            <input type="checkbox" id="gluten-free" name="gluten-free" [(ngModel)]="gluten">
-            <label for="gluten-free">Gluten</label><br>
-            
-            <input type="checkbox" id="dairy-free" name="dairy-free" [(ngModel)]="dairy">
-            <label for="dairy-free">Dairy</label><br>
-            
-            <input type="checkbox" id="nut-free" name="nut-free" [(ngModel)]="nut">
-            <label for="nut-free">Nut</label><br>
-            
-            <input type="checkbox" id="shellfish-free" name="shellfish-free" [(ngModel)]="shellfish">
-            <label for="shellfish-free">Shellfish</label><br>
-        </fieldset>
+  <h1>User Food Preferences</h1>
+  <form (ngSubmit)="savePreferences()">
+    <fieldset>
+      <legend>Diets</legend>
+      <input type="checkbox" id="vegan" name="vegan" [(ngModel)]="vegan">
+      <label for="vegan">Vegan</label><br>
 
-        <fieldset>
-          <legend>Cuisines</legend>
-          <input type="checkbox" id="american" name="american" [(ngModel)]="americanCuisine">
-          <label for="american">American</label><br>
-          
-          <input type="checkbox" id="mexican" name="mexican" [(ngModel)]="mexicanCuisine">
-          <label for="mexican">Mexican</label><br>
-          
-          <input type="checkbox" id="chinese" name="chinese" [(ngModel)]="chineseCuisine">
-          <label for="chinese">Chinese</label><br>
-          
-          <input type="checkbox" id="mediterranean" name="mediterranean" [(ngModel)]="mediterraneanCuisine">
-          <label for="mediterranean">Mediterranean</label><br>
+      <input type="checkbox" id="vegetarian" name="vegetarian" [(ngModel)]="vegetarian">
+      <label for="vegetarian">Vegetarian</label><br>
 
-          <input type="checkbox" id="italian" name="italian" [(ngModel)]="italianCuisine">
-          <label for="italian">Italian</label><br>
-        </fieldset>
-        
-        <div class="health-level">
-          <fieldset>
-              <legend>Healthiness</legend>
-              <input type="range" id="healthiness" name="healthiness" min="1" max="3" step="0.1" [(ngModel)]="healthiness">
-              <label for="healthiness" class="healthy-diet">Healthy</label>
-              <label for="healthiness" class="balanced-diet">Balanced</label>
-              <label for="healthiness">Indulgent</label>
-          </fieldset>
-        </div>
-        
-        <div class="cooking-skill">
-          <fieldset>
-              <legend>Cooking Skill Level</legend>
-              <input type="range" id="cooking-skill-level" name="cooking-skill-level" min="1" max="3" step="0.1" [(ngModel)]="cookingSkillLevel">
-              <label for="skill-level">Beginner</label>
-              <label for="skill-level" class="intermediate-level">Intermediate</label>
-              <label for="skill-level" class="advanced-level">Advanced</label>
-          </fieldset>
-        </div>
+      <input type="checkbox" id="pescatarian" name="pescatarian" [(ngModel)]="pescatarian">
+      <label for="pescatarian">Pescatarian</label><br>
 
-        <div class="cost">
-          <fieldset>
-              <legend>Overall Meal Cost</legend>
-              <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="3" step="0.1" [(ngModel)]="mealCost">
-              <label for="recipe-cost">Cheap</label>
-              <label for="expensive-recipe-cost" class="advanced-level">Expensive</label>
-          </fieldset>
-        </div>
-        
-        <div class="bottom-button">
-          <button mat-raised-button color="primary" (click)="savePreferences()"> Save Preferences </button>
-        </div>
-        <!-- <input type="submit" value="Save Preferences" id="save-preferences-button" name="save-preferences-button"> -->
-    </form>
-    
+      <input type="checkbox" id="ketogenic" name="ketogenic" [(ngModel)]="ketogenic">
+      <label for="ketogenic">Ketogenic</label><br>
+    </fieldset>
+
+    <fieldset>
+      <legend>Allergies</legend>
+      <input type="checkbox" id="gluten-free" name="gluten-free" [(ngModel)]="gluten">
+      <label for="gluten-free">Gluten</label><br>
+
+      <input type="checkbox" id="dairy-free" name="dairy-free" [(ngModel)]="dairy">
+      <label for="dairy-free">Dairy</label><br>
+
+      <input type="checkbox" id="nut-free" name="nut-free" [(ngModel)]="nut">
+      <label for="nut-free">Nut</label><br>
+
+      <input type="checkbox" id="shellfish-free" name="shellfish-free" [(ngModel)]="shellfish">
+      <label for="shellfish-free">Shellfish</label><br>
+    </fieldset>
+
+    <fieldset>
+      <legend>Cuisines</legend>
+      <input type="checkbox" id="african" name="african" [(ngModel)]="african">
+      <label for="african">African</label><br>
+
+      <input type="checkbox" id="american" name="american" [(ngModel)]="american">
+      <label for="american">American</label><br>
+
+      <input type="checkbox" id="british" name="british" [(ngModel)]="british">
+      <label for="british">British</label><br>
+
+      <input type="checkbox" id="cajun" name="cajun" [(ngModel)]="cajun">
+      <label for="cajun">Cajun</label><br>
+
+      <input type="checkbox" id="caribbean" name="caribbean" [(ngModel)]="caribbean">
+      <label for="caribbean">Caribbean</label><br>
+
+      <input type="checkbox" id="chinese" name="chinese" [(ngModel)]="chinese">
+      <label for="chinese">Chinese</label><br>
+
+      <input type="checkbox" id="eastern_european" name="eastern_european" [(ngModel)]="eastern_european">
+      <label for="eastern_european">Eastern European</label><br>
+
+      <input type="checkbox" id="european" name="european" [(ngModel)]="european">
+      <label for="european">European</label><br>
+
+      <input type="checkbox" id="french" name="french" [(ngModel)]="french">
+      <label for="french">French</label><br>
+
+      <input type="checkbox" id="german" name="german" [(ngModel)]="german">
+      <label for="german">German</label><br>
+
+      <input type="checkbox" id="greek" name="greek" [(ngModel)]="greek">
+      <label for="greek">Greek</label><br>
+
+      <input type="checkbox" id="indian" name="indian" [(ngModel)]="indian">
+      <label for="indian">Indian</label><br>
+
+      <input type="checkbox" id="irish" name="irish" [(ngModel)]="irish">
+      <label for="irish">Irish</label><br>
+
+      <input type="checkbox" id="italian" name="italian" [(ngModel)]="italian">
+      <label for="italian">Italian</label><br>
+
+      <input type="checkbox" id="japanese" name="japanese" [(ngModel)]="japanese">
+      <label for="japanese">Japanese</label><br>
+
+      <input type="checkbox" id="jewish" name="jewish" [(ngModel)]="jewish">
+      <label for="jewish">Jewish</label><br>
+
+      <input type="checkbox" id="korean" name="korean" [(ngModel)]="korean">
+      <label for="korean">Korean</label><br>
+
+      <input type="checkbox" id="latin_american" name="latin_american" [(ngModel)]="latin_american">
+      <label for="latin_american">Latin American</label><br>
+
+      <input type="checkbox" id="mediterranean" name="mediterranean" [(ngModel)]="mediterranean">
+      <label for="mediterranean">Mediterranean</label><br>
+
+      <input type="checkbox" id="mexican" name="mexican" [(ngModel)]="mexican">
+      <label for="mexican">Mexican</label><br>
+
+      <input type="checkbox" id="middle_eastern" name="middle_eastern" [(ngModel)]="middle_eastern">
+      <label for="middle_eastern">Middle Eastern</label><br>
+
+      <input type="checkbox" id="nordic" name="nordic" [(ngModel)]="nordic">
+      <label for="nordic">Nordic</label><br>
+
+      <input type="checkbox" id="southern" name="southern" [(ngModel)]="southern">
+      <label for="southern">Southern</label><br>
+
+      <input type="checkbox" id="spanish" name="spanish" [(ngModel)]="spanish">
+      <label for="spanish">Spanish</label><br>
+
+      <input type="checkbox" id="thai" name="thai" [(ngModel)]="thai">
+      <label for="thai">Thai</label><br>
+
+      <input type="checkbox" id="vietnamese" name="vietnamese" [(ngModel)]="vietnamese">
+      <label for="vietnamese">Vietnamese</label><br>
+
+    </fieldset>
+
+    <div class="health-level">
+      <fieldset>
+        <legend>Healthiness</legend>
+        <input type="range" id="healthiness" name="healthiness" min="1" max="3" step="0.1" [(ngModel)]="healthiness">
+        <label for="healthiness" class="healthy-diet">Healthy</label>
+        <label for="healthiness" class="balanced-diet">Balanced</label>
+        <label for="healthiness">Indulgent</label>
+      </fieldset>
+    </div>
+
+    <div class="cooking-skill">
+      <fieldset>
+        <legend>Cooking Skill Level</legend>
+        <input type="range" id="cooking-skill-level" name="cooking-skill-level" min="1" max="3" step="0.1"
+          [(ngModel)]="cookingSkillLevel">
+        <label for="skill-level">Beginner</label>
+        <label for="skill-level" class="intermediate-level">Intermediate</label>
+        <label for="skill-level" class="advanced-level">Advanced</label>
+      </fieldset>
+    </div>
+
+    <div class="cost">
+      <fieldset>
+        <legend>Overall Meal Cost</legend>
+        <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="3" step="0.1" [(ngModel)]="mealCost">
+        <label for="recipe-cost">Cheap</label>
+        <label for="expensive-recipe-cost" class="advanced-level">Expensive</label>
+      </fieldset>
+    </div>
+
+    <div class="bottom-button">
+      <button mat-raised-button color="primary" (click)="savePreferences()"> Save Preferences </button>
+    </div>
+    <!-- <input type="submit" value="Save Preferences" id="save-preferences-button" name="save-preferences-button"> -->
+  </form>
+
 </body>
+
 </html>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
-  
+
 @Component({
   selector: 'app-preferences',
   templateUrl: './preferences.component.html',
@@ -9,7 +9,7 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 
 export class PreferencesComponent {
-  
+
   userID: any;
   a_user: any;
   responseUserData: any;
@@ -27,38 +27,43 @@ export class PreferencesComponent {
   shellfish: boolean = false;
 
   //cuisines more added later
-  americanCuisine: boolean = false;
-  mexicanCuisine: boolean = false;
-  chineseCuisine: boolean = false;
-  mediterraneanCuisine: boolean = false;
-  italianCuisine: boolean = false;
+
+  
+  african: boolean = false;
+  american: boolean = false;
+  british: boolean = false;
+  cajun: boolean = false;
+  caribbean: boolean = false;
+  chinese: boolean = false;
+  eastern_european: boolean = false;
+  european: boolean = false;
+  french: boolean = false;
+  german: boolean = false;
+  greek: boolean = false;
+  indian: boolean = false;
+  irish: boolean = false;
+  italian: boolean = false;
+  japanese: boolean = false;
+  jewish: boolean = false;
+  korean: boolean = false;
+  latin_american: boolean = false;
+  mediterranean: boolean = false;
+  mexican: boolean = false;
+  middle_eastern: boolean = false;
+  nordic: boolean = false;
+  southern: boolean = false;
+  spanish: boolean = false;
+  thai: boolean = false;
+  vietnamese: boolean = false;
+
 
   //overall meal filters
   healthiness: any = 2;
   cookingSkillLevel: any = 2;
   mealCost: any = 2;
 
-  constructor(public auth: AuthService, private http: HttpClient) {}
+  constructor(public auth: AuthService, private http: HttpClient) { }
 
-  /*
-  // savePreferences() {
-  //   const preferences = [
-  //     { name: 'allergies', value: this.allergies },
-  //     { name: 'vegetarian', value: this.vegetarian },
-  //     { name: 'vegan', value: this.vegan }
-  //   ];
-  //   const url = 'https://reqres.in/api/users';
-  //   this.http.post(url, preferences).pipe(
-  //     tap(response => {
-  //       console.log('Boolean values saved successfully');
-  //       console.log(this.allergies);
-  //     }),
-  //     catchError(error => {
-  //       console.error('Error saving boolean values:', error);
-  //       return of(null); // Return observable with value `null`
-  //     })
-  //   ).subscribe();
-  // } */
 
   ngOnInit() {
     // Simple POST request with a JSON body and response type <any>
@@ -70,15 +75,6 @@ export class PreferencesComponent {
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
         this.responseUserData = data.data;
         this.userID = data.data.id;
-        // for (const [key, value] of Object.entries(data.data.cuisine_choices)) {
-        //   if (value['image'] == undefined) {
-        //     value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
-        //     if (Math.floor(Math.random() * 100) == 2) {
-        //       value['image'] = value['image'] + ' :('
-        //     }
-        //   }
-          
-        // }
       })
     });
 
@@ -101,11 +97,32 @@ export class PreferencesComponent {
         shellfish: this.shellfish
       },
       cuisines: {
-        americanCuisine: this.americanCuisine,
-        mexicanCuisine: this.mexicanCuisine,
-        chineseCuisine: this.chineseCuisine,
-        mediterraneanCuisine: this.mediterraneanCuisine,
-        italianCuisine: this.italianCuisine
+        african: this.african,
+        american: this.american,
+        british: this.british,
+        cajun: this.cajun,
+        caribbean: this.caribbean,
+        chinese: this.chinese,
+        eastern_european: this.eastern_european,
+        european: this.european,
+        french: this.french,
+        german: this.german,
+        greek: this.greek,
+        indian: this.indian,
+        irish: this.irish,
+        italian: this.italian,
+        japanese: this.japanese,
+        jewish: this.jewish,
+        korean: this.korean,
+        latin_american: this.latin_american,
+        mediterranean: this.mediterranean,
+        mexican: this.mexican,
+        middle_eastern: this.middle_eastern,
+        nordic: this.nordic,
+        southern: this.southern,
+        spanish: this.spanish,
+        thai: this.thai,
+        vietnamese: this.vietnamese
       },
       overallMealFilters: {
         healthiness: this.healthiness,
@@ -114,15 +131,17 @@ export class PreferencesComponent {
       }
     };
 
-    this.auth.user$.subscribe((user:any) => {
-       this.a_user = user;
-      console.log(this.a_user)
+
+    this.auth.user$.subscribe((user: any) => {
+      this.a_user = user;
+      console.log(this.userID)
       console.log(preferences)
-      this.http.patch<any>('http://localhost:8080/users/' + this.userID, preferences).subscribe(data => {  
+      this.responseUserData['cuisine_choices'] = JSON.stringify(preferences);
+      this.http.patch<any>('http://localhost:8080/users/' + this.userID, this.responseUserData).subscribe(data => {
         console.log("Preferences Saved Successfully");
       })
     });
 
-  
+
   }
 }

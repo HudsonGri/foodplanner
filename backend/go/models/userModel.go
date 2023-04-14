@@ -15,7 +15,7 @@ type UserRecipes struct {
 	Name            string                 `json:"name"`
 	Email           string                 `json:"email"`
 	Skill_Level     int                    `json:"skill_level"`
-	Cuisine_choices string                 `json:"cuisine_choices"`
+	Cuisine_choices map[string]interface{} `json:"cuisine_choices"`
 	Recipes         map[string]interface{} `json:"recipes"`
 	Week_Recipes    map[string]interface{} `json:"week_recipes"`
 }
