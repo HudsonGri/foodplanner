@@ -85,28 +85,28 @@ def get_recipes(data, n):
 def return_recipes(usr_email):
     con = sqlite3.connect("../database.sqlite3")
     cur = con.cursor()
-    cusine_pref, user_cuisine_choices = get_cusine_prefs(usr_email)
+    cuisines, allergies, diets = get_cusine_prefs(usr_email)
 
+
+    
+    selected_cuisines = []
 
     recipe_res = {}
-
-
-    print(user_cuisine_choices)
     # Number of cuisines
     m = 3
-    if len(user_cuisine_choices) >= m:
-        selected_cuisines = random.sample(user_cuisine_choices, m)
+    if len(cuisines) >= m:
+        selected_cuisines = random.sample(cuisines, m)
     else:
-        selected_cuisines = user_cuisine_choices.copy()
+        selected_cuisines = cuisines.copy()
         while len(selected_cuisines) < m:
-            cuisine = random.choice(user_cuisine_choices)
+            cuisine = random.choice(cuisines)
             selected_cuisines.append(cuisine)
         
     print(selected_cuisines)
     for index, random_cuisine in enumerate(selected_cuisines):
         
         data = {
-            'tags': f"main,{cusine_pref},{random_cuisine}",
+            'tags': f"main,{','.join(allergies)},{','.join(diets)},{random_cuisine}",
             'number': 12
         }
         print(f"Searching: {str(data)}")
@@ -136,29 +136,28 @@ def get_cusine_prefs(usr_email):
 
     search_res = res.fetchall()
 
-    cusine_pref_unparsed = search_res[0][4]
+    pref_obj = json.loads(search_res[0][4])
 
-    cusine_pref_list = cusine_pref_unparsed.split(',')
+    cuisines = []
 
-    cuisines = ['african', 'american', 'british', 'cajun', 'caribbean', 'chinese', 'eastern european', 'european', 'french', 'german', 'greek', 'indian', 'irish', 'italian', 'japanese', 'jewish', 'korean', 'latin american', 'mediterranean', 'mexican', 'middle eastern', 'nordic', 'southern', 'spanish', 'thai', 'vietnamese']
+    allergies = []
 
-    user_cuisine_choices = []
-    for item in cusine_pref_list:
-        if item in cuisines:
-            user_cuisine_choices.append(item)
+    diets = []
 
-    
+    for cuisine, selected in pref_obj['cuisines'].items():
+        if selected:
+            cuisines.append(cuisine)
+        
+    for allergy, selected in pref_obj['allergies'].items():
+        if selected:
+            allergies.append(allergy)
+
+    for diet, selected in pref_obj['diets'].items():
+        if selected:
+            diets.append(diet)
 
 
-    # Preferences with no cuisines
-    just_pref_list = [i for i in cusine_pref_list if i not in user_cuisine_choices]
-
-
-
-
-    res = ','.join(just_pref_list)
-
-    return res, user_cuisine_choices
+    return cuisines, allergies, diets
 
  
 def add_recipe(usr_email, data):
