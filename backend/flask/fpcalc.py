@@ -146,15 +146,15 @@ def get_cusine_prefs(usr_email):
 
     for cuisine, selected in pref_obj['cuisines'].items():
         if selected:
-            cuisines.append(cuisine)
+            cuisines.append(cuisine.replace("_", " "))
         
     for allergy, selected in pref_obj['allergies'].items():
         if selected:
-            allergies.append(allergy)
+            allergies.append(allergy.replace("_", " "))
 
     for diet, selected in pref_obj['diets'].items():
         if selected:
-            diets.append(diet)
+            diets.append(diet.replace("_", " "))
 
 
     return cuisines, allergies, diets

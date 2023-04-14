@@ -15,10 +15,17 @@ export class PreferencesComponent {
   responseUserData: any;
 
   //diets
-  vegan: boolean = false;
-  vegetarian: boolean = false;
-  pescatarian: boolean = false;
+  gluten_free: boolean = false;
   ketogenic: boolean = false;
+  vegetarian: boolean = false;
+  lacto_vegetarian: boolean = false;
+  ovo_vegetarian: boolean = false;
+  vegan: boolean = false;
+  pescetarian: boolean = false;
+  paleo: boolean = false;
+  primal: boolean = false;
+  low_fodmap: boolean = false;
+  whole30: boolean = false;
 
   //allergies more can be added later
   gluten: boolean = false;
@@ -85,10 +92,17 @@ export class PreferencesComponent {
     // PATCH to update user preferences
     const preferences = {
       diets: {
-        vegan: this.vegan,
+        gluten_free: this.gluten_free,
+        ketogenic: this.ketogenic,
         vegetarian: this.vegetarian,
-        pescatarian: this.pescatarian,
-        ketogenic: this.ketogenic
+        lacto_vegetarian: this.lacto_vegetarian,
+        ovo_vegetarian: this.ovo_vegetarian,
+        vegan: this.vegan,
+        pescetarian: this.pescetarian,
+        paleo: this.paleo,
+        primal: this.primal,
+        low_fodmap: this.low_fodmap,
+        whole30: this.whole30
       },
       allergies: {
         gluten: this.gluten,

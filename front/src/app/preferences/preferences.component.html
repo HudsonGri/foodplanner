@@ -57,17 +57,43 @@
   <form (ngSubmit)="savePreferences()">
     <fieldset>
       <legend>Diets</legend>
+      <!-- Vegan checkbox -->
       <input type="checkbox" id="vegan" name="vegan" [(ngModel)]="vegan">
       <label for="vegan">Vegan</label><br>
 
+      <!-- Vegetarian checkbox -->
       <input type="checkbox" id="vegetarian" name="vegetarian" [(ngModel)]="vegetarian">
       <label for="vegetarian">Vegetarian</label><br>
 
-      <input type="checkbox" id="pescatarian" name="pescatarian" [(ngModel)]="pescatarian">
-      <label for="pescatarian">Pescatarian</label><br>
+      <!-- Gluten-free checkbox -->
+      <input type="checkbox" id="gluten_free" name="gluten_free" [(ngModel)]="gluten_free">
+      <label for="gluten_free">Gluten-free</label><br>
 
+      <!-- Ketogenic checkbox -->
       <input type="checkbox" id="ketogenic" name="ketogenic" [(ngModel)]="ketogenic">
       <label for="ketogenic">Ketogenic</label><br>
+
+
+      <!-- Pescetarian checkbox -->
+      <input type="checkbox" id="pescetarian" name="pescetarian" [(ngModel)]="pescetarian">
+      <label for="pescetarian">Pescetarian</label><br>
+
+      <!-- Paleo checkbox -->
+      <input type="checkbox" id="paleo" name="paleo" [(ngModel)]="paleo">
+      <label for="paleo">Paleo</label><br>
+
+      <!-- Primal checkbox -->
+      <input type="checkbox" id="primal" name="primal" [(ngModel)]="primal">
+      <label for="primal">Primal</label><br>
+
+      <!-- Low-FODMAP checkbox -->
+      <input type="checkbox" id="low_fodmap" name="low_fodmap" [(ngModel)]="low_fodmap">
+      <label for="low_fodmap">Low FODMAP</label><br>
+
+      <!-- Whole30 checkbox -->
+      <input type="checkbox" id="whole30" name="whole30" [(ngModel)]="whole30">
+      <label for="whole30">Whole30</label><br>
+
     </fieldset>
 
     <fieldset>
@@ -88,110 +114,110 @@
     <fieldset>
       <legend>Cuisines</legend>
       <div class="cuisine-grid">
-          <label for="african">
+        <label for="african">
           <input type="checkbox" id="african" name="african" [(ngModel)]="african">
           African</label><br>
 
-          <label for="american">
+        <label for="american">
           <input type="checkbox" id="american" name="american" [(ngModel)]="american">
           American</label><br>
 
-          <label for="british">
+        <label for="british">
           <input type="checkbox" id="british" name="british" [(ngModel)]="british">
           British</label><br>
 
-          <label for="cajun">
+        <label for="cajun">
           <input type="checkbox" id="cajun" name="cajun" [(ngModel)]="cajun">
           Cajun</label><br>
 
-          <label for="caribbean">
+        <label for="caribbean">
           <input type="checkbox" id="caribbean" name="caribbean" [(ngModel)]="caribbean">
           Caribbean</label><br>
 
-          <label for="chinese">
+        <label for="chinese">
           <input type="checkbox" id="chinese" name="chinese" [(ngModel)]="chinese">
           Chinese</label><br>
 
-          <label for="eastern_european">
+        <label for="eastern_european">
           <input type="checkbox" id="eastern_european" name="eastern_european" [(ngModel)]="eastern_european">
           Eastern European</label><br>
 
-          <label for="european">
+        <label for="european">
           <input type="checkbox" id="european" name="european" [(ngModel)]="european">
           European</label><br>
 
-          <label for="french">
+        <label for="french">
           <input type="checkbox" id="french" name="french" [(ngModel)]="french">
           French</label><br>
 
-          <label for="german">
+        <label for="german">
           <input type="checkbox" id="german" name="german" [(ngModel)]="german">
           German</label><br>
 
-          <label for="greek">
+        <label for="greek">
           <input type="checkbox" id="greek" name="greek" [(ngModel)]="greek">
           Greek</label><br>
 
-          <label for="indian">
+        <label for="indian">
           <input type="checkbox" id="indian" name="indian" [(ngModel)]="indian">
           Indian</label><br>
 
-          <label for="irish">
+        <label for="irish">
           <input type="checkbox" id="irish" name="irish" [(ngModel)]="irish">
           Irish</label><br>
 
-          <label for="italian">
+        <label for="italian">
           <input type="checkbox" id="italian" name="italian" [(ngModel)]="italian">
           Italian</label><br>
 
-          <label for="japanese">
+        <label for="japanese">
           <input type="checkbox" id="japanese" name="japanese" [(ngModel)]="japanese">
           Japanese</label><br>
 
-          <label for="jewish">
+        <label for="jewish">
           <input type="checkbox" id="jewish" name="jewish" [(ngModel)]="jewish">
           Jewish</label><br>
 
-          <label for="korean">
+        <label for="korean">
           <input type="checkbox" id="korean" name="korean" [(ngModel)]="korean">
           Korean</label><br>
 
-          <label for="latin_american">
+        <label for="latin_american">
           <input type="checkbox" id="latin_american" name="latin_american" [(ngModel)]="latin_american">
           Latin American</label><br>
 
-          <label for="mediterranean">
+        <label for="mediterranean">
           <input type="checkbox" id="mediterranean" name="mediterranean" [(ngModel)]="mediterranean">
           Mediterranean</label><br>
 
-          <label for="mexican">
+        <label for="mexican">
           <input type="checkbox" id="mexican" name="mexican" [(ngModel)]="mexican">
           Mexican</label><br>
 
-          <label for="middle_eastern">
+        <label for="middle_eastern">
           <input type="checkbox" id="middle_eastern" name="middle_eastern" [(ngModel)]="middle_eastern">
           Middle Eastern</label><br>
 
-          <label for="nordic">
+        <label for="nordic">
           <input type="checkbox" id="nordic" name="nordic" [(ngModel)]="nordic">
           Nordic</label><br>
 
-          <label for="southern">
+        <label for="southern">
           <input type="checkbox" id="southern" name="southern" [(ngModel)]="southern">
           Southern</label><br>
 
-          <label for="spanish">
+        <label for="spanish">
           <input type="checkbox" id="spanish" name="spanish" [(ngModel)]="spanish">
           Spanish</label><br>
 
-          <label for="thai">
+        <label for="thai">
           <input type="checkbox" id="thai" name="thai" [(ngModel)]="thai">
           Thai</label><br>
 
-          <label for="vietnamese">
+        <label for="vietnamese">
           <input type="checkbox" id="vietnamese" name="vietnamese" [(ngModel)]="vietnamese">
           Vietnamese</label><br>
-        </div>
+      </div>
     </fieldset>
 
     <div class="health-level">

@@ -118,15 +118,6 @@ input[type="submit"] {
 }
 
 .cuisine-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.cuisine-grid label {
-  display: flex;
-  align-items: center;
-}
-
-.cuisine-grid input[type="checkbox"] {
-  margin-right: 5px;
+  column-count: 3;
+    column-gap: 10px;
 }
