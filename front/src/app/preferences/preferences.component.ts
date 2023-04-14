@@ -28,10 +28,18 @@ export class PreferencesComponent {
   whole30: boolean = false;
 
   //allergies more can be added later
-  gluten: boolean = false;
   dairy: boolean = false;
-  nut: boolean = false;
+  egg: boolean = false;
+  gluten: boolean = false;
+  grain: boolean = false;
+  peanut: boolean = false;
+  seafood: boolean = false;
+  sesame: boolean = false;
   shellfish: boolean = false;
+  soy: boolean = false;
+  sulfite: boolean = false;
+  tree_nut: boolean = false;
+  wheat: boolean = false;
 
   //cuisines more added later
 
@@ -105,10 +113,18 @@ export class PreferencesComponent {
         whole30: this.whole30
       },
       allergies: {
-        gluten: this.gluten,
         dairy: this.dairy,
-        nut: this.nut,
-        shellfish: this.shellfish
+        egg: this.egg,
+        gluten: this.gluten,
+        grain: this.grain,
+        peanut: this.peanut,
+        seafood: this.seafood,
+        sesame: this.sesame,
+        shellfish: this.shellfish,
+        soy: this.soy,
+        sulfite: this.sulfite,
+        tree_nut: this.tree_nut,
+        wheat: this.wheat
       },
       cuisines: {
         african: this.african,

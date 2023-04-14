@@ -37,87 +37,87 @@
     margin-right: 10px;
   } */
 
-h1 {
+  h1 {
     text-align: center;
-}
+  }
 
-form {
+  form {
     max-width: 700px;
     margin: 0 auto;
-}
+  }
 
-fieldset {
+  fieldset {
     margin-bottom: 20px;
-}
+  }
 
-legend {
+  legend {
     font-weight: bold;
-}
+  }
 
-label {
+  label {
     display: inline-block;
     margin-right: 10px;
-}
+  }
 
-input[type="checkbox"],
-input[type="radio"],
-input[type="range"] {
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="range"] {
     margin-right: 5px;
-}
+  }
 
-input[type="range"] {
+  input[type="range"] {
     width: 100%;
-}
+  }
 
-input[type="submit"] {
+  input[type="submit"] {
     display: block;
     margin: 20px auto;
-}
+  }
 
-.health-level {
-  position: relative;
-}
+  .health-level {
+    position: relative;
+  }
 
-.healthy-diet {
-  position: absolute;
-  left: 45%;
-}
+  .healthy-diet {
+    position: absolute;
+    left: 45%;
+  }
 
-.balanced-diet {
-  position: absolute;
-  left: 84.5%;
-}
+  .balanced-diet {
+    position: absolute;
+    left: 84.5%;
+  }
 
-.cooking-skill {
-  position: relative;
-}
+  .cooking-skill {
+    position: relative;
+  }
 
-.intermediate-level {
-  position: absolute;
-  left: 41.5%;
+  .intermediate-level {
+    position: absolute;
+    left: 41.5%;
 
-}
+  }
 
-.advanced-level {
-  position: absolute;
-  left: 83.5%;
-}
+  .advanced-level {
+    position: absolute;
+    left: 83.5%;
+  }
 
-.cost {
-  position: relative;
-}
+  .cost {
+    position: relative;
+  }
 
-.expensive-recipe-cost {
-  position: absolute;
-  left: 85%;
-}
+  .expensive-recipe-cost {
+    position: absolute;
+    left: 85%;
+  }
 
-.bottom-button {
-  display: flex;
-  justify-content: center;
-}
+  .bottom-button {
+    display: flex;
+    justify-content: center;
+  }
 
-.cuisine-grid {
-  column-count: 3;
+  .cuisine-grid {
+    column-count: 3;
     column-gap: 10px;
-}
+  }

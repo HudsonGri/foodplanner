@@ -55,7 +55,7 @@
 <body>
   <h1>User Food Preferences</h1>
   <form (ngSubmit)="savePreferences()">
-    <fieldset>
+    <fieldset class="cuisine-grid">
       <legend>Diets</legend>
       <!-- Vegan checkbox -->
       <input type="checkbox" id="vegan" name="vegan" [(ngModel)]="vegan">
@@ -96,19 +96,45 @@
 
     </fieldset>
 
-    <fieldset>
+    <fieldset class="cuisine-grid">
       <legend>Allergies</legend>
-      <input type="checkbox" id="gluten-free" name="gluten-free" [(ngModel)]="gluten">
-      <label for="gluten-free">Gluten</label><br>
 
-      <input type="checkbox" id="dairy-free" name="dairy-free" [(ngModel)]="dairy">
-      <label for="dairy-free">Dairy</label><br>
+      <input type="checkbox" id="dairy" name="dairy" [(ngModel)]="dairy">
+      <label for="dairy">Dairy</label><br>
 
-      <input type="checkbox" id="nut-free" name="nut-free" [(ngModel)]="nut">
-      <label for="nut-free">Nut</label><br>
+      <input type="checkbox" id="egg" name="egg" [(ngModel)]="egg">
+      <label for="egg">Egg</label><br>
 
-      <input type="checkbox" id="shellfish-free" name="shellfish-free" [(ngModel)]="shellfish">
-      <label for="shellfish-free">Shellfish</label><br>
+      <input type="checkbox" id="gluten" name="gluten" [(ngModel)]="gluten">
+      <label for="gluten">Gluten</label><br>
+
+      <input type="checkbox" id="grain" name="grain" [(ngModel)]="grain">
+      <label for="grain">Grain</label><br>
+
+      <input type="checkbox" id="peanut" name="peanut" [(ngModel)]="peanut">
+      <label for="peanut">Peanut</label><br>
+
+      <input type="checkbox" id="seafood" name="seafood" [(ngModel)]="seafood">
+      <label for="seafood">Seafood</label><br>
+
+      <input type="checkbox" id="sesame" name="sesame" [(ngModel)]="sesame">
+      <label for="sesame">Sesame</label><br>
+
+      <input type="checkbox" id="shellfish" name="shellfish" [(ngModel)]="shellfish">
+      <label for="shellfish">Shellfish</label><br>
+
+      <input type="checkbox" id="soy" name="soy" [(ngModel)]="soy">
+      <label for="soy">Soy</label><br>
+
+      <input type="checkbox" id="sulfite" name="sulfite" [(ngModel)]="sulfite">
+      <label for="sulfite">Sulfite</label><br>
+
+      <input type="checkbox" id="nut-free" name="nut-free" [(ngModel)]="tree_nut">
+      <label for="nut-free">Tree Nut</label><br>
+
+      <input type="checkbox" id="wheat" name="wheat" [(ngModel)]="wheat">
+      <label for="wheat">Wheat</label><br>
+
     </fieldset>
 
     <fieldset>
