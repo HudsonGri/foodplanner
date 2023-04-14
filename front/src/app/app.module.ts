@@ -33,6 +33,8 @@ import { PreferencesComponent } from './preferences/preferences.component';
 import { WeeklyRecipesComponent } from './weekly-recipes/weekly-recipes.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule, ProgressSpinnerMode} from '@angular/material/progress-spinner';
+import { PdfbuttonComponent } from './home/pdfbutton/pdfbutton.component';
+import { BackendUserRequestComponent } from './backend-user-request/backend-user-request.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {MatProgressSpinnerModule, ProgressSpinnerMode} from '@angular/material/p
     CardComponent,
     SearchComponent,
     PreferencesComponent,
-    WeeklyRecipesComponent
+    WeeklyRecipesComponent,
+    PdfbuttonComponent,
+    BackendUserRequestComponent
   ],
   imports: [
     BrowserModule,
