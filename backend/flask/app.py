@@ -17,7 +17,8 @@ def index():
 
         recipes = fpcalc.return_recipes(usr_email)
         return recipes
-    except:
+    except Exception as e:
+        print(e)
         return {'status' : 'error'}
 
 @app.route('/add', methods=['GET','POST'])

@@ -73,14 +73,31 @@ export class PdfbuttonComponent {
   }
   
   generatePdf() {
+
+  // Source HTMLElement or a string containing HTML.
+    var element_begin = '<!DOCTYPE html> <html><body><div style="letter-spacing: 1px;"><h1>Food Planner Ingredient List</h1><hr><ul>'
+    var element_end = "</ul> </div> </body></html>"
+
     const doc = new jspdf();
     let i = 10;
     this.ingredientMap.forEach((value, key) => {
       console.log(value);
-      const line = value.amount + " " + value.unit + " " + value.name + ". (Aisle: " + value.aisle + ")";
-      doc.text(line, 10, i);
+      const line = "<li>" + value.amount.toFixed(2) + " " + value.unit + " " + value.name + ". (Aisle: " + value.aisle + ") </li>";
+      element_begin+=line;
       i+=10;
     });
-    doc.save('my-document.pdf');
+
+    var element_final = element_begin + element_end
+
+    doc.html(element_final, {
+      callback: function(doc) {
+          // Save the PDF
+          doc.save('foodplanner-ingredients.pdf');
+      },
+      x: 15,
+      y: 15,
+      width: 170, //target width in the PDF document
+      windowWidth: 650 //window width in CSS pixels
+  });
   }
 }

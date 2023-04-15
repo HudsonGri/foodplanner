@@ -44,7 +44,6 @@ func FindUser(c *gin.Context) {
 	user_recipe.Name = user.Name
 	user_recipe.Email = user.Email
 	user_recipe.Skill_Level = user.Skill_Level
-	user_recipe.Cuisine_choices = user.Cuisine_choices
 
 	var recipe_converted map[string]interface{}
 	if err := json.Unmarshal([]byte(user.Recipes), &recipe_converted); err != nil {
@@ -59,6 +58,14 @@ func FindUser(c *gin.Context) {
 		return
 	}
 	user_recipe.Week_Recipes = week_recipes_converted
+
+	var cuisine_choices_converted map[string]interface{}
+	if err := json.Unmarshal([]byte(user.Cuisine_choices), &cuisine_choices_converted); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Conversion screwed up"})
+		return
+	}
+
+	user_recipe.Cuisine_choices = cuisine_choices_converted
 
 	c.JSON(http.StatusOK, gin.H{"data": user_recipe})
 }
