@@ -38,6 +38,24 @@ def add():
         print(e)
         return {'status' : 'error'}
     
+
+@app.route('/remove', methods=['GET','POST'])
+def remove():
+    try:
+
+        args = request.args
+
+        data = request.data
+        
+        usr_email = args['usr_email']
+
+        recipes = fpcalc.remove_recipe(usr_email, data)
+        recipes = {}
+        return recipes
+    except Exception as e:
+        print(e)
+        return {'status' : 'error'}
+    
 if __name__ == "__main__":
     from waitress import serve
     serve(app, host="0.0.0.0", port=5001)

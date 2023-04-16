@@ -192,6 +192,34 @@ def add_recipe(usr_email, data):
 
     return {'status': 'success'}
     
+def remove_recipe(usr_email, data):
+    title = json.loads(data)['title']
+
+    con = sqlite3.connect("../database.sqlite3")
+    cur = con.cursor()
+
+    res = cur.execute(
+        """SELECT * FROM users where email == ? """, (usr_email,))
+
+    search_res = res.fetchall()
+
+    #week_suggestions = json.loads(search_res[0][5])
+
+    res = cur.execute(
+        """SELECT * FROM users where email == ? """, (usr_email,))
+    search_res = res.fetchall()
+    current_week = json.loads(search_res[0][6])
+
+    del current_week[title]
+
+    cur.execute(
+    """UPDATE users SET week_recipes = ? WHERE email = ? """, (str(json.dumps(current_week)), usr_email))
+    con.commit()
+
+    print("removed from choices")
+
+    return {'status': 'success'}
+    
     #print(title)
 
 #return_recipes("hudsongriffith@gmail.com")
