@@ -5,7 +5,7 @@
   <title>Search Page</title>
 </head>
 
-<body fxLayout="column">
+
   <div class="first">
     <mat-card class="cardmajor">
       <div class="first">
@@ -19,8 +19,14 @@
     </mat-card>
   </div>
   <div class="first">
-    <h1>Your Recipes </h1> <br>
-    <mat-spinner *ngIf="pending_your_recipes" ></mat-spinner>
+  <mat-card class="cardmajor">
+  <div class="first">
+    <div class="header-container">
+      <h1>Your Recipes </h1> <br>
+      <mat-spinner [diameter]="50" [strokeWidth]="5" *ngIf="pending_your_recipes" ></mat-spinner>
+    </div>
+  </div>
+  <div class="first">
     <div class="first" fxFlexAlign="stretch">
       <div class="container">
         <div *ngFor="let card of week_cards" class="card" (click)="cardClicked($event, card)">
@@ -49,13 +55,17 @@
       </div>
     </div>
   </div>
+  </mat-card>
+  </div>
   <div class="first">
-    <h1>This Week's Suggestions</h1> <br>
-    <mat-spinner *ngIf="pending" ></mat-spinner>
-    <div class="container">
+  <mat-card class="cardmajor">
+  <div class="first">
+    <div class="header-container">
+      <h1>This Week's Suggestions</h1> <br>
+      <mat-spinner [diameter]="50" [strokeWidth]="5" *ngIf="pending" ></mat-spinner>
+    </div>
   </div>
 
-  </div>
   <div class="first" fxFlexAlgin="stretch">
     <div class="container">
       <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
@@ -83,6 +93,8 @@
 
     </div>
   </div>
-</body>
+  </mat-card>
+  </div>
+
 
 </html>

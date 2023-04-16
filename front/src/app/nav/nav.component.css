@@ -1,5 +1,6 @@
 .sidenav-container {
   height: 100%;
+  background-color: 	#c5e1a521;
 }
 
 .sidenav {
@@ -14,6 +15,10 @@
   position: sticky;
   top: 0;
   z-index: 3;
+}
+
+mat-sidenav-list {
+  background-color: 	#c5e1a52d;
 }
 
 .app-auth-button  {
