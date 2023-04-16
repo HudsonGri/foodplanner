@@ -37,12 +37,14 @@ export class PdfbuttonComponent {
       this.a_user = user;
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
         let i = 0;
-        for (const [key, value] of Object.entries(data.data.recipes)) {
+        for (const [key, value] of Object.entries(data.data.week_recipes)) {
+          let servings = value['servings'];
+          console.log(servings);
           for (let j = 0; j < value['extendedIngredients'].length; j++){
             this.ingredients.push({
               name: value['extendedIngredients'][j].nameClean,
               unit: value['extendedIngredients'][j].unit,
-              amount: value['extendedIngredients'][j].amount,
+              amount: value['extendedIngredients'][j].amount/servings,
               aisle: value['extendedIngredients'][j].aisle
             })
             if (this.ingredientMap.get(value['extendedIngredients'][j].nameClean) == undefined){
