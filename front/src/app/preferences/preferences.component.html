@@ -45,6 +45,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<div class="first">
+<mat-card class="cardmajor">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -276,12 +279,18 @@
       </fieldset>
     </div>
 
-    <div class="bottom-button">
-      <button mat-raised-button color="primary" (click)="savePreferences()"> Save Preferences </button>
-    </div>
+
     <!-- <input type="submit" value="Save Preferences" id="save-preferences-button" name="save-preferences-button"> -->
   </form>
 
+  <div class="bottom-button">
+    <button mat-stroked-button color="warn" class="custom-button" (click)="savePreferences()"> Save Preferences </button>
+  </div>
+  <br>
+
 </body>
+
+</mat-card>
+</div>
 
 </html>
