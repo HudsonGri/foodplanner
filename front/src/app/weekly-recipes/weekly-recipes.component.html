@@ -24,7 +24,12 @@
     <div class="first" fxFlexAlign="stretch">
       <div class="container">
         <div *ngFor="let card of week_cards" class="card" (click)="cardClicked($event, card)">
-          <img src="{{ card.image }}" alt="Product Image">
+          <div class="card-image-wrapper">
+            <img src="{{ card.image }}" alt="Product Image">
+            <button mat-mini-fab class="addbutton" matTooltip="primary" color="warn" aria-label="" (click)="removeRecipe($event, card)">
+                <mat-icon>remove</mat-icon>
+            </button>
+          </div>
           <div class="content">
             <h2>{{ card.title }}</h2>
             <mat-card-content>
@@ -33,8 +38,8 @@
               </mat-expansion-panel>
             </mat-card-content>
             <div class="bottomcontainer">
-              <button color="accent" mat-raised-button> Instructions </button>
-              <button color="accent" mat-raised-button> Description </button>
+              <button color="warn" mat-stroked-button> Instructions </button>
+              <button color="warn" mat-stroked-button> Description </button>
             </div>
             <!-- <button>+</button> -->
           </div>

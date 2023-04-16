@@ -137,4 +137,22 @@ export class WeeklyRecipesComponent {
     });
   }
 
+  removeRecipe(event: MouseEvent, card: Card) {
+    this.auth.user$.subscribe(user => {
+      const usr_email = this.a_user.email; 
+      const data = card;
+      const options = {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+        params: { usr_email } // sending the email as a query parameter
+      };
+      this.http.post('http://localhost:5001/remove', data, options)
+        .subscribe(response => {
+          console.log(response);
+          this.viewWeekRecipes();
+        });
+
+        
+    });
+  }
+
 }
