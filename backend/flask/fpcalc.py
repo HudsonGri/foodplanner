@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 import os
 import random
 import json
+import datetime;
+ 
 
 
 load_dotenv()
@@ -117,6 +119,7 @@ def return_recipes(usr_email):
         recipe_res.update(recipes)
 
 
+    
     #print(recipe_res)
     cur.execute(
         """UPDATE users SET recipes = ? WHERE email = ? """, (str(json.dumps(recipe_res)), usr_email))
@@ -183,6 +186,8 @@ def add_recipe(usr_email, data):
     current_week = json.loads(search_res[0][6])
 
     current_week[title] = week_suggestions[title]
+
+    current_week[title]['timestamp'] = datetime.datetime.now().timestamp()
 
     cur.execute(
     """UPDATE users SET week_recipes = ? WHERE email = ? """, (str(json.dumps(current_week)), usr_email))

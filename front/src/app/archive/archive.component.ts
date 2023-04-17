@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import * as moment from 'moment';
+moment().format();
 
 interface Card {
   title: string;
@@ -46,8 +48,18 @@ export class ArchiveComponent {
       this.archive_cards = [];
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
         this.pending_your_recipes = false;
+
         
-        for (const [key, value] of Object.entries(data.data.archive)) {
+        for (const [key, value] of Object.entries(data.data.week_recipes)) {
+          console.log(value['timestamp'])
+          console.log(moment().unix())
+
+          // Everything created before this should be expired
+          var expire_time = moment().subtract(5, 'minutes');
+
+          console.log(moment(moment.unix(value['timestamp'])).fromNow())
+
+          if (value['timestamp'] <= expire_time.unix()) {
           if (value['image'] == undefined) {
             value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
             if (Math.floor(Math.random() * 100) == 2) {
@@ -58,11 +70,12 @@ export class ArchiveComponent {
             title: key,
             image: value['image'],
             link: value['sourceUrl'],
-            description: value['summary'],
+            description: "Generated: " + moment(moment.unix(value['timestamp'])).fromNow(),
             instructions: value['instructions']
           })
      
         }
+      }
 
       })
     });

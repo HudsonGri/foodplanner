@@ -7,6 +7,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpHeaders } from '@angular/common/http';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import * as moment from 'moment';
 
 
 interface Card {
@@ -59,6 +60,7 @@ export class WeeklyRecipesComponent {
         console.log(data)
         this.pending = false;
         for (const [key, value] of Object.entries(data.recipe_result)) {
+
           if (value['image'] == undefined) {
             value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
             if (Math.floor(Math.random() * 100) == 2) {
@@ -94,6 +96,11 @@ export class WeeklyRecipesComponent {
         this.pending_your_recipes = false;
         
         for (const [key, value] of Object.entries(data.data.week_recipes)) {
+          var expire_time = moment().subtract(5, 'minutes');
+
+          console.log(moment(moment.unix(value['timestamp'])).fromNow())
+
+          if (value['timestamp'] > expire_time.unix()) {
           if (value['image'] == undefined) {
             value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
             if (Math.floor(Math.random() * 100) == 2) {
@@ -112,7 +119,7 @@ export class WeeklyRecipesComponent {
         }
 
 
-
+      }
 
       })
     });
