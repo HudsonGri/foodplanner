@@ -6,8 +6,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpHeaders } from '@angular/common/http';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import * as moment from 'moment';
+import check_expire  from '../expire';
 
 
 interface Card {
@@ -28,12 +29,12 @@ export class WeeklyRecipesComponent {
 
   pending: boolean;
 
-  pending_your_recipes : boolean = false;
-  
+  pending_your_recipes: boolean = false;
+
   cards: Card[] = [];
 
   week_cards: Card[] = [];
-  
+
   userIP: any;
   a_user: any;
   responseUserData: any;
@@ -47,12 +48,12 @@ export class WeeklyRecipesComponent {
 
 
   }
-  
 
-  generateRecipes(){
+
+  generateRecipes() {
     this.pending = true;
     console.log("pending");
-    this.auth.user$.subscribe((user:any) => {
+    this.auth.user$.subscribe((user: any) => {
       this.a_user = user;
 
       // Send request to flask
@@ -71,11 +72,11 @@ export class WeeklyRecipesComponent {
             title: key,
             image: value['image'],
             link: value['sourceUrl'],
-            description: value['summary'],
+            description: "Generated: " + moment(moment.unix(value['timestamp'])).fromNow(),
             instructions: value['instructions']
           })
         }
-        })
+      })
 
     });
   }
@@ -87,49 +88,45 @@ export class WeeklyRecipesComponent {
 
   viewWeekRecipes() {
     this.pending_your_recipes = true;
-    
+
     this.auth.user$.subscribe((user: any) => {
       console.log("loading this week")
       this.a_user = user;
       this.week_cards = [];
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
         this.pending_your_recipes = false;
-        
+
         for (const [key, value] of Object.entries(data.data.week_recipes)) {
-          var expire_time = moment().subtract(5, 'minutes');
-
-          console.log(moment(moment.unix(value['timestamp'])).fromNow())
-
-          if (value['timestamp'] > expire_time.unix()) {
-          if (value['image'] == undefined) {
-            value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
-            if (Math.floor(Math.random() * 100) == 2) {
-              value['image'] = value['image'] + ' :('
+          if (check_expire(value['timestamp'])) {
+            if (value['image'] == undefined) {
+              value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
+              if (Math.floor(Math.random() * 100) == 2) {
+                value['image'] = value['image'] + ' :('
+              }
             }
+            this.week_cards.push({
+              title: key,
+              image: value['image'],
+              link: value['sourceUrl'],
+              description: value['summary'],
+              instructions: value['instructions']
+            })
+
+
           }
-          this.week_cards.push({
-            title: key,
-            image: value['image'],
-            link: value['sourceUrl'],
-            description: value['summary'],
-            instructions: value['instructions']
-          })
 
-     
+
         }
-
-
-      }
 
       })
     });
 
   }
-  
+
 
   addRecipe(event: MouseEvent, card: Card) {
     this.auth.user$.subscribe(user => {
-      const usr_email = this.a_user.email; 
+      const usr_email = this.a_user.email;
       const data = card;
       const options = {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
@@ -140,14 +137,14 @@ export class WeeklyRecipesComponent {
           console.log(response);
           this.viewWeekRecipes();
         });
-        
+
     });
     this.addMessage();
   }
 
   removeRecipe(event: MouseEvent, card: Card) {
     this.auth.user$.subscribe(user => {
-      const usr_email = this.a_user.email; 
+      const usr_email = this.a_user.email;
       const data = card;
       const options = {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
@@ -159,11 +156,11 @@ export class WeeklyRecipesComponent {
           this.viewWeekRecipes();
         });
 
-        
+
     });
   }
 
-  addMessage(){
+  addMessage() {
     let message = "Recipe was added!"
     let action = "Dismiss"
     this.snackBar.open(message, action, {
