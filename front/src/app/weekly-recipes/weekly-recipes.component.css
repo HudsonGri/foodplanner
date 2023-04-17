@@ -111,6 +111,7 @@
 
   .custom-button {
     background-color: #ffffff36; /* replace with the background color you want */
+    font-weight: bold;
   }
 
   .endcontainer {
@@ -137,6 +138,12 @@
   mat-card-image {
     height: 100%;
     width: 100%;
+  }
+
+  .card .my-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; 
   }
 
   @media screen and (max-width: 767px) {

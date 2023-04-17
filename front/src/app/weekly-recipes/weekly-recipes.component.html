@@ -68,7 +68,7 @@
 
   <div class="first" fxFlexAlgin="stretch">
     <div class="container">
-      <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
+      <mat-card *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
         <div class="card-image-wrapper">
             <img src="{{ card.image }}" alt="Product Image">
             <button mat-mini-fab class="addbutton" matTooltip="primary" color="warn" aria-label="" (click)="addRecipe($event, card)">
@@ -77,19 +77,15 @@
         </div>
         <div class="content">
           <h2>{{ card.title }}</h2>
-          <mat-card-content>
-            <mat-expansion-panel class="mat-elevation-z0">
-              t
-            </mat-expansion-panel>
-          </mat-card-content>
-          <div class="endcontainer">
-                <button color="warn" mat-stroked-button class="custom-button"> Instructions </button>
-                <button color="warn" mat-stroked-button class="custom-button"> Description </button>
-          </div>
+          
           <!-- <button>+</button> -->
         </div>
+        <mat-card-actions class="my-card-actions">
+          <button color="warn" mat-stroked-button class="custom-button"> Instructions </button>
+          <button color="warn" mat-stroked-button class="custom-button"> Description </button>
+        </mat-card-actions>
 
-      </div>
+      </mat-card>
 
     </div>
   </div>
