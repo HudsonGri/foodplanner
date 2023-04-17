@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpHeaders } from '@angular/common/http';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 interface Card {
@@ -36,7 +37,7 @@ export class WeeklyRecipesComponent {
   a_user: any;
   responseUserData: any;
 
-  constructor(public auth: AuthService, private http: HttpClient) { }
+  constructor(public auth: AuthService, private http: HttpClient, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     // Simple POST request with a JSON body and response type <any>
@@ -132,9 +133,9 @@ export class WeeklyRecipesComponent {
           console.log(response);
           this.viewWeekRecipes();
         });
-
         
     });
+    this.addMessage();
   }
 
   removeRecipe(event: MouseEvent, card: Card) {
@@ -152,6 +153,14 @@ export class WeeklyRecipesComponent {
         });
 
         
+    });
+  }
+
+  addMessage(){
+    let message = "Recipe was added!"
+    let action = "Dismiss"
+    this.snackBar.open(message, action, {
+      duration: 2500
     });
   }
 

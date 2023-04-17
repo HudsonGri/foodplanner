@@ -36,6 +36,7 @@ import {MatProgressSpinnerModule, ProgressSpinnerMode} from '@angular/material/p
 import { PdfbuttonComponent } from './home/pdfbutton/pdfbutton.component';
 import { BackendUserRequestComponent } from './backend-user-request/backend-user-request.component';
 import { ArchiveComponent } from './archive/archive.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { ArchiveComponent } from './archive/archive.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatSnackBarModule,
 
     AuthModule.forRoot({
       domain: 'dev-f3612agfl2judti1.us.auth0.com',
