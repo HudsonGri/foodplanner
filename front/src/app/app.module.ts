@@ -35,6 +35,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule, ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import { PdfbuttonComponent } from './home/pdfbutton/pdfbutton.component';
 import { BackendUserRequestComponent } from './backend-user-request/backend-user-request.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { BackendUserRequestComponent } from './backend-user-request/backend-user
     PreferencesComponent,
     WeeklyRecipesComponent,
     PdfbuttonComponent,
-    BackendUserRequestComponent
+    BackendUserRequestComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,

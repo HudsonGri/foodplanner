@@ -5,6 +5,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { WeeklyRecipesComponent } from './weekly-recipes/weekly-recipes.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent},
   { path: 'search', component: SearchComponent},
   { path: 'preferences', component: PreferencesComponent},
-  {path: 'weekly-recipes', component: WeeklyRecipesComponent}
+  {path: 'weekly-recipes', component: WeeklyRecipesComponent},
+  { path: 'archive', component: ArchiveComponent}
 ];
 
 @NgModule({
