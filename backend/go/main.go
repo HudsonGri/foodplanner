@@ -1,20 +1,10 @@
 package main
 
 import (
-	"log"
-	"os"
-
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 
 	"01-Login/controllers"
 	"01-Login/models"
-	"crypto/sha256"
-	"encoding/hex"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
@@ -33,65 +23,7 @@ func CORSMiddleware() gin.HandlerFunc {
 	}
 }
 
-// This function validates a token sent from an api request.
-// It takes a token and user email. It will validate that the user's token is the sha256 hash of the salt + the user's id
-func validate_token(token string, user_email string) (result bool) {
-
-	// Get private values from .env
-	err := godotenv.Load("../../.env")
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
-	// Get the password from the environment variables
-	salt := os.Getenv("SALT")
-	bearer := os.Getenv("BEARER")
-
-	// Get the users email and then add salt to id and hash and make sure it matches token
-	url := "https://dev-f3612agfl2judti1.us.auth0.com/api/v2/users-by-email?email=" + user_email
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("authorization", "Bearer "+bearer)
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	var data []map[string]interface{}
-	err2 := json.Unmarshal([]byte(string(body)), &data)
-	if err2 != nil {
-		panic(err2)
-	}
-
-	// extract "user_id" field value from first map
-	userId, ok := data[0]["user_id"].(string)
-	if !ok {
-		panic("user_id field not found or not a string")
-	}
-
-	saltedInput := salt + userId
-
-	hasher := sha256.New()
-	hasher.Write([]byte(saltedInput))
-	hashedBytes := hasher.Sum(nil)
-
-	hashedString := hex.EncodeToString(hashedBytes)
-
-	fmt.Println(string(hashedString))
-
-	if hashedString == token {
-		return true
-	} else {
-		return false
-	}
-}
-
 func main() {
-
-	//get_auth_token()
-	fmt.Println(validate_token("test", "hudsongriffith@gmail.com"))
 
 	r := gin.Default()
 	r.Use(CORSMiddleware())
@@ -100,7 +32,7 @@ func main() {
 
 	r.GET("/users", controllers.FindUsers)
 	r.POST("/users", controllers.CreateUser)
-	r.GET("/users/:email", controllers.FindUser)
+	r.GET("/users/:email/:token", controllers.FindUser)
 	r.PATCH("/users/:id", controllers.UpdateUser)
 	r.DELETE("/users/:id", controllers.DeleteUser)
 
