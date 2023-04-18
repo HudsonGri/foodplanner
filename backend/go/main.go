@@ -71,7 +71,7 @@ func validate_token(token string, user_email string) (result bool) {
 		panic("user_id field not found or not a string")
 	}
 
-	saltedInput := userId + salt
+	saltedInput := salt + userId
 
 	hasher := sha256.New()
 	hasher.Write([]byte(saltedInput))

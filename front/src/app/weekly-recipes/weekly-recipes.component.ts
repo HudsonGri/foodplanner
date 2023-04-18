@@ -9,6 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as moment from 'moment';
 import check_expire  from '../expire';
+import gen_token from '../token_gen'
 
 
 interface Card {
@@ -88,6 +89,7 @@ export class WeeklyRecipesComponent {
   }
 
   viewWeekRecipes() {
+    console.log(gen_token("test"))
     this.pending_your_recipes = true;
 
     this.auth.user$.subscribe((user: any) => {
