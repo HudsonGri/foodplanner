@@ -15,7 +15,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strings"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
@@ -32,24 +31,6 @@ func CORSMiddleware() gin.HandlerFunc {
 
 		c.Next()
 	}
-}
-
-func get_auth_token() {
-	url := "https://dev-f3612agfl2judti1.us.auth0.com/oauth/token"
-
-	payload := strings.NewReader("grant_type=client_credentials&client_id=w92cz5xnF7lqxOjblbduKFIWuiDpwgBq&client_secret=pvKH_DjW0RLLjJ9fESMhPjEgDZKAKI06Dy5SyKMPWXJyQrnhy1sEB-edZFiESeQu&audience=https://dev-f3612agfl2judti1.us.auth0.com")
-
-	req, _ := http.NewRequest("POST", url, payload)
-
-	req.Header.Add("content-type", "application/x-www-form-urlencoded")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
 }
 
 // This function validates a token sent from an api request.
