@@ -75,11 +75,7 @@ func validate_token(token string, user_email string) (result bool) {
 
 	fmt.Println("Valid: " + string(hashedString))
 
-	if hashedString == token {
-		return true
-	} else {
-		return false
-	}
+	return hashedString == token
 }
 
 func FindUsers(c *gin.Context) {
@@ -92,7 +88,7 @@ func FindUsers(c *gin.Context) {
 
 func FindUser(c *gin.Context) {
 
-	if validate_token(c.Param("token"), c.Param("email")) == false {
+	if !validate_token(c.Param("token"), c.Param("email")) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
