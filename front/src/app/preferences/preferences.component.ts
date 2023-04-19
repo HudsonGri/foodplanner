@@ -87,7 +87,15 @@ export class PreferencesComponent {
   cookingSkillLevel: any = 2;
   mealCost: any = 2;
 
-  constructor(public auth: AuthService, private http: HttpClient) { }
+  constructor(public auth: AuthService, private http: HttpClient, private snackBar: MatSnackBar) { }
+
+  addMessage() {
+    let message = "Preferences saved!"
+    let action = "Dismiss"
+    this.snackBar.open(message, action, {
+      duration: 2500
+    });
+  }
 
 
   ngOnInit() {
@@ -164,6 +172,7 @@ export class PreferencesComponent {
   }
 
   savePreferences() {
+    this.addMessage();
     // PATCH to update user preferences
     const preferences = {
       diets: {
