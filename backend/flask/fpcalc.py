@@ -168,6 +168,7 @@ def get_cusine_prefs(usr_email):
 
  
 def add_recipe(usr_email, data):
+    print(data)
     title = json.loads(data)['title']
 
     con = sqlite3.connect("../database.sqlite3")
@@ -185,7 +186,7 @@ def add_recipe(usr_email, data):
     search_res = res.fetchall()
     current_week = json.loads(search_res[0][6])
 
-    current_week[title] = week_suggestions[title]
+    current_week[title] = json.loads(data)
 
     current_week[title]['timestamp'] = datetime.datetime.now().timestamp()
 
