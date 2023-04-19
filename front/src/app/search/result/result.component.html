@@ -2,7 +2,7 @@
     <mat-card class="cardmajor">
     <div class="first">
       <div class="header-container">
-        <h1>{{cuisineType}}</h1> <br>
+        <h1>{{cuisineType | titlecase}}</h1> <br>
         <mat-spinner [diameter]="50" [strokeWidth]="5" *ngIf="pending" ></mat-spinner>
       </div>
     </div>
@@ -21,6 +21,10 @@
             
             <!-- <button>+</button> -->
           </div>
+          <mat-card-actions class="my-card-actions">
+            <button color="warn" mat-stroked-button class="custom-button" (click)="openDialog(1, card)"> Instructions </button>
+            <button color="warn" mat-stroked-button class="custom-button" (click)="openDialog(2, card)"> Description </button>
+          </mat-card-actions>
   
         </mat-card>
   
