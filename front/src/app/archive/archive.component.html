@@ -28,8 +28,8 @@
 
             </div>
             <mat-card-actions class="my-card-actions">
-              <button color="warn" mat-stroked-button class="custom-button"> Instructions </button>
-              <button color="warn" mat-stroked-button class="custom-button"> Description </button>
+              <button color="warn" mat-stroked-button class="custom-button" (click)="openDialog(1, card)"> Instructions </button>
+              <button color="warn" mat-stroked-button class="custom-button" (click)="openDialog(2, card)"> Description </button>
             </mat-card-actions>
     
           </mat-card>
