@@ -171,4 +171,56 @@ Content-Type: application/json
 }
 ```
 
+### /remove
+
+This API endpoint takes a user email as well as a title of a recipe and removes it from the users' weekly recipes.
+
+**Response**
+
+Returns a JSON object containing:
+
+status - A string indicating the status of the request. Possible values are "success" and "error".
+
+**Example**
+``` sql
+POST /remove?usr_email=john@example.com
+Content-Type: application/json
+
+{
+    "usr_email": "john@example.com",
+    "recipe_title": "Spaghetti Bolognese"
+}
+```
+
+``` json
+{
+    "status": "success"
+}
+```
+
+### /search
+
+This API endpoint provides a list of recipes given a cuisine type
+
+**Response**
+
+Returns a JSON object containing:
+
+recipes - A list of recipes.
+
+status - A string indicating the status of the request. Possible values are "success" and "error".
+
+**Example**
+``` sql
+GET /search?cuisine_type=mexican
+```
+
+``` json
+{
+    "recipes" : []
+    "status": "success"
+}
+```
+
+
 *Note: This result is preliminary and likely to change as more functionality is added to the flask backend.*
