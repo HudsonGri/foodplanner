@@ -39,6 +39,20 @@ def add():
         return {'status' : 'error'}
     
 
+@app.route('/search', methods=['GET','POST'])
+def search():
+    try:
+        args = request.args
+
+        cuisine_type = args['cuisine_type']
+
+        recipes = fpcalc.search(cuisine_type)
+        return recipes
+    except Exception as e:
+        print(e)
+        return {'status' : 'error'}
+
+
 @app.route('/remove', methods=['GET','POST'])
 def remove():
     try:

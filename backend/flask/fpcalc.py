@@ -225,6 +225,18 @@ def remove_recipe(usr_email, data):
 
     return {'status': 'success'}
     
-    #print(title)
+def search(cuisine_type):
 
-#return_recipes("hudsongriffith@gmail.com")
+    data = {
+            'tags': f"main,{cuisine_type}",
+            'number': 12
+        }
+
+    response = requests.get(
+        f"https://api.spoonacular.com/recipes/random?apiKey={rand_key}", params=data)
+
+    data = response.json()
+
+
+    return {'data': data['recipes'], 'status': 'success'}
+    
