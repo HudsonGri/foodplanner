@@ -50,6 +50,7 @@ def find_most_overlap_lists(all_lists, n):
 
 
 def get_recipes(data, n):
+    print(data)
 
     response = requests.get(
         f"https://api.spoonacular.com/recipes/random?apiKey={rand_key}", params=data)
