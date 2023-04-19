@@ -156,6 +156,11 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
+	if !validate_token(c.Param("token"), c.Param(user.Email)) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
+		return
+	}
+
 	// // Validate input
 	var input UpdateUserInput
 	if err := c.ShouldBindJSON(&input); err != nil {
@@ -173,6 +178,11 @@ func DeleteUser(c *gin.Context) {
 	var user models.User
 	if err := models.DB.Where("id = ?", c.Param("id")).First(&user).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	if !validate_token(c.Param("token"), c.Param(user.Email)) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
 

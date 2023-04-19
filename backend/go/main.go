@@ -33,8 +33,8 @@ func main() {
 	r.GET("/users", controllers.FindUsers)
 	r.POST("/users", controllers.CreateUser)
 	r.GET("/users/:email/:token", controllers.FindUser)
-	r.PATCH("/users/:id", controllers.UpdateUser)
-	r.DELETE("/users/:id", controllers.DeleteUser)
+	r.PATCH("/users/:id/:token", controllers.UpdateUser)
+	r.DELETE("/users/:id/:token", controllers.DeleteUser)
 
 	r.Run()
 }
