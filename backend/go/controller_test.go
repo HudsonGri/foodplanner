@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"strconv"
 	"strings"
 	"testing"
@@ -346,18 +345,9 @@ func TestUpdateUserCuisineChoices(t *testing.T) {
 }
 
 func TestValidateToken(t *testing.T) {
-	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(`[{"user_id": "123"}]`))
-	}))
-	defer ts.Close()
 
-	os.Setenv("SALT", "test")
-	os.Setenv("BEARER", "test")
-	defer os.Unsetenv("SALT")
-	defer os.Unsetenv("BEARER")
-
-	token := "abc123"
-	email := "test@example.com"
+	token := "b4589d9eb519cd73c24b9c1c8fad2ea08d6a56ce1f0ac389ea8929f0cd076760"
+	email := "hudsongriffith@gmail.com"
 	expected := true
 
 	result := controllers.ValidateToken(token, email)
