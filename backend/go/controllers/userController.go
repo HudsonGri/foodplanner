@@ -78,14 +78,6 @@ func validate_token(token string, user_email string) (result bool) {
 	return hashedString == token
 }
 
-func FindUsers(c *gin.Context) {
-
-	var users []models.User
-	models.DB.Find(&users)
-
-	c.JSON(http.StatusOK, gin.H{"data": users})
-}
-
 func FindUser(c *gin.Context) {
 
 	if !validate_token(c.Param("token"), c.Param("email")) {
