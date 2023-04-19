@@ -37,7 +37,6 @@ export class ResultComponent{
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       let tempString = params.get('cuisineType')!;
-      tempString = tempString.toUpperCase()
       tempString = tempString.replace(/_/g, " ");
       this.cuisineType = tempString;
     });
