@@ -18,7 +18,7 @@ import (
 type CreateUserInput struct {
 	Name            string `json:"name" binding:"required"`
 	Email           string `json:"email" binding:"required"`
-	Skill_Level     int    `json:"skill_level`
+	Skill_Level     int    `json:"skill_level"`
 	Cuisine_choices string `json:"cuisine_choices" binding:"required"`
 	Recipes         string `json:"recipes" binding:"required"`
 	Week_Recipes    string `json:"week_recipes" binding:"required"`
@@ -33,7 +33,7 @@ type UpdateUserInput struct {
 
 // This function validates a token sent from an api request.
 // It takes a token and user email. It will validate that the user's token is the sha256 hash of the salt + the user's id
-func validate_token(token string, user_email string) (result bool) {
+func ValidateToken(token string, user_email string) (result bool) {
 
 	// Get private values from .env
 	err := godotenv.Load("../../.env")
@@ -92,7 +92,7 @@ func FindUser(c *gin.Context) {
 		return
 	}
 
-	if !validate_token(c.Param("token"), c.Param("email")) {
+	if !ValidateToken(c.Param("token"), c.Param("email")) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
@@ -152,7 +152,7 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
-	if !validate_token(c.Param("token"), c.Param("email")) {
+	if !ValidateToken(c.Param("token"), c.Param("email")) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
@@ -177,7 +177,7 @@ func DeleteUser(c *gin.Context) {
 		return
 	}
 
-	if !validate_token(c.Param("token"), c.Param(user.Email)) {
+	if !ValidateToken(c.Param("token"), c.Param(user.Email)) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
