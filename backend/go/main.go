@@ -30,7 +30,6 @@ func main() {
 
 	models.ConnectDatabase()
 
-	r.GET("/users", controllers.FindUsers)
 	r.POST("/users", controllers.CreateUser)
 	r.GET("/users/:email/:token", controllers.FindUser)
 	r.PATCH("/users/:id/:token", controllers.UpdateUser)
