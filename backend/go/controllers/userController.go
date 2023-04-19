@@ -147,17 +147,17 @@ func CreateUser(c *gin.Context) {
 func UpdateUser(c *gin.Context) {
 	// Get model if exist
 	var user models.User
-	if err := models.DB.Where("id = ?", c.Param("id")).First(&user).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+	if err := models.DB.Where("email = ?", c.Param("email")).First(&user).Error; err != nil {
+		c.JSON(http.StatusOK, gin.H{"error": "Record not found!"})
 		return
 	}
 
-	if !validate_token(c.Param("token"), c.Param(user.Email)) {
+	if !validate_token(c.Param("token"), c.Param("email")) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
 
-	// // Validate input
+	// Validate input
 	var input UpdateUserInput
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

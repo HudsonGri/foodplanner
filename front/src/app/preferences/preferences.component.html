@@ -252,7 +252,7 @@
     <div class="health-level">
       <fieldset>
         <legend>Healthiness</legend>
-        <input type="range" id="healthiness" name="healthiness" min="1" max="3" step="0.1" [(ngModel)]="healthiness">
+        <input type="range" id="healthiness" name="healthiness" min="1" max="3" step="0.1" [(ngModel)]="healthiness" value="{{ healthiness }}">
         <label for="healthiness" class="healthy-diet">Healthy</label>
         <label for="healthiness" class="balanced-diet">Balanced</label>
         <label for="healthiness">Indulgent</label>
@@ -263,7 +263,7 @@
       <fieldset>
         <legend>Cooking Skill Level</legend>
         <input type="range" id="cooking-skill-level" name="cooking-skill-level" min="1" max="3" step="0.1"
-          [(ngModel)]="cookingSkillLevel">
+          [(ngModel)]="cookingSkillLevel" value="{{ cookingSkillLevel }}">
         <label for="skill-level">Beginner</label>
         <label for="skill-level" class="intermediate-level">Intermediate</label>
         <label for="skill-level" class="advanced-level">Advanced</label>
@@ -273,7 +273,7 @@
     <div class="cost">
       <fieldset>
         <legend>Overall Meal Cost</legend>
-        <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="3" step="0.1" [(ngModel)]="mealCost">
+        <input type="range" id="recipe-cost" name="recipe-cost" min="1" max="3" step="0.1" [(ngModel)]="mealCost" value="{{ mealCost }}">
         <label for="recipe-cost">Cheap</label>
         <label for="expensive-recipe-cost" class="advanced-level">Expensive</label>
       </fieldset>
