@@ -1,4 +1,4 @@
-## Food Planner
+# Food Planner
 
 A web application to provide an efficient weekly grocery list—paired with recipes—based on the user's preferred dishes and cuisine type.
 
@@ -23,19 +23,19 @@ A user selects several of their favorite cuisine types, as well as specific dish
 - Erik
 
 
-### How to run
+## How to run
 
-#### Prerequisites
+### Prerequisites
 Before you can run this application, make sure you have the following software installed on your computer:
 
 - Node.js and npm (Node.js package manager)
 - Go
 - Python 3
 
-#### Running the Application
+### Running the Application
 To run this application, you need to run three parts concurrently: the Angular frontend, the Go backend, and the Flask backend. Follow the steps below to run each part:
 
-#### Angular Frontend
+### Angular Frontend
 The Angular frontend is responsible for rendering the web pages and handling user interactions. To run it:
 
 1. Open a terminal window and navigate to the `front` directory of the project.
@@ -51,7 +51,7 @@ ng serve
 This will start the server at `http://localhost:4200`.
 
 
-#### Go Backend
+### Go Backend
 The Go backend is responsible for handling HTTP requests from the frontend and communicating with the database. To run it:
 
 1. Open a new terminal window and navigate to the `backend/go` directory of the project.
@@ -61,7 +61,7 @@ go run main.go
 ```
 This will start the server at `http://localhost:8080`.
 
-#### Flask Frontend
+### Flask Frontend
 The Flask backend is responsible for handling recipe calculation. To run it:
 
 1. Open another terminal window and navigate to the `backend/flask` directory of the project.
@@ -69,7 +69,7 @@ The Flask backend is responsible for handling recipe calculation. To run it:
 ``` bash
 pip install -r requirements.txt
 ```
-1. After the packages are installed, run the following command to start the Flask server:
+3. After the packages are installed, run the following command to start the Flask server:
 ```bash
 python3 app.py
 ```
