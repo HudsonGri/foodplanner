@@ -1,21 +1,14 @@
 <!--card.component.html-->
-<mat-card class="dashboard-card" color="accent">
-    <div class="card-image">
+<mat-card class="dashboard-card">
+
     <mat-card-header class="dashboard-card-content">
             <mat-card-title color="primary">
                 <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
                     <h2 class="dashboard-card-content"> Continue Your Culinary Journey <br></h2>
                 </ng-container>
                 <ng-template #loggedOut>
-                    Start With Foodplanner Today!
+                    <h2 class="dashboard-card-content"> Start With FoodPlanner Today! <br></h2>
                 </ng-template>
-                <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                    <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu" xPosition="before">
-                    <button mat-menu-item>Expand</button>
-                    <button mat-menu-item>Remove</button>
-                </mat-menu>
             </mat-card-title>
     </mat-card-header>
     <mat-card-content class="dashboard-card-content" style="color: rgb(67, 105, 24);">
@@ -25,8 +18,8 @@
             >> 
                 <button mat-stroked-button color = "warn" class="custom-button" routerLink="/weekly-recipes">Generate and Select Recipes</button>
             >> 
-                <app-pdfbutton></app-pdfbutton>
+                <app-pdfbutton>Poop</app-pdfbutton>
         </div>
     </mat-card-content>
-    </div>
+
 </mat-card>
