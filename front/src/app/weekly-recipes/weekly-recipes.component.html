@@ -44,8 +44,8 @@
               </mat-expansion-panel>
             </mat-card-content>
             <div class="bottomcontainer">
-              <button color="warn" mat-stroked-button> Instructions </button>
-              <button color="warn" mat-stroked-button> Description </button>
+              <button color="warn" mat-stroked-button mat-button (click)="openDialog(1, card)"> Instructions </button>
+              <button color="warn" mat-stroked-button (click)="openDialog(2, card)"> Description </button>
             </div>
             <!-- <button>+</button> -->
           </div>
@@ -81,8 +81,8 @@
           <!-- <button>+</button> -->
         </div>
         <mat-card-actions class="my-card-actions">
-          <button color="warn" mat-stroked-button class="custom-button"> Instructions </button>
-          <button color="warn" mat-stroked-button class="custom-button"> Description </button>
+          <button color="warn" mat-stroked-button class="custom-button" (click)="openDialog(1, card)"> Instructions </button>
+          <button color="warn" mat-stroked-button class="custom-button" (click)="openDialog(2, card)"> Description </button>
         </mat-card-actions>
 
       </mat-card>

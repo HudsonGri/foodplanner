@@ -38,6 +38,9 @@ import { BackendUserRequestComponent } from './backend-user-request/backend-user
 import { ArchiveComponent } from './archive/archive.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ResultComponent } from './search/result/result.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RecipeDialog } from './weekly-recipes/weekly-recipes.component';
+import { RecipeDialog2 } from './archive/archive.component';
 
 
 @NgModule({
@@ -55,7 +58,9 @@ import { ResultComponent } from './search/result/result.component';
     PdfbuttonComponent,
     BackendUserRequestComponent,
     ArchiveComponent,
-    ResultComponent
+    ResultComponent,
+    RecipeDialog,
+    RecipeDialog2
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ import { ResultComponent } from './search/result/result.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatDialogModule,
 
     AuthModule.forRoot({
       domain: 'dev-f3612agfl2judti1.us.auth0.com',

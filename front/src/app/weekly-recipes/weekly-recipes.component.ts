@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import * as moment from 'moment';
 import check_expire  from '../expire';
 import gen_token from '../token_gen'
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 
 interface Card {
@@ -18,6 +20,7 @@ interface Card {
   link: string;
   description: string;
   instructions: string;
+  val: any;
 }
 
 @Component({
@@ -25,6 +28,7 @@ interface Card {
   templateUrl: './weekly-recipes.component.html',
   styleUrls: ['./weekly-recipes.component.css']
 })
+
 
 export class WeeklyRecipesComponent {
 
@@ -40,7 +44,18 @@ export class WeeklyRecipesComponent {
   a_user: any;
   responseUserData: any;
 
-  constructor(public auth: AuthService, private http: HttpClient, private snackBar: MatSnackBar) { }
+  constructor(public auth: AuthService, private http: HttpClient, private snackBar: MatSnackBar, private dialog: MatDialog) { }
+
+  openDialog(type: any, card: Card) {
+    // Removing 
+    card.val.instructions = card.val.instructions.replace(/\.(?=[^\.]*\.)/g, '<br><br>');
+
+    // 1 for instructions, 2 for description
+    card.val.link = type;
+    this.dialog.open(RecipeDialog, {
+      data: card.val,
+    });
+  }
 
   ngOnInit() {
     // Simple POST request with a JSON body and response type <any>
@@ -75,7 +90,8 @@ export class WeeklyRecipesComponent {
             image: value['image'],
             link: value['sourceUrl'],
             description: "Generated: " + moment(moment.unix(value['timestamp'])).fromNow(),
-            instructions: value['instructions']
+            instructions: value['instructions'],
+            val: value,
           })
         }
       })
@@ -111,7 +127,8 @@ export class WeeklyRecipesComponent {
               image: value['image'],
               link: value['sourceUrl'],
               description: value['summary'],
-              instructions: value['instructions']
+              instructions: value['instructions'],
+              val : value
             })
 
 
@@ -170,4 +187,12 @@ export class WeeklyRecipesComponent {
     });
   }
 
+}
+
+@Component({
+  selector: 'recipe-dialog',
+  templateUrl: 'recipe-dialog.html',
+})
+export class RecipeDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }

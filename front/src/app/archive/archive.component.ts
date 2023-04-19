@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 import gen_token from '../token_gen'
 import check_expire from '../expire';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+
 moment().format();
 
 interface Card {
@@ -13,6 +16,7 @@ interface Card {
   link: string;
   description: string;
   instructions: string;
+  val: any;
 }
 
 @Component({
@@ -30,7 +34,18 @@ export class ArchiveComponent {
 
   archive_cards: Card[] = [];
 
-  constructor(public auth: AuthService, private http: HttpClient) { }
+  constructor(public auth: AuthService, private http: HttpClient, private dialog: MatDialog) { }
+
+  openDialog(type: any, card: Card) {
+    // Removing 
+    card.val.instructions = card.val.instructions.replace(/\.(?=[^\.]*\.)/g, '<br><br>');
+
+    // 1 for instructions, 2 for description
+    card.val.link = type;
+    this.dialog.open(RecipeDialog2, {
+      data: card.val,
+    });
+  }
 
   ngOnInit() {
 
@@ -65,7 +80,8 @@ export class ArchiveComponent {
               image: value['image'],
               link: value['sourceUrl'],
               description: "Generated: " + moment(moment.unix(value['timestamp'])).fromNow(),
-              instructions: value['instructions']
+              instructions: value['instructions'],
+              val: value
             })
 
           }
@@ -94,4 +110,11 @@ export class ArchiveComponent {
     });
   }
 
+}
+@Component({
+  selector: 'recipe-dialog2',
+  templateUrl: 'recipe-dialog2.html',
+})
+export class RecipeDialog2 {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }
