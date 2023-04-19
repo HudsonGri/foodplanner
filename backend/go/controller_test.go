@@ -27,12 +27,22 @@ func TestFindUser(t *testing.T) {
 	r.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusOK, w.Code)
-	var response map[string]models.User
+	var response map[string]models.UserRecipes
 	json.Unmarshal(w.Body.Bytes(), &response)
 	assert.Equal(t, "Michael T", response["data"].Name)
 	assert.Equal(t, "michael.t@gmail.com", response["data"].Email)
 	assert.Equal(t, 2, response["data"].Skill_Level)
-	// assert.Equal(t, "mexican", response["data"].Cuisine_choices)
+	rCuisine := response["data"].Cuisine_choices
+	trueChoices := map[string]bool{"spanish": true, "southern": true, "jewish": true, "korean": true, "japanese": true, "latin_american": true}
+	for key, values := range rCuisine {
+		submap := values
+		for subkey, value := range submap.(map[string]interface{}) {
+			if key == "overallMealFilters" {
+				continue
+			}
+			assert.Equal(t, trueChoices[subkey], value)
+		}
+	}
 }
 
 func TestDeleteUser(t *testing.T) {
@@ -71,15 +81,21 @@ func TestCreateUser(t *testing.T) {
 
 	// Define the expected response
 	expectedResponse := gin.H{
-		"name":  "Test User",
-		"email": "testuser@example.com",
+		"name":            "Test User",
+		"email":           "testuser@example.com",
+		"cuisine_choices": "none",
+		"recipes":         "none",
+		"week_recipes":    "none",
 	}
 
 	user := models.User{Name: "Test User", Email: "testuser@example.com"}
 	// Define the request payload
 	payload := gin.H{
-		"name":  user.Name,
-		"email": user.Email,
+		"name":            user.Name,
+		"email":           user.Email,
+		"cuisine_choices": "none",
+		"recipes":         "none",
+		"week_recipes":    "none",
 	}
 
 	// Create a new recorder to record the HTTP response
@@ -308,15 +324,18 @@ func TestUpdateUserCuisineChoices(t *testing.T) {
 		"name":            "Test Update User",
 		"email":           "test@example.com",
 		"skill_level":     1,
-		"cuisine_choices": "italian",
+		"cuisine_choices": `{"diets":{"vegan":false,"vegetarian":false,"pescatarian":false,"ketogenic":false},"allergies":{"gluten":false,"dairy":false,"nut":false,"shellfish":false},"cuisines":{"african":false,"american":false,"british":false,"cajun":false,"caribbean":false,"chinese":false,"eastern_european":false,"european":false,"french":false,"german":false,"greek":false,"indian":false,"irish":false,"italian":false,"japanese":true,"jewish":true,"korean":true,"latin_american":true,"mediterranean":false,"mexican":false,"middle_eastern":false,"nordic":false,"southern":true,"spanish":true,"thai":false,"vietnamese":false},"overallMealFilters":{"healthiness":2,"cookingSkillLevel":2,"mealCost":2}}`,
 	}
 
-	user := models.User{Name: "Test Update User", Email: "test@example.com", Skill_Level: 1, Cuisine_choices: "mexican"}
+	user := models.User{Name: "Test Update User", Email: "test@example.com", Skill_Level: 1, Cuisine_choices: `{"diets":{"vegan":false,"vegetarian":false,"pescatarian":false,"ketogenic":false},"allergies":{"gluten":false,"dairy":false,"nut":false,"shellfish":false},"cuisines":{"african":false,"american":false,"british":false,"cajun":false,"caribbean":false,"chinese":false,"eastern_european":false,"european":false,"french":false,"german":false,"greek":false,"indian":false,"irish":false,"italian":false,"japanese":true,"jewish":true,"korean":true,"latin_american":true,"mediterranean":false,"mexican":false,"middle_eastern":false,"nordic":false,"southern":true,"spanish":true,"thai":false,"vietnamese":false},"overallMealFilters":{"healthiness":2,"cookingSkillLevel":2,"mealCost":1}}`}
 	models.DB.Create(&user)
 
 	// Define the request payload
 	payload := gin.H{
-		"cuisine_choices": "italian",
+		"name":            "Test Update User",
+		"email":           "testUpdate@example.com",
+		"skill_level":     1,
+		"cuisine_choices": `{"diets":{"vegan":false,"vegetarian":false,"pescatarian":false,"ketogenic":false},"allergies":{"gluten":false,"dairy":false,"nut":false,"shellfish":false},"cuisines":{"african":false,"american":false,"british":false,"cajun":false,"caribbean":false,"chinese":false,"eastern_european":false,"european":false,"french":false,"german":false,"greek":false,"indian":false,"irish":false,"italian":false,"japanese":true,"jewish":true,"korean":true,"latin_american":true,"mediterranean":false,"mexican":false,"middle_eastern":false,"nordic":false,"southern":true,"spanish":true,"thai":false,"vietnamese":false},"overallMealFilters":{"healthiness":2,"cookingSkillLevel":2,"mealCost":1}}`,
 	}
 
 	// Create a new recorder to record the HTTP response
@@ -326,13 +345,14 @@ func TestUpdateUserCuisineChoices(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error converting payload to JSON string")
 	}
+
 	reqBody := strings.NewReader(string(payloadJSON))
 
 	// Create a new request
-	req, _ := http.NewRequest("PATCH", "/users/"+strconv.FormatUint(uint64(user.ID), 10), reqBody)
+	req, _ := http.NewRequest("PATCH", "/users/testUpdate@example.com/TEST", reqBody)
 
 	// Call the handler function
-	r.PATCH("/users/:id", controllers.UpdateUser)
+	r.PATCH("/users/:email/:token", controllers.UpdateUser)
 	r.ServeHTTP(w, req)
 
 	// Check the response status code

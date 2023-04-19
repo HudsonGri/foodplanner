@@ -90,11 +90,7 @@ export class PreferencesComponent {
     });
   }
 
-
-  ngOnInit() {
-    // Simple POST request with a JSON body and response type <any>
-
-
+  getPreferences() {
     this.auth.user$.subscribe((user: any) => {
       this.a_user = user;
       console.log(this.a_user)
@@ -167,6 +163,11 @@ export class PreferencesComponent {
         console.log("Meal Cost " + this.mealCost);
       })
     });
+  }
+
+  ngOnInit() {
+    // Simple POST request with a JSON body and response type <any>
+      this.getPreferences();
   }
 
   savePreferences() {
