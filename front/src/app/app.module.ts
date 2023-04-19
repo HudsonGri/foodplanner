@@ -37,6 +37,7 @@ import { PdfbuttonComponent } from './home/pdfbutton/pdfbutton.component';
 import { BackendUserRequestComponent } from './backend-user-request/backend-user-request.component';
 import { ArchiveComponent } from './archive/archive.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ResultComponent } from './search/result/result.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     WeeklyRecipesComponent,
     PdfbuttonComponent,
     BackendUserRequestComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

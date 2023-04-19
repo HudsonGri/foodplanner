@@ -6,17 +6,31 @@
   <title>Search Page</title>
 </head>
 
-<body>
-  <div class="container">
-    <div *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
-        <img src="{{ card.image }}" alt="Product Image">
+<div class="first">
+  <mat-card class="cardmajor">
+  <div class="first">
+    <div class="header-container">
+      <h1>Browse Cuisine Types</h1> <br>
+    </div>
+  </div>
+
+  <div class="first" fxFlexAlgin="stretch">
+    <div class="container">
+      <mat-card *ngFor="let card of cards" class="card" (click)="cardClicked($event, card)">
+        <div class="card-image-wrapper">
+            <img src="{{ card.image }}" alt="Product Image">
+        </div>
         <div class="content">
           <h2>{{ card.title }}</h2>
+          
+          <!-- <button>+</button> -->
         </div>
 
+      </mat-card>
+
     </div>
-    
   </div>
-</body>
+  </mat-card>
+</div>
 
 </html>

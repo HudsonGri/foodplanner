@@ -1,0 +1,34 @@
+<div class="first">
+    <mat-card class="cardmajor">
+    <div class="first">
+      <div class="header-container">
+        <h1>{{cuisineType}}</h1> <br>
+        <mat-spinner [diameter]="50" [strokeWidth]="5" *ngIf="pending" ></mat-spinner>
+      </div>
+    </div>
+  
+    <div class="first" fxFlexAlgin="stretch">
+      <div class="container">
+        <mat-card *ngFor="let card of cards" class="card">
+          <div class="card-image-wrapper">
+              <img src="{{ card.image }}" alt="Product Image">
+              <button mat-mini-fab class="addbutton" matTooltip="primary" color="warn" aria-label="" (click)="addRecipe($event, card)">
+                  <mat-icon>add</mat-icon>
+              </button>
+          </div>
+          <div class="content">
+            <h2>{{ card.title }}</h2>
+            
+            <!-- <button>+</button> -->
+          </div>
+          <mat-card-actions class="my-card-actions">
+            <button color="warn" mat-stroked-button class="custom-button"> Instructions </button>
+            <button color="warn" mat-stroked-button class="custom-button"> Description </button>
+          </mat-card-actions>
+  
+        </mat-card>
+  
+      </div>
+    </div>
+    </mat-card>
+</div>

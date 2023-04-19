@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 interface Card {
   title: string;
   image: string;
-  link: string
 }
 
 
@@ -23,44 +23,36 @@ export class SearchComponent {
   a_user: any;
   responseUserData: any;
 
-  constructor(public auth: AuthService, private http: HttpClient) { }
+  cuisines : string[] = ["African", "American", "British", "Cajun", "Caribbean", "Chinese", "Eastern European", "European", "French", "German",
+    "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"];
+
+
+  constructor(public auth: AuthService, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     // Simple POST request with a JSON body and response type <any>
 
 
-    this.auth.user$.subscribe((user: any) => {
-      this.a_user = user;
-      console.log(this.a_user)
-      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
-        this.responseUserData = data.data
-        for (const [key, value] of Object.entries(data.data.recipes)) {
-          if (value['image'] == undefined) {
-            value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
-            if (Math.floor(Math.random() * 100) == 2) {
-              value['image'] = value['image'] + ' :('
-            }
-          }
-
-          this.cards.push({
-            title: key,
-            image: value['image'],
-            link: value['sourceUrl']
-          })
-        }
+    this.generateCategories()
 
 
+  }
 
-
+  generateCategories(){
+    for (let i = 0; i < this.cuisines.length; i++){
+      this.cards.push({
+        title: this.cuisines[i],
+        image: 'https://images.placeholders.dev/?width=600&height=300&text=No image'
       })
-    });
-
-
+    }
   }
 
 
   cardClicked(event: MouseEvent, card: Card) {
     // Do something when the card is clicked
+    let cuisineType = card.title.toLowerCase();
+    cuisineType = cuisineType.replace(/\s+/g, '_');
+    this.router.navigate(['/cuisine', cuisineType]);
     console.log('Card clicked!', card.title);
   }
 }
