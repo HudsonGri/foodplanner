@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 import gen_token from '../token_gen'
+import check_expire from '../expire';
 moment().format();
 
 interface Card {
@@ -25,11 +26,11 @@ export class ArchiveComponent {
   a_user: any;
   responseUserData: any;
 
-  pending_your_recipes : boolean = false;
+  pending_your_recipes: boolean = false;
 
   archive_cards: Card[] = [];
 
-  constructor(public auth: AuthService, private http: HttpClient) {}
+  constructor(public auth: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
 
@@ -50,42 +51,34 @@ export class ArchiveComponent {
       this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe(data => {
         this.pending_your_recipes = false;
 
-        
+
         for (const [key, value] of Object.entries(data.data.week_recipes)) {
-          console.log(value['timestamp'])
-          console.log(moment().unix())
-
-          // Everything created before this should be expired
-          var expire_time = moment().subtract(5, 'minutes');
-
-          console.log(moment(moment.unix(value['timestamp'])).fromNow())
-
-          if (value['timestamp'] <= expire_time.unix()) {
-          if (value['image'] == undefined) {
-            value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
-            if (Math.floor(Math.random() * 100) == 2) {
-              value['image'] = value['image'] + ' :('
+          if (!check_expire(value['timestamp'])) {
+            if (value['image'] == undefined) {
+              value['image'] = 'https://images.placeholders.dev/?width=600&height=300&text=No image';
+              if (Math.floor(Math.random() * 100) == 2) {
+                value['image'] = value['image'] + ' :('
+              }
             }
+            this.archive_cards.push({
+              title: key,
+              image: value['image'],
+              link: value['sourceUrl'],
+              description: "Generated: " + moment(moment.unix(value['timestamp'])).fromNow(),
+              instructions: value['instructions']
+            })
+
           }
-          this.archive_cards.push({
-            title: key,
-            image: value['image'],
-            link: value['sourceUrl'],
-            description: "Generated: " + moment(moment.unix(value['timestamp'])).fromNow(),
-            instructions: value['instructions']
-          })
-     
         }
-      }
 
       })
     });
 
   }
-  
+
   addRecipe(event: MouseEvent, card: Card) {
     this.auth.user$.subscribe(user => {
-      const usr_email = this.a_user.email; 
+      const usr_email = this.a_user.email;
       const data = card;
       const options = {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
@@ -97,7 +90,7 @@ export class ArchiveComponent {
           this.viewArchivedRecipes();
         });
 
-        
+
     });
   }
 
