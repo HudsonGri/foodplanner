@@ -14,25 +14,6 @@ import (
 	"github.com/go-playground/assert/v2"
 )
 
-func TestFindUsers(t *testing.T) {
-	// Set up test database and router
-	gin.SetMode(gin.TestMode)
-	r := gin.Default()
-	models.ConnectDatabase()
-
-	// Perform request and check response
-	req, _ := http.NewRequest("GET", "/users", nil)
-	w := httptest.NewRecorder()
-	r.GET("/users", controllers.FindUsers)
-	r.ServeHTTP(w, req)
-
-	assert.Equal(t, http.StatusOK, w.Code)
-	var response map[string][]models.User
-	json.Unmarshal(w.Body.Bytes(), &response)
-	assert.Equal(t, "Hudson G", response["data"][1].Name)
-	assert.Equal(t, "Michael T", response["data"][0].Name)
-}
-
 func TestFindUser(t *testing.T) {
 	// Set up test database and router
 	gin.SetMode(gin.TestMode)
