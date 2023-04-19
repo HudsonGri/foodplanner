@@ -1,73 +1,17 @@
-.main-container {
-    width: screenWidth;
-    height: (screenHeight * 2);
-}
-
 .welcome-container {
     position: relative;
-    width: 50%;
-    height: 100%;
+    width: 50vw;
 }
 
 .welcome-image{
-    width: 100%;
-    height: 100%;
+    width: 45vw;
+    height: 100vh;
     opacity: 0.6;
     object-fit: cover;
     filter:brightness(40%);
 }
 
-.welcome-message {
-    position: absolute;
-    top: 15%;
-    left: 28%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 26px;
-    font-weight: bolder;
-    color: rgb(255, 255, 255);
-}
-/*
-.loginButton {
-    background-color: black;
-    color:white;
-    height: 40px;
-    width: 70px;
-    position: relative;
-     top: 30px;
-    right: 100px; 
-    border-radius: 20px;
-    transition: 0.4s;
-}
 
-.loginButton:hover {
-    background-color: rgb(36, 79, 145);
-    transition: 0.4s;
-}
-*/
-.signUp {
-    background-color: black;
-    color: white;
-    height: 40px;
-    width: 70px;
-    position:relative;
-    /* bottom: 1200px;
-    left: 100px; */
-    border-radius: 20px;
-    transition: 0.4s;
-}
-
-.signUp:hover {
-    background-color: rgb(36, 79, 145);
-    transition: 0.4s;
-}
-
-
-input {
-    height: 25px;
-    width: 200px;
-    border-radius: 10px;
-    padding: 5px 10px;
-}
 
 .registerBtn {
     position: absolute;
@@ -75,13 +19,14 @@ input {
     right: 194px;
     width: 200px;
     height: 50px;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 25px;
     background-color:rgb(0, 0, 0);
     color: white;
 }
 
 .registerBtn:hover {
-    background-color: rgb(36, 79, 145);
+    background-color: rgb(197, 225, 165);
+    color: black;
     transition: 0.4s;
 }

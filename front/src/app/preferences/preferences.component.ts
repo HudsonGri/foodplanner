@@ -90,12 +90,7 @@ export class PreferencesComponent {
       this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe( data => {
         this.responseUserData = data.data;
         this.userID = data.data.id;
-        // this.african = data.data.cuisine_choices.cuisines.african;
-        // this.american = data.data.cuisine_choices.cuisines.american;
 
-        // console.log("African Boolean Value: " + this.african);
-        // console.log("American Boolean Value: " + this.american)
-        
         const diets = data.data.cuisine_choices.diets;
         this.gluten_free = diets.gluten_free;
         this.ketogenic = diets.ketogenic;
@@ -156,8 +151,6 @@ export class PreferencesComponent {
         this.mealCost = data.data.cuisine_choices.mealCost;
       })
     });
-
-
   }
 
   savePreferences() {
