@@ -27,12 +27,22 @@ func TestFindUser(t *testing.T) {
 	r.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusOK, w.Code)
-	var response map[string]models.User
+	var response map[string]models.UserRecipes
 	json.Unmarshal(w.Body.Bytes(), &response)
 	assert.Equal(t, "Michael T", response["data"].Name)
 	assert.Equal(t, "michael.t@gmail.com", response["data"].Email)
 	assert.Equal(t, 2, response["data"].Skill_Level)
-	// assert.Equal(t, "mexican", response["data"].Cuisine_choices)
+	rCuisine := response["data"].Cuisine_choices
+	trueChoices := map[string]bool{"spanish": true, "southern": true, "jewish": true, "korean": true, "japanese": true, "latin_american": true}
+	for key, values := range rCuisine {
+		submap := values
+		for subkey, value := range submap.(map[string]interface{}) {
+			if key == "overallMealFilters" {
+				continue
+			}
+			assert.Equal(t, trueChoices[subkey], value)
+		}
+	}
 }
 
 func TestDeleteUser(t *testing.T) {
