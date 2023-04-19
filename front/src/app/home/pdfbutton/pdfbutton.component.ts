@@ -41,9 +41,11 @@ export class PdfbuttonComponent {
       this.a_user = user;
       this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe(data => {
         let i = 0;
-        for (const [key, value] of Object.entries(data.data.week_recipes)) {
 
-          if (check_expire(value['timestamp'])) {
+        for (const [key, value_pre] of Object.entries(data.data.week_recipes)) {
+
+          let value = value_pre['val']
+          if (check_expire(value_pre['timestamp'])) {
 
             let servings = value['servings'];
             console.log(servings);
