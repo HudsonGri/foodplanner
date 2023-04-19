@@ -3,6 +3,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
+import gen_token from '../token_gen'
 moment().format();
 
 interface Card {
@@ -46,7 +47,7 @@ export class ArchiveComponent {
       console.log("loading this week")
       this.a_user = user;
       this.archive_cards = [];
-      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+      this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe(data => {
         this.pending_your_recipes = false;
 
         
