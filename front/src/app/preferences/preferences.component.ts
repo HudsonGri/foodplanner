@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatIcon } from '@angular/material/icon';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import * as moment from 'moment';
-import check_expire  from '../expire';
 import gen_token from '../token_gen'
 
 
@@ -97,16 +90,13 @@ export class PreferencesComponent {
     });
   }
 
-
-  ngOnInit() {
-    // Simple POST request with a JSON body and response type <any>
-
-
+  getPreferences() {
     this.auth.user$.subscribe((user: any) => {
       this.a_user = user;
       console.log(this.a_user)
       this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe( data => {
         this.responseUserData = data.data;
+        console.log(this.responseUserData);
         this.userID = data.data.id;
 
         const diets = data.data.cuisine_choices.diets;
@@ -164,11 +154,20 @@ export class PreferencesComponent {
         this.thai = cuisines.thai;
         this.vietnamese = cuisines.vietnamese;
 
-        this.healthiness = data.data.cuisine_choices.healthiness;
-        this.cookingSkillLevel = data.data.cuisine_choices.cookingSkillLevel;
-        this.mealCost = data.data.cuisine_choices.mealCost;
+        this.healthiness = data.data.cuisine_choices.overallMealFilters.healthiness;
+        this.cookingSkillLevel = data.data.cuisine_choices.overallMealFilters.cookingSkillLevel;
+        this.mealCost = data.data.cuisine_choices.overallMealFilters.mealCost;
+
+        console.log("Healthiness " + this.healthiness);
+        console.log("Cooking Skill Level " + this.cookingSkillLevel);
+        console.log("Meal Cost " + this.mealCost);
       })
     });
+  }
+
+  ngOnInit() {
+    // Simple POST request with a JSON body and response type <any>
+      this.getPreferences();
   }
 
   savePreferences() {

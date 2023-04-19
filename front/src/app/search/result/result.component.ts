@@ -36,7 +36,9 @@ export class ResultComponent{
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.cuisineType = params.get('cuisineType')!;
+      let tempString = params.get('cuisineType')!;
+      tempString = tempString.replace(/_/g, " ");
+      this.cuisineType = tempString;
     });
 
     this.generateRecipes();
@@ -72,6 +74,7 @@ export class ResultComponent{
               value['image'] = value['image'] + ' :('
             }
           }
+          
           this.cards.push({
             title: value['title'],
             image: value['image'],
