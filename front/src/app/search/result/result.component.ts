@@ -47,7 +47,6 @@ export class ResultComponent{
       // Send request to flask
     this.http.get<any>('http://localhost:5001/search?cuisine_type=' + this.cuisineType).subscribe(data => {
       console.log(data)
-      console.log(data.data.length)
       this.pending = false;
         for (const [key, value] of Object.entries(data.data)) {
           console.log('Here')
