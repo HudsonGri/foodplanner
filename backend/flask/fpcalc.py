@@ -10,8 +10,10 @@ import datetime;
 
 load_dotenv()
 API_KEYS = json.loads(os.environ.get("API_KEYS"))
-print(API_KEYS)
-rand_key = random.choice(API_KEYS)
+API_KEYS = ["b58a4f86ca3c410185be924fb7effa81"]
+
+def get_key():
+    return random.choice(API_KEYS)
 
 
 def find_most_overlap_lists(all_lists, n):
@@ -50,10 +52,9 @@ def find_most_overlap_lists(all_lists, n):
 
 
 def get_recipes(data, n):
-    print(data)
 
     response = requests.get(
-        f"https://api.spoonacular.com/recipes/random?apiKey={rand_key}", params=data)
+        f"https://api.spoonacular.com/recipes/random?apiKey={get_key()}", params=data)
 
     data = response.json()
 
@@ -235,8 +236,9 @@ def search(cuisine_type):
         }
 
     response = requests.get(
-        f"https://api.spoonacular.com/recipes/random?apiKey={rand_key}", params=data)
+        f"https://api.spoonacular.com/recipes/random?apiKey={get_key()}", params=data)
 
+    print(response.text)
     data = response.json()
 
 
