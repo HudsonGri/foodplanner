@@ -72,15 +72,21 @@ func TestCreateUser(t *testing.T) {
 
 	// Define the expected response
 	expectedResponse := gin.H{
-		"name":  "Test User",
-		"email": "testuser@example.com",
+		"name":            "Test User",
+		"email":           "testuser@example.com",
+		"cuisine_choices": "none",
+		"recipes":         "none",
+		"week_recipes":    "none",
 	}
 
 	user := models.User{Name: "Test User", Email: "testuser@example.com"}
 	// Define the request payload
 	payload := gin.H{
-		"name":  user.Name,
-		"email": user.Email,
+		"name":            user.Name,
+		"email":           user.Email,
+		"cuisine_choices": "none",
+		"recipes":         "none",
+		"week_recipes":    "none",
 	}
 
 	// Create a new recorder to record the HTTP response
