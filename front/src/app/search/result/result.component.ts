@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import gen_token from '../../token_gen'
 
 interface Card {
@@ -11,6 +12,7 @@ interface Card {
   image: string;
   link: string;
   instructions: string;
+  val: any;
 }
 
 @Component({
@@ -24,7 +26,7 @@ export class ResultComponent{
   a_user: any;
   responseUserData: any;
 
-  constructor(public auth: AuthService, private http: HttpClient, private route: ActivatedRoute, private snackBar: MatSnackBar) { }
+  constructor(public auth: AuthService, private http: HttpClient, private route: ActivatedRoute, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   cuisineType: string;
 
@@ -38,6 +40,18 @@ export class ResultComponent{
     });
 
     this.generateRecipes();
+  }
+
+
+  openDialog(type: any, card: Card) {
+    // Removing 
+    card.val.instructions = card.val.instructions.replace(/\.(?=[^\.]*\.)/g, '<br><br>');
+
+    // 1 for instructions, 2 for description
+    card.val.link = type;
+    this.dialog.open(RecipeDialog3, {
+      data: card.val,
+    });
   }
 
   generateRecipes() {
@@ -62,7 +76,8 @@ export class ResultComponent{
             title: value['title'],
             image: value['image'],
             link: value['sourceUrl'],
-            instructions: value['instructions']
+            instructions: value['instructions'],
+            val: value
           })
         }
       
@@ -98,4 +113,12 @@ export class ResultComponent{
     });
   }
 
+}
+
+@Component({
+  selector: 'recipe-dialog3',
+  templateUrl: 'recipe-dialog3.html',
+})
+export class RecipeDialog3 {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }

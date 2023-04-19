@@ -41,6 +41,7 @@ import { ResultComponent } from './search/result/result.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RecipeDialog } from './weekly-recipes/weekly-recipes.component';
 import { RecipeDialog2 } from './archive/archive.component';
+import { RecipeDialog3 } from './search/result/result.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { RecipeDialog2 } from './archive/archive.component';
     ArchiveComponent,
     ResultComponent,
     RecipeDialog,
-    RecipeDialog2
+    RecipeDialog2,
+    RecipeDialog3
   ],
   imports: [
     BrowserModule,
