@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import jspdf from 'jspdf';
 import * as moment from 'moment';
 import check_expire  from '../../expire';
-
+import gen_token from '../../token_gen'
 
 
 interface Ingredients {
@@ -39,7 +39,7 @@ export class PdfbuttonComponent {
     this.auth.user$.subscribe((user: any) => {
       console.log("loading this week")
       this.a_user = user;
-      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+      this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe(data => {
         let i = 0;
         for (const [key, value] of Object.entries(data.data.week_recipes)) {
 

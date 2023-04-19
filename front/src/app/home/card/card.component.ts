@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { empty } from 'rxjs';
+import gen_token from '../../token_gen'
 
 @Component({
   selector: 'app-card',
@@ -24,7 +25,7 @@ export class CardComponent {
       this.auth.user$.subscribe((user:any) => {
         this.a_user = user;
         console.log(this.a_user)
-        this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+        this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe(data => {
           this.responseUserData = data.data
           console.log(data)
           console.log(this.responseUserData)
