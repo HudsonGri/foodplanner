@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Barlow', sans-serif;
+}
+
 .grid-container {
   margin: 20px;
 }
@@ -8,6 +13,18 @@
   left: 15px;
   right: 15px;
   bottom: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.cardmajor {
+  width: calc(100% - 20px);
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  justify-self: center;
 }
 
 .card {
