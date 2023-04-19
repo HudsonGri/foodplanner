@@ -89,15 +89,13 @@ export class WeeklyRecipesComponent {
   }
 
   viewWeekRecipes() {
-    console.log(gen_token("test"))
     this.pending_your_recipes = true;
 
     this.auth.user$.subscribe((user: any) => {
       console.log("loading this week")
       this.a_user = user;
-      console.log(user)
       this.week_cards = [];
-      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe(data => {
+      this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe(data => {
         this.pending_your_recipes = false;
 
         for (const [key, value] of Object.entries(data.data.week_recipes)) {
