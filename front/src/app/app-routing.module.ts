@@ -9,7 +9,7 @@ import { ArchiveComponent } from './archive/archive.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
   { path: 'welcome', component: WelcomeComponent},
   { path: 'search', component: SearchComponent},

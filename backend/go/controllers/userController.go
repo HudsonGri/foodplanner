@@ -16,8 +16,12 @@ import (
 )
 
 type CreateUserInput struct {
-	Name  string `json:"name" binding:"required"`
-	Email string `json:"email" binding:"required"`
+	Name            string `json:"name" binding:"required"`
+	Email           string `json:"email" binding:"required"`
+	Skill_Level     int    `json:"skill_level`
+	Cuisine_choices string `json:"cuisine_choices" binding:"required"`
+	Recipes         string `json:"recipes" binding:"required"`
+	Week_Recipes    string `json:"week_recipes" binding:"required"`
 }
 
 type UpdateUserInput struct {
@@ -80,16 +84,16 @@ func validate_token(token string, user_email string) (result bool) {
 
 func FindUser(c *gin.Context) {
 
-	if !validate_token(c.Param("token"), c.Param("email")) {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
-		return
-	}
-
 	// Get model if exist
 	var user models.User
 
 	if err := models.DB.Where("email = ?", c.Param("email")).First(&user).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		c.JSON(http.StatusOK, gin.H{"error": "Record not found!"})
+		return
+	}
+
+	if !validate_token(c.Param("token"), c.Param("email")) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
 
@@ -134,7 +138,7 @@ func CreateUser(c *gin.Context) {
 	}
 
 	// Create User
-	user := models.User{Name: input.Name, Email: input.Email}
+	user := models.User{Name: input.Name, Email: input.Email, Skill_Level: input.Skill_Level, Cuisine_choices: input.Cuisine_choices, Recipes: input.Recipes, Week_Recipes: input.Week_Recipes}
 	models.DB.Create(&user)
 
 	c.JSON(http.StatusOK, gin.H{"data": user})
