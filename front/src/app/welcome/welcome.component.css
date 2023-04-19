@@ -1,4 +1,4 @@
-.welcome-container {
+body > div:first-child {
     position: relative;
     width: 50vw;
 }
@@ -11,22 +11,33 @@
     filter:brightness(40%);
 }
 
+body > div:nth-child(2){
+    width: 50vw;
+}
 
+p{
+    position: absolute;
+    top: 35vh;
+    right: 10vw;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+h3{
+    position: absolute;
+    top: 45vh;
+    right: 12vw;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
 
 .registerBtn {
     position: absolute;
-    top: 450px;
-    right: 194px;
-    width: 200px;
-    height: 50px;
-    font-size: 16px;
-    border-radius: 25px;
-    background-color:rgb(0, 0, 0);
+    top: 60vh;
+    right: 6vw;
+    width: 300px;
+    height: 60px;
     color: white;
-}
-
-.registerBtn:hover {
-    background-color: rgb(197, 225, 165);
-    color: black;
-    transition: 0.4s;
 }
