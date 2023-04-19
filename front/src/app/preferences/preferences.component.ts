@@ -1,6 +1,16 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
+import { HttpClient } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { HttpHeaders } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import * as moment from 'moment';
+import check_expire  from '../expire';
+import gen_token from '../token_gen'
+
 
 @Component({
   selector: 'app-preferences',
@@ -87,7 +97,7 @@ export class PreferencesComponent {
     this.auth.user$.subscribe((user: any) => {
       this.a_user = user;
       console.log(this.a_user)
-      this.http.get<any>('http://localhost:8080/users/' + this.a_user.email).subscribe( data => {
+      this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe( data => {
         this.responseUserData = data.data;
         this.userID = data.data.id;
 
@@ -224,7 +234,7 @@ export class PreferencesComponent {
       console.log(this.userID)
       console.log(preferences)
       this.responseUserData['cuisine_choices'] = JSON.stringify(preferences);
-      this.http.patch<any>('http://localhost:8080/users/' + this.userID, this.responseUserData).subscribe(data => {
+      this.http.patch<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`, this.responseUserData).subscribe(data => {
         console.log("Preferences Saved Successfully");
       })
     });
