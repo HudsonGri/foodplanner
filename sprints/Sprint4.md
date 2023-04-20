@@ -4,6 +4,8 @@
 
 Frontend
 - This sprint, the frontend team focused on developing more functionality for the user regarding the Search page, Home page, Preferences page, and more.
+- The Preferences page was changed to provide more options regarding diets, allergens, and cuisines. Once the user edits all their preferences they will click on the save preferences button to send a PATCH request to the backend and a small snackbar will popup stating the preferences have been saved. Whenever the user returns to the page, it will load with their previously saved preferences by sending a GET request.
+- For each card that contains a recipe, there are now "Instructions" and "Description" buttons that each send a GET request to the backend to return the desired information that will be displayed on a dialog.
 
 Backend
 - During this sprint, the backend team focused on making several changes to the Go and Flask apis. One of the primary additions to Go was the implementation of token authentication to secure requests coming from the frontend. We wanted to ensure that only the logged-in user could view or change their information. We achieved this by hashing the user's Auth0 ID and sending it with each request to the Go api. In Go, we validated that the hash matched the user's email address by sending a request to Auth0 to confirm the information.
@@ -24,8 +26,8 @@ Backend
 - Add Recipe Test (incomplete) 
   - Tests validity of the post request made when the user presses the add button on a recommended recipe within the 'Your Weekly Recipes' page. Currently running into issues regarding the cypress test authenticating through auth0 on its. 
   - In the mean time, the post request was confirmed to work through checking the network tab of Developer Tools and its respective return code and return value.
-- Save Preferences Test (incomplete)
-  - Meant to test the functionality of the preferences page and the program's ability to save user preferences in the database.
+- Save Preferences Test
+  - Meant to test the functionality of the preferences page and the program's ability to save user preferences in the database. Fixed from sprint 3.
 
 ### List unit tests for backend
 
