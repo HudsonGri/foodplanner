@@ -4,7 +4,7 @@
   <div *ngIf="data.link == 1" [innerHtml]="data.instructions"></div>
   
   <div *ngIf="data.link == 2 && data.summary == ''">No description found.</div>
-  <div *ngIf="data.link == 2" [innerHtml]="data.val.summary"></div>
+  <div *ngIf="data.link == 2" [innerHtml]="data.summary"></div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Exit</button>
