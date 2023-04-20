@@ -92,7 +92,7 @@ func FindUser(c *gin.Context) {
 		return
 	}
 
-	if !ValidateToken(c.Param("token"), c.Param("email")) && c.Param("token") != "TEST" {
+	if c.Param("token") != "TEST" && !ValidateToken(c.Param("token"), c.Param("email")) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
@@ -152,7 +152,8 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 
-	if !ValidateToken(c.Param("token"), c.Param("email")) && c.Param("token") != "TEST" {
+	if c.Param("token") != "TEST" && !ValidateToken(c.Param("token"), c.Param("email")) {
+		fmt.Println("AUTHENTICATION FAILED")
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
@@ -177,7 +178,7 @@ func DeleteUser(c *gin.Context) {
 		return
 	}
 
-	if !ValidateToken(c.Param("token"), c.Param(user.Email)) && c.Param("token") != "TEST" {
+	if c.Param("token") != "TEST" && !ValidateToken(c.Param("token"), c.Param(user.Email)) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid auth token"})
 		return
 	}
