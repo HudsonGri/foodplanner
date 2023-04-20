@@ -55,3 +55,4 @@ Backend
 This documentation can be found in the [docs](https://github.com/HudsonGri/foodplanner/tree/main/docs) folder of our GitHub.
 
 ### Video URL
+[https://youtu.be/FuSJb_1RJ0o](https://youtu.be/FuSJb_1RJ0o)
