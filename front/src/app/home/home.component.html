@@ -11,32 +11,48 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
-        <mat-card-header class="dashboard-card-content">
-          <h2 class="dashboard-card-content"> Browse Recipes</h2>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content" style="color: rgb(67, 105, 24);">
-          <h3 class="newfont"> <br> Explore our entire catalogue of recipes.  <br> <br> </h3>
-      </mat-card-content>
+        <div class="first">
+          <h2> Browse Recipes </h2>
+        </div>
+        <div class="second" style="color: rgb(67, 105, 24);">
+          <h3 class="newfont"> <br> Explore our entire catalogue of recipes at the click of a button.  <br> <br> </h3>
+        </div>
+        <div class="second">
+          <button mat-stroked-button color = "warn" class="custom-button" routerLink="/search">Explore Now</button>
+        </div>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="2">
       <mat-card class="dashboard-card">
-        <mat-card-header class="dashboard-card-content">
-          <h2> Download Your Shopping List <br></h2>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content" style="color: rgb(67, 105, 24);">
-          <h3 class="newfont"> <br> In Three Simple Steps!  <br> <br> </h3>
-      </mat-card-content>
+        <div class="first">
+          <h2> Download Shopping List </h2>
+        </div>
+        <div class="second" style="color: rgb(67, 105, 24);">
+          <h3 class="newfont"> <br> Download your complete shopping list for this week.   <br> <br> </h3>
+          <div class="second">
+            <ul style="color: black">
+              <li><h3> See all the ingredients you need.</h3></li>
+              <li><h3> See how much you need. </h3></li>
+              <li><h3> See what aisle your items are in. <br> <br> <br> <br> </h3></li>
+            </ul>
+          </div>
+        </div>
+        <div class="second">
+          <app-pdfbutton></app-pdfbutton>
+        </div>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
-        <mat-card-header class="dashboard-card-content">
-          <h2 class="dashboard-card-content"> View Archive <br></h2>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content" style="color: rgb(67, 105, 24);">
-          <h3 class="newfont"> <br> Access the recipes you liked in the past.  </h3>
-      </mat-card-content>
+        <div class="first">
+          <h2> View Archive </h2>
+        </div>
+        <div class="second" style="color: rgb(67, 105, 24);">
+          <h3 class="newfont"> <br> Access recipes you liked in the past.  <br> <br> </h3>
+        </div>
+        <div class="second">
+          <button mat-stroked-button color = "warn" class="custom-button" routerLink="/archive">Show Archive</button>
+        </div>
       </mat-card>
     </mat-grid-tile>
     

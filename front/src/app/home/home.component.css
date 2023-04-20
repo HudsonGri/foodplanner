@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  font-family: 'Barlow', sans-serif;
 }
 
 .grid-container {
@@ -57,11 +56,38 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
   max-height: 100%;
   justify-content: center;
   align-items: stretch;
 }
+
+.custom-button {
+  background-color: #ffffff36; /* replace with the background color you want */
+  border-width: 0.3px; /* increase the border width to your desired thickness */
+  border-color: #183114d4; /* replace with the border color you want */
+}
+
+.first {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.second {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.newfont {
+  font-family: 'Barlow', sans-serif;
+}
+
 
 .mat-button {
   z-index: 1

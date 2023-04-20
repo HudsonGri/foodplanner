@@ -19,6 +19,9 @@
     bottom: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+    background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/08/Download-Images-Food-HD.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
  }
 
 
@@ -47,10 +50,17 @@
 
 
  .card-image {
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   right: 0px;
+   bottom: 0px;
+   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+   border-radius: 5px;
    background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/08/Download-Images-Food-HD.jpg');
    background-repeat: no-repeat;
    background-size: cover;
-   height: 320px; /* set height as per your requirements */
+   height: 100%; /* set height as per your requirements */
  }
 
  .button{
@@ -73,6 +83,12 @@
    display: flex;
    flex-wrap: wrap;
    justify-content: space-evenly;
+   gap: 14px; 
+ }
+
+ .arrow-container {
+  position: relative;
+  top: 6px;
  }
  
  mat-card {
