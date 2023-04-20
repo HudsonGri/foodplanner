@@ -91,8 +91,9 @@ export class ResultComponent{
   }
 
   addRecipe(event: MouseEvent, card: Card) {
+    console.log("here")
     this.auth.user$.subscribe(user => {
-      const usr_email = this.a_user.email;
+      const usr_email = user.email;
       const data = card;
       const options = {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
@@ -101,7 +102,6 @@ export class ResultComponent{
       this.http.post('http://localhost:5001/add', data, options)
         .subscribe(response => {
           console.log(response);
-          this.generateRecipes();
         });
 
     });
