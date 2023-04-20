@@ -93,10 +93,10 @@ export class PreferencesComponent {
   getPreferences() {
     this.auth.user$.subscribe((user: any) => {
       this.a_user = user;
-      console.log(this.a_user)
+      //console.log(this.a_user)
       this.http.get<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`).subscribe( data => {
         this.responseUserData = data.data;
-        console.log(this.responseUserData);
+        //console.log(this.responseUserData);
         this.userID = data.data.id;
 
         const diets = data.data.cuisine_choices.diets;
@@ -239,11 +239,11 @@ export class PreferencesComponent {
 
     this.auth.user$.subscribe((user: any) => {
       this.a_user = user;
-      console.log(this.userID)
-      console.log(preferences)
+      //console.log(this.userID)
+      //console.log(preferences)
       this.responseUserData['cuisine_choices'] = JSON.stringify(preferences);
       this.http.patch<any>(`http://localhost:8080/users/${this.a_user.email}/${gen_token(this.a_user.sub)}`, this.responseUserData).subscribe(data => {
-        console.log("Preferences Saved Successfully");
+        console.log("Saved");
       })
     });
 
