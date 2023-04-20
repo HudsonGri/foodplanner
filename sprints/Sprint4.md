@@ -3,6 +3,7 @@
 ### Work that we have completed in Sprint 4
 
 Frontend
+- This sprint, the frontend team focused on developing more functionality for the user regarding the Search page, Home page, Preferences page, and more.
 
 Backend
 - During this sprint, the backend team focused on making several changes to the Go and Flask apis. One of the primary additions to Go was the implementation of token authentication to secure requests coming from the frontend. We wanted to ensure that only the logged-in user could view or change their information. We achieved this by hashing the user's Auth0 ID and sending it with each request to the Go api. In Go, we validated that the hash matched the user's email address by sending a request to Auth0 to confirm the information.
