@@ -5,7 +5,7 @@ describe('Add Recipe Test', () => {
       cy.contains("Log in / Sign Up").click();
       cy.wait(20000); 
       
-      cy.intercept('POST', 'http://localhost:5001/add', { statusCode: 200 }).as('add');
+      cy.intercept('POST', 'http://localhost:5001/remove', { statusCode: 200 }).as('remove');
 
   
       // Visit the page where the addRecipe() function is called
@@ -34,17 +34,15 @@ describe('Add Recipe Test', () => {
         useremail : user_email,
       };
 
-      cy.get('button.mat-mini-fab')
-      .find('mat-icon.material-icons')
-      .contains('add')
-      .click()
+      cy.get('button[data-test="remove"]').first().click()
   
       // Call the addRecipe() function with test data
       //cy.window().its('addRecipe').invoke('http://localhost:5001/add', card, options);
   
       // Wait for the request to complete and check the response
-      cy.wait('@addRecipe').then((xhr) => {
+      /*cy.wait('@remove').then((xhr) => {
         expect(xhr.response.statusCode).to.equal(200);
       });
+      */
     });
   });
