@@ -37,33 +37,12 @@ POST /users
 |---|---|---|
 | Name | "string" | The name of the new user |
 | Email | "string" | The email of the new user |
+| Skill_Level | "int" | The skill level of the new user |
+| Cuisine_choices | "string" | The cuisine preferences of the new user |
+| Recipes | "string" | The relevant recipes for the new user |
+| Week_recipes | "string" | The relevant recipes for a week for the new user |
 
-GET /users
-- Get a list of all users
-  - Response
-  ``` json
-  "data": [
-    {
-      "id": 1,
-      "name": "Michael T",
-      "email": "michael.t@gmail.com",
-      "skill_level": "2",
-      "cuisine_choices": "['mexican']",
-      "recipes": "...",
-      "week_recipes": "..."
-    },
-    {
-      "id": 2,
-      "name": "Hudson G",
-      "email": "hudsongriffith@gmail.com",
-      "skill_level": 2,
-      "cuisine_choices": "['mexican']",
-      "recipes": "...",
-      "week_recipes": "..."
-    }
-  ]
-
-GET /users/:email
+GET /users/:email/:token
 - Get a specific user by email
   - Response (does not include the recipes due to their length):
     ``` json
@@ -82,7 +61,7 @@ GET /users/:email
 |---|---|---|
 | Email | "string" | The email of the user to retrieve |
 
-DELETE /users/:id
+DELETE /users/:id/:token
 - Delete a specific user by ID
   - Response
     ``` json
@@ -93,8 +72,8 @@ DELETE /users/:id
 |---|---|---|
 | ID | "uint" | The ID of the user to delete |
 
-PATCH /users/:id
-- Update an existing user by ID
+PATCH /users/:email/:token
+- Update an existing user by email
   - Response
     ``` json
     "data": {
@@ -110,7 +89,7 @@ PATCH /users/:id
 
 | Name | Type | Description |
 |---|---|---|
-| ID | "uint" | The ID of the user to update |
+| Email | "string" | The email of the user to update |
 | Name | "string" | The updated name of the user (optional) |
 | Email | "string" | The updated email of the user (optional) |
 | Skill_Level | "int" | The updated skill level of the user (optional) |

@@ -29,6 +29,7 @@ export class PdfbuttonComponent {
   userIP: any;
   a_user: any;
   responseUserData: any;
+  
 
   constructor(public auth: AuthService, private http: HttpClient) { }
 
@@ -43,12 +44,18 @@ export class PdfbuttonComponent {
         let i = 0;
 
         for (const [key, value_pre] of Object.entries(data.data.week_recipes)) {
-
-          let value = value_pre['val']
+          let value = null;
+          if(value_pre.hasOwnProperty('val')) {
+            value = value_pre['val']
+          } else {
+            value = value_pre
+          }
+          
           if (check_expire(value_pre['timestamp'])) {
 
             let servings = value['servings'];
-            console.log(servings);
+            console.log("val: " + value['title']);
+            console.log(value)
             for (let j = 0; j < value['extendedIngredients'].length; j++) {
               this.ingredients.push({
                 name: value['extendedIngredients'][j].nameClean,
@@ -75,7 +82,6 @@ export class PdfbuttonComponent {
               i = i + 1;
             }
           }
-          console.log(this.ingredients)
         }
       })
     });
