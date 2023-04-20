@@ -13,7 +13,7 @@ Frontend
 
 - The entire search page was redone, showing 21 mat-cards of cuisine options which the user can click on. They are then routed to a new page with a url corresponding to that cuisine, and a call to the backend is made to get recipes of that type which are then displayed on mat-cards. The users can add the recipe, and can view the instructions and descriptions.
 
-- An archive page was created, where users can view all recipes that they previously had added to their weekly recipes, but have since expired. The user has the option to add these back to their weekly recipes
+- An archive page was created, where users can view all recipes that they previously had added to their weekly recipes, but have since expired. The user has the option to add these back to their weekly recipes.
 
 - Pdf download functionality was created, using jsPDF() to create a pdf that shows each ingredient, amount, and aisle where that ingredient can be found. If multiple recipes have the same ingredient, the amounts are added with one another and combined into one entry. 
 
